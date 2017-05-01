@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script>
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="@Url.Action("Index","ControleAlunos")" title="Vá para Controle Alunos" class="tip-bottom"> Alunos</a></div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="widget-box">
+                <div class="widget-title"><span class="icon"><i class="icon-th"></i></span><h5>Novo Aluno</h5></div>
+                <div class="widget-content nopadding">
+                    <form action="" method="post" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">Nome :</label>
+                            <div class="controls">
+                                <input name="nomeAluno" type="text" class="span11" placeholder="Nome" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">CPF :</label>
+                            <div class="controls">
+                                <input name="cpfAluno" type="text" class="span11" placeholder="CPF" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Matricula :</label>
+                            <div class="controls">
+                                <input name="matriculaAluno" type="text" class="span11" placeholder="Nome" />
+                            </div>
+                        </div>
+                        @Html.AntiForgeryToken();
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model Pbl.Models.TipoDisciplina
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script>
+
+<h2>Cadastro de Tipos de Disciplina</h2>
+
+@using (Html.BeginForm("Create", "ControleTipoDisciplina"))
+{
+    @Html.ValidationSummary(true, "Algo não está certo");
+    <div class="form-group">
+        <label for="descTipoDisciplina">Descrição do Tipo</label>
+        @Html.TextBoxFor(c => c.descTipoDisciplina, new {@class="form-control" })
+        @Html.ValidationMessageFor(c => c.descTipoDisciplina)
+    </div>
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-primary">Save</button>
+}

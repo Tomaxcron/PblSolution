@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Pbl.Models.Med>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+
+<h2>Controle de MED</h2>
+<table class="table">
+    <tr>
+        <th>MED</th>
+        <th>Semestre</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>MED @Html.DisplayFor(c => item.descMed)</td>
+            <td>@Html.DisplayFor(c => item.Semestre.descSemestre)</td>
+            <td>
+                @Html.ActionLink("Gerenciar", "GerenciarMed", new { id = item.idMed, @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
+</table>
+

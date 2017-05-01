@@ -1,0 +1,23 @@
+﻿@model Pbl.Models.Professor
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update", "ControleProfessores"))
+{
+    @Html.TextBoxFor(c => c.idProfessor, new { @value = Model.idProfessor, @type = "hidden" })
+    @Html.TextBoxFor(c => c.senhaProfessor, new { @value = Model.senhaProfessor, @type = "hidden" })
+    <div class="form-group">
+        <label for="nomeProfessor">Nome </label>
+        @Html.TextBoxFor(c => c.nomeProfessor, new { @value = Model.nomeProfessor, @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="cpfProfessor">CPF </label>
+        @Html.TextBoxFor(c => c.cpfProfessor, new { @value = Model.cpfProfessor, @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-primary">Alterar</button>
+}

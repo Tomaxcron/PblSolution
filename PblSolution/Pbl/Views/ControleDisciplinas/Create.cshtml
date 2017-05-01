@@ -1,0 +1,31 @@
+﻿@model Pbl.Models.ViewModel.DisciplinaViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script>
+
+<h2>Cadastro de Disciplinas</h2>
+
+@using (Html.BeginForm("Create", "ControleDisciplinas"))
+{
+    @Html.ValidationSummary(true, "Algo não está certo");
+    <div class="form-group">
+        <label for="descDisciplina">Disciplina</label>
+        @Html.TextBoxFor(c => c.disciplina.descDisciplina, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.disciplina.descDisciplina)
+    </div>
+    <div class="form-group">
+        <label>Tipo Disciplina</label><br />
+        @Html.DropDownListFor(c => c.disciplina.idTipoDisciplina, new SelectList(Model.listaTipoDisciplina, "idTipoDisciplina", "descTipoDisciplina"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.disciplina.idTipoDisciplina)
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

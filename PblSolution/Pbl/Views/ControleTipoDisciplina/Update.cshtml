@@ -1,0 +1,19 @@
+﻿@model Pbl.Models.TipoDisciplina
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update", "ControleTipoDisciplina"))
+{   
+    @Html.TextBoxFor(c => c.idTIpoDisciplina, new { @value = Model.idTIpoDisciplina, @type = "hidden" })
+    <div class="form-group">
+        <label for="descTipoDisciplina">Descrição</label>
+        @Html.TextBoxFor(c => c.descTipoDisciplina, new { @value = Model.descTipoDisciplina, @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-primary">Alterar</button>
+}
+

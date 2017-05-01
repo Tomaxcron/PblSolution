@@ -1,0 +1,36 @@
+﻿@model Pbl.Models.Professor
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<meta charset="utf-8">
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script>
+<h2>
+    Cadastro de Professores
+</h2>
+@using (Html.BeginForm("Create", "ControleProfessores"))
+{
+    @Html.ValidationSummary(true, "Algo não está certo.");
+    <div class="form-group">
+        @Html.LabelFor(m => m.nomeProfessor)
+        @Html.TextBoxFor(m => m.nomeProfessor, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.nomeProfessor)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.cpfProfessor)
+        @Html.TextBoxFor(m => m.cpfProfessor, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.cpfProfessor)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.senhaProfessor)
+        @Html.TextBoxFor(m => m.senhaProfessor, new { @class = "form-control", type = "password" })
+        @Html.ValidationMessageFor(m => m.senhaProfessor)
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}

@@ -1,0 +1,29 @@
+﻿@model Pbl.Models.Problema
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script><h2>Cadastro de Problemas</h2>
+
+@using (Html.BeginForm("Create", "ControleProblemas"))
+{
+    @Html.ValidationSummary(true, "Algo deu errado")
+    <div class="form-group">
+        <label for="tituloProblema">Titulo</label>
+        @Html.TextBoxFor(c => c.tituloProblema, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.tituloProblema)
+    </div>
+    <div class="form-group">
+        <label for="descProblema">Descrição</label>
+        @Html.TextAreaFor(c => c.descProblema, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.descProblema)
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+

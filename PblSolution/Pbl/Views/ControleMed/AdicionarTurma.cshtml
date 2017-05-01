@@ -1,0 +1,20 @@
+﻿@model Pbl.Models.Turma
+@{
+    ViewBag.Title = "AdicionarTurma";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+
+<h2>Adicionar Turma</h2>
+
+@using (Html.BeginForm("AdicionarNovaTurma","ControleMed"))
+{
+    @Html.ValidationSummary(true, "Algo deu errado");
+    @Html.TextBoxFor(c => c.idMed, new { @class = "form-control", value = Model.idMed, type = "hidden"})
+    <div class="form-group">
+        <label for="descTurma">Descrição</label>
+        @Html.TextBoxFor(c => c.descTurma, new { @class = "form-control"})
+        @Html.ValidationMessageFor(c => c.descTurma)
+    </div>
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

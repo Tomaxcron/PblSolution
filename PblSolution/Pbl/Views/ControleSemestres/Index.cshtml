@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Pbl.Models.Semestre>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<h2>Controle de Semestres</h2>
+
+<div class="form-group">
+    @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-primary" })
+</div>
+
+<table class="table">
+    <tr>
+        <th>Semestre</th>
+        <th>Ano</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(c => item.descSemestre)</td>
+            <td>@Html.DisplayFor(c => item.Ano.ano1)</td>
+            <td>
+                @Html.ActionLink("Alterar", "Update", new { id = item.idSemestre, @class = "btn" })
+                @Html.ActionLink("Deletar", "Delete", new { id = item.idSemestre, @class = "btn" })
+            </td>
+        </tr>
+    }
+</table>

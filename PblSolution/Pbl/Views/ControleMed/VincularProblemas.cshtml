@@ -1,0 +1,45 @@
+﻿@model Pbl.Models.ViewModel.VincularProblemaViewModel
+@{
+    ViewBag.Title = "VincularProblemas";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script>
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Ir para a Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" title="Ir Para Vínculos de Problemas" class="tip-bottom"> Vincular Problemas</a></div>
+</div>
+<h2>Vincular Problemas</h2>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title"><span class="icon"><i class="icon-th"></i></span><h5>Vínculo de Problemas</h5></div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var problema in Model.ListProblemaDisponiveis)
+                            {
+                                <tr class="gradeX">
+                                    <td>@Html.DisplayFor(modelItem => problema.tituloProblema)</td>
+                                    <td>@Html.DisplayFor(modelItem => problema.descProblema)</td>
+                                    <td>@Html.ActionLink("Vincular", "AdicionarProblema", "ControleMed", new { idMed = Model.MedAtual.idMed, idProblema = problema.idProblema }, null)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

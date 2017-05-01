@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Pbl.Models.Professor>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script>
+<h2>Controle de Professores</h2>
+<p>
+    @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Cpf</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.nomeProfessor)</td>
+            <td>@Html.DisplayFor(modelItem => item.cpfProfessor)</td>
+            <td>
+                @Html.ActionLink("Alterar", "Update", new { id = item.idProfessor })
+                @Html.ActionLink("Deletar", "Delete", new { id = item.idProfessor })
+            </td>
+        </tr>
+    }
+</table>
+

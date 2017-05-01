@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Pbl.Models.Problema>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script><h2>Cadastro de Problemas</h2>
+<div class="form-group">
+    @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-primary" })
+</div>
+<table class="table">
+    <tr>
+        <th>Problema</th>
+        <th></th>
+    </tr>
+    @foreach (var problema in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(c => problema.tituloProblema)</td>
+            <td>
+                @Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema, @class = "btn btn-primary" })
+                @Html.ActionLink("Alterar", "Update", new { id = problema.idProblema, @class = "btn btn-primary" })
+                
+            </td>
+    </tr>
+    }
+</table>
+

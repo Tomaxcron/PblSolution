@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Pbl.Models.TipoDisciplina>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script>
+
+<h2>Index</h2>
+
+<div class="form-group">
+    @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-primary" })
+</div>
+
+<table class="table">
+    <tr>
+        <th>Descrição</th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(c => item.descTipoDisciplina)</td>
+                <td>
+                    @Html.ActionLink("Alterar", "Update", new { id = item.idTipoDisciplina, @class = "btn btn-primary" })
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.idTipoDisciplina, @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    }
+</table>

@@ -1,0 +1,30 @@
+﻿@model Pbl.Models.Problema
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+}
+<script type="text/javascript">
+    $mensagem = "@ViewBag.Message";
+    if ($mensagem) {
+        alert($mensagem);
+    }
+</script><h2>Atualizar problema</h2>
+
+@using (Html.BeginForm("Update","ControleProblemas"))
+{
+    @Html.ValidationSummary(true,"Algo deu errado")
+    @Html.TextBoxFor(c => c.idProblema, new { @class="form-control", @type="hidden", @value=Model.idProblema})
+    <div class="form-group">
+        <label for="tituloProblema">Titulo</label>
+        @Html.TextBoxFor(c => c.tituloProblema, new { @class="form-control", @value=Model.tituloProblema})
+        @Html.ValidationMessageFor(c => c.tituloProblema)
+    </div>
+    <div class="form-group">
+        <label for="descProblema">Descrição</label>
+        @Html.TextAreaFor(c => c.descProblema, new { @class="form-control", @value = Model.descProblema})
+        @Html.ValidationMessageFor(c => c.descProblema)
+    </div>
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+
