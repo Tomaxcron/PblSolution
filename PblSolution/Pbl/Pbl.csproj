@@ -413,6 +413,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\adicao.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -573,6 +574,7 @@
     <Content Include="Views\ControleTipoDisciplina\Create.cshtml" />
     <Content Include="Views\ControleTipoDisciplina\Index.cshtml" />
     <Content Include="Views\ControleTipoDisciplina\Update.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

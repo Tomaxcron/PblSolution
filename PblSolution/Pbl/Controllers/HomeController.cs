@@ -8,7 +8,7 @@ namespace Pbl.Controllers
         {
             if (Session["user"] == null)
             {
-                return RedirectToAction("Login","Login");
+                //return RedirectToAction("Login","Login");
             }
             return View();
         }
