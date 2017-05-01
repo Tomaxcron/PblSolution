@@ -21,11 +21,16 @@ namespace Pbl
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/custom.js",
+                      "~/Scripts/DataTables/jquery.dataTables.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/custom.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/site.css",
+                      "~/Content/DataTables/css/jquery.dataTables.min.css"));
         }
     }
 }
