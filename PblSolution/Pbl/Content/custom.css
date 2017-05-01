@@ -33,7 +33,6 @@ body {
     margin:10px 20px 10px 0px;
     background-color:#fff!important;
     padding:10px;
-    min-height:1050px;
 }
 .pad-top {
     padding-top:15px;
@@ -49,8 +48,8 @@ body {
 
 .sidebar-collapse > .nav > li > a {
 	padding:15px 10px;
+    font-family:'Franklin Gothic', Arial, Helvetica, sans-serif,;
     color: #214761;
-    font-weight: 900;
     font-size: 16px;
 }
 .sidebar-collapse > .nav > li {
@@ -63,10 +62,13 @@ body {
 	outline:0;
 }
 
+.sidebar-collapse .nav > li > a:active {
+    font-family: 'Franklin Gothic', Arial, Helvetica, sans-serif,;
+}
+
 .navbar-side {
-	border:none;
-	background-color: #fff;
-	
+    border: none;
+    background-color: #fff;
 }
 .navbar-inverse {
 
@@ -136,7 +138,7 @@ min-height: 80px;
      #page-wrapper{
                margin: 0 0 0 260px;
         padding: 15px 30px;
-        min-height: 1050px;
+        height: 100%;
 		
     }
 	
