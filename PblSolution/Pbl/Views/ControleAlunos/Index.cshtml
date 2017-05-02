@@ -21,30 +21,32 @@
                     @Html.ActionLink("Adicionar", "Create", null, new { @class = "classnameff" })
                 </div>
                 <div class="widget-content nopadding">
-                    <table class="table table-striped table-bordered table-hover" id="myTable">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Cpf</th>
-                                <th>Matricula</th>
-                                <th>Opções</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var aluno in Model)
-                            {
-                                <tr class="gradeX">
-                                    <td>@Html.DisplayFor(c => aluno.nomeAluno)</td>
-                                    <td>@Html.DisplayFor(c => aluno.cpfAluno)</td>
-                                    <td>@Html.DisplayFor(c => aluno.matriculaAluno)</td>
-                                    <td>
-                                        @Html.ActionLink("Alterar", "Update", new { id = aluno.idAluno})
-                                        @Html.ActionLink("Deletar", "Delete", new { id = aluno.idAluno})
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Cpf</th>
+                                    <th>Matricula</th>
+                                    <th>Opções</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var aluno in Model)
+                                {
+                                    <tr class="gradeX">
+                                        <td>@Html.DisplayFor(c => aluno.nomeAluno)</td>
+                                        <td>@Html.DisplayFor(c => aluno.cpfAluno)</td>
+                                        <td>@Html.DisplayFor(c => aluno.matriculaAluno)</td>
+                                        <td>
+                                            @Html.ActionLink("Alterar", "Update", new { id = aluno.idAluno })
+                                            @Html.ActionLink("Deletar", "Delete", new { id = aluno.idAluno })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
