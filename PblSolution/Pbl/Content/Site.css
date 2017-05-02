@@ -23,13 +23,15 @@ textarea {
     max-width: 280px;
 }
 
-a.classnameff {
+a.classname {
     position:relative;
-    top:31.5px;
-    left:17%;
+    cursor:pointer;
+    left:0.10em;
+    top:0.12em;
     background: url(img/adicao.png) no-repeat top left;
-    display: block;
+    display:inline-block;
     width: 2.5%;
     height: 1% !important;
-    text-indent: -9999px; /* hides the link text */
+    text-indent: -99999px;
 }
+

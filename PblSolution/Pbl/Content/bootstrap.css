@@ -1422,11 +1422,14 @@ th {
 
 .dataTables_length{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding-bottom:2%;
+    padding-bottom:2em;
+    padding-top:3.5em;
 }
 
-.dataTables_filter{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+.dataTables_filter {
+    padding-top: 3.5em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
     .dataTables_filter input {
