@@ -62,7 +62,7 @@ namespace Pbl.Controllers
             MAluno mAluno = new MAluno();
             Aluno aluno = mAluno.BringOne(c => c.idAluno == id);
             ViewBag.Message = mAluno.Delete(aluno) ? "Aluno deletado com sucesso" : "Ação não foi realizada";
-            return View("Index",mAluno.BringAll());
+            return RedirectToAction("Index", "ControleAlunos");
         }
     }
 }
