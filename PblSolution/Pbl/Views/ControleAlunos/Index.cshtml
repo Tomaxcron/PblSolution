@@ -37,8 +37,8 @@
                                         <td>@Html.DisplayFor(c => aluno.cpfAluno)</td>
                                         <td>@Html.DisplayFor(c => aluno.matriculaAluno)</td>
                                         <td>
-                                            @Html.ActionLink("Alterar", "Update", new { id = aluno.idAluno })
-                                            @Html.ActionLink("Deletar", "Delete", new { id = aluno.idAluno })
+                                            <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = aluno.idAluno }, new { @class = "alter" })
+                                            <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = aluno.idAluno }, new { @class = "alter" })
                                         </td>
                                     </tr>
                                 }

@@ -517,8 +517,9 @@ h1,
 
 h2,
 .h2 {
-  text-align:center;
-  font-size: 22pt;
+    text-align: center;
+    font-size: x-large;
+    color: #141414;
 }
 
 h3,
@@ -4844,6 +4845,26 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-link:hover {
   color: #ffffff;
+}
+
+.alter {
+    margin-left: -0.1em;
+    display: inline-block;
+    font-size: 10pt;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #666666;
+}
+
+.alter:hover {
+    color: #090909;
+    text-decoration:none;
+}
+
+.actimg {
+    display: inline-block;
+    margin-top: -0.23em;
+    margin-left: 0.5em;
+    background-repeat: no-repeat;
 }
 
 #breadcrumb {
