@@ -15,9 +15,28 @@
     <div class="row-fluid">
         <div class="span6">
             <div class="widget-box">
-                <div class="widget-title"><span class="icon"><i class="icon-th"></i></span><h5>Novo Aluno</h5></div>
-                <div class="widget-content nopadding">
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="" method="post" class="form-styles">
+                        <h1>Novo Aluno</h1>
+                        <ul>
+                            <li>
+                                <input name="nomeAluno" type="text" placeholder="Nome" />
+                                <span>Informe seu nome</span>
+                            </li>
+                            <li>
+                                 <input name="cpfAluno" type="text" placeholder="CPF" />
+                                <span>Informe seu CPF</span>
+                            </li>
+                            <li>
+                                <input name="matriculaAluno" type="text" placeholder="Matricula" />
+                                <span>Informe sua Matricula</span>
+                            </li>
+                                @Html.AntiForgeryToken()
+                            <li>
+                                <input type="submit" value="Cadastrar" />
+                            </li>
+                        </ul>
+                    </form>
+                   @* <form action="" method="post" class="form-horizontal">
                         <div class="control-group">
                             <label class="control-label">Nome :</label>
                             <div class="controls">
@@ -40,8 +59,7 @@
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success">Cadastrar</button>
                         </div>
-                    </form>
-                </div>
+                    </form>*@
             </div>
         </div>
     </div>
