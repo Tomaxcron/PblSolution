@@ -29,10 +29,11 @@ body {
    
 }
 #page-inner {
-    width:100%;
-    margin:10px 20px 10px 0px;
-    background-color:#fff!important;
-    padding:10px;
+    width: 100%;
+    border: 1px solid #e3ebed;
+    margin: 5px 20px 10px 0px;
+    background-color: #fff !important;
+    padding: 10px;
 }
 .pad-top {
     padding-top:15px;

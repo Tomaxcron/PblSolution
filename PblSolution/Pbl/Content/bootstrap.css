@@ -4749,6 +4749,53 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #ffffff;
 }
 
+#breadcrumb {
+    position: relative;
+    background-color: #fcfcfc;
+    left: -0.7em;
+    top: -0.7em;
+    height: 2.5em;
+    width: 102%;
+    border-bottom: 1px solid #e3ebed;
+}
+
+#breadcrumb a:last-child {
+    background-image: none;
+}
+
+    #breadcrumb a {
+        padding: 0.3em 0.5em 0em 0.9em;
+        display: inline-block;
+        background-repeat: no-repeat;
+        font-size: 11px;
+        text-decoration: none;
+        color: #666666;
+    }
+
+        #breadcrumb a:hover {
+            color: #090909;
+        }
+
+    #breadcrumb a.current {
+        font-weight: bold;
+        color: #444444;
+    }
+
+    #breadcrumb a img {
+        margin-right: 3px;
+        opacity: .6;
+    }
+
+    #breadcrumb a:hover img {
+        margin-right: 3px;
+        opacity: .8;
+    }
+
+    .home{
+        position:relative;
+        top:-0.2em;
+    }
+
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;
