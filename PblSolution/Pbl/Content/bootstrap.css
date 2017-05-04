@@ -4859,6 +4859,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
     color: #090909;
     text-decoration:none;
 }
+.alter:focus {
+    color: #090909;
+    text-decoration:none;
+}
 
 .actimg {
     display: inline-block;

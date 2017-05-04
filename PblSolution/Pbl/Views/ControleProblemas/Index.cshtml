@@ -8,25 +8,40 @@
     if ($mensagem) {
         alert($mensagem);
     }
-</script><h2>Cadastro de Problemas</h2>
-<div class="form-group">
-    @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-primary" })
-</div>
-<table class="table">
-    <tr>
-        <th>Problema</th>
-        <th></th>
-    </tr>
-    @foreach (var problema in Model)
-    {
-        <tr>
-            <td>@Html.DisplayFor(c => problema.tituloProblema)</td>
-            <td>
-                @Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema, @class = "btn btn-primary" })
-                @Html.ActionLink("Alterar", "Update", new { id = problema.idProblema, @class = "btn btn-primary" })
-                
-            </td>
-    </tr>
-    }
-</table>
+</script>
+<h2>Cadastro de Problemas @Html.ActionLink("Adicionar", "Create", null, new { @class = "classname" })</h2>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
 
+                <div class="widget-content nopadding">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Problema</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var problema in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(c => problema.tituloProblema)</td>
+                                        <td>
+                                            <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema }, new { @class = "alter" })
+                                            <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = problema.idProblema }, new { @class = "alter" })
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+
+</div>
