@@ -3,7 +3,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
 }
-
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index","ControleMed")" title="Vá para Controle Med" class="tip-bottom"><img src="~/Content/img/client.png" class="home" />Med</a></div>
+</div>
 <h2>Controle de MED</h2>
 <div class="container-fluid">
     <div class="row-fluid">
@@ -26,7 +28,7 @@
                                         <td>MED @Html.DisplayFor(c => item.descMed)</td>
                                         <td>@Html.DisplayFor(c => item.Semestre.descSemestre)</td>
                                         <td>
-                                            @Html.ActionLink("Gerenciar", "GerenciarMed", new { id = item.idMed, @class = "btn btn-primary" })
+                                            <img class="actimg" src="~/Content/img/geren.png" /> @Html.ActionLink("Gerenciar", "GerenciarMed", new { id = item.idMed, @class = "alter" })
                                         </td>
                                     </tr>
                                 }

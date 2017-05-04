@@ -2020,7 +2020,9 @@ textarea.input-lg {
             text-align: center;
         }
 
-
+    .form-styles textarea {
+        height:5em !important;
+    }
     .form-styles input[type="text"],
     .form-styles textarea,
     .form-styles select {
