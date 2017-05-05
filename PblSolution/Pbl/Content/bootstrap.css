@@ -2024,6 +2024,7 @@ textarea.input-lg {
         height:5em !important;
     }
     .form-styles input[type="text"],
+    .form-styles input[type="password"],
     .form-styles textarea,
     .form-styles select {
         box-sizing: border-box;

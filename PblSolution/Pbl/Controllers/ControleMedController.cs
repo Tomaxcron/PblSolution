@@ -14,11 +14,13 @@ namespace Pbl.Controllers
         // GET: ControleMed
         public ActionResult Index()
         {
+            ViewBag.Message = TempData["Message"];
             return View(new MMed().BringAll());
         }
 
         public ActionResult GerenciarMed(int id)
         {
+            ViewBag.Message = TempData["Message"];
             GerenciarMedViewModel dados = new GerenciarMedViewModel();
             dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados(id);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == id);
@@ -30,6 +32,7 @@ namespace Pbl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AdicionarTurma(int idMed)
         {
+            ViewBag.Message = TempData["Message"];
             Turma nova = new Turma();
             nova.idMed = idMed;
             return View(nova);
@@ -39,12 +42,12 @@ namespace Pbl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AdicionarNovaTurma(Turma nova)
         {
-            ViewBag.Message = new MTurma().Add(nova) ? "Nova Turma Cadastrada" : "Algo Errado Ocorreu";
+            TempData["Message"] = new MTurma().Add(nova) ? "Nova Turma Cadastrada" : "Algo Errado Ocorreu";
             GerenciarMedViewModel dados = new GerenciarMedViewModel();
             dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados((int)nova.idMed);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == nova.idMed);
             dados.med = new MMed().BringOne(c => c.idMed == nova.idMed);
-            return View("GerenciarMed",dados);
+            return RedirectToAction("GerenciarMed", nova.idMed);
         }
 
         [HttpPost]

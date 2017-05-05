@@ -13,11 +13,13 @@ namespace Pbl.Controllers
         // GET: ControleProblemas
         public ActionResult Index()
         {
+            ViewBag.Message = TempData["Message"];
             return View(new MProblema().BringAll());
         }
 
         public ActionResult Create()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
@@ -26,8 +28,8 @@ namespace Pbl.Controllers
         public ActionResult Create(Problema problema)
         {
             MProblema mProblema = new MProblema();
-            ViewBag.Message = mProblema.Add(problema) ? "Problema Inserido" : "Algo errado ocorreu";
-            return View();
+            TempData["Message"] = mProblema.Add(problema) ? "Problema Cadastrado" : "Ação não realizada";
+            return RedirectToAction("Create");
         }
 
         public ActionResult Update(int id)
@@ -39,16 +41,16 @@ namespace Pbl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Update(Problema problema)
         {
-            new MProblema().Update(problema);
-            return View("Index", new MProblema().BringAll());
+            TempData["Message"] = new MProblema().Update(problema) ? "Problema atualizado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
             MProblema mProblema = new MProblema();
             Problema problema = mProblema.BringOne(c => c.idProblema == id);
-            ViewBag.Message = mProblema.Delete(problema) ? "Problema deletado com sucesso" : "Ação não foi realizada";
-            return View("Index", mProblema.BringAll());
+            TempData["Message"] = mProblema.Delete(problema) ? "Problema deletado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
     }
 }

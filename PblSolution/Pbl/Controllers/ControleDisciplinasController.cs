@@ -13,7 +13,8 @@ namespace Pbl.Controllers
     {
         // GET: ControleDisciplinas
         public ActionResult Index()
-        { 
+        {
+            ViewBag.Message = TempData["Message"];
             return View(new MDisciplina().BringAll());
         }
 
@@ -23,6 +24,7 @@ namespace Pbl.Controllers
             MTipoDisciplina mTipoDisciplina = new MTipoDisciplina();
             DisciplinaViewModel viewModel = new DisciplinaViewModel();
             viewModel.listaTipoDisciplina = mTipoDisciplina.BringAll();
+            ViewBag.Message = TempData["Message"];
             return View(viewModel);
         }
 
@@ -31,10 +33,8 @@ namespace Pbl.Controllers
         public ActionResult Create(Disciplina Disciplina)
         {
             MDisciplina mDisciplina = new MDisciplina();
-            ViewBag.Message = mDisciplina.Add(Disciplina) ? "Disciplina cadastrado" : "Ação não foi realizada"; MTipoDisciplina mTipoDisciplina = new MTipoDisciplina();
-            DisciplinaViewModel viewModel = new DisciplinaViewModel();
-            viewModel.listaTipoDisciplina = mTipoDisciplina.BringAll();
-            return View(viewModel);
+            TempData["Message"] = mDisciplina.Add(Disciplina) ? "Disciplina cadastrada" : "Ação não foi realizada";
+            return RedirectToAction("Create");
         }
         public ActionResult Update(int id)
         {
@@ -50,16 +50,16 @@ namespace Pbl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Update(Disciplina Disciplina)
         {
-            new MDisciplina().Update(Disciplina);
-            return View("Index", new MDisciplina().BringAll());
+            TempData["Message"] = new MDisciplina().Update(Disciplina)? "Disciplina atualizada com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
             MDisciplina mDisciplina = new MDisciplina();
             Disciplina Disciplina = mDisciplina.BringOne(c => c.idDisciplina == id);
-            ViewBag.Message = mDisciplina.Delete(Disciplina) ? "Disciplina deletado com sucesso" : "Ação não foi realizada";
-            return View("Index", mDisciplina.BringAll());
+            TempData["Message"] = mDisciplina.Delete(Disciplina) ? "Disciplina deletado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
     }
 }
