@@ -13,11 +13,13 @@ namespace Pbl.Controllers
         // GET: ControleAlunos
         public ActionResult Index()
         {
+            ViewBag.Message = TempData["Message"];
             return View(new MAluno().BringAll());
         }
 
         public ActionResult Create()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
@@ -30,8 +32,8 @@ namespace Pbl.Controllers
             aluno.cpfAluno = cpfAluno;
             aluno.matriculaAluno = matriculaAluno;
             MAluno mAluno = new MAluno();
-            ViewBag.Message = mAluno.Add(aluno) ? "Aluno cadastrado" : "Ação não foi realizada";
-            return View();
+            TempData["Message"] = mAluno.Add(aluno) ? "Aluno cadastrado" : "Ação não foi realizada";
+            return RedirectToAction("Create");
         }
         public ActionResult Update(int id)
         {
@@ -50,18 +52,18 @@ namespace Pbl.Controllers
             aluno.matriculaAluno = matriculaAluno;
             if (new MAluno().Update(aluno))
             {
-                ViewBag.Message = "Aluno atualizado com sucesso";
-                return View("Index", new MAluno().BringAll());
+                TempData["Message"] = "Aluno atualizado com sucesso";
+                return RedirectToAction("Index");
             }
-            ViewBag.Message = "Ação não foi realizada";
-            return View("Update", idAluno); 
+            TempData["Message"] = "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
             MAluno mAluno = new MAluno();
             Aluno aluno = mAluno.BringOne(c => c.idAluno == id);
-            ViewBag.Message = mAluno.Delete(aluno) ? "Aluno deletado com sucesso" : "Ação não foi realizada";
+            TempData["Message"] = mAluno.Delete(aluno) ? "Aluno deletado com sucesso" : "Ação não foi realizada";
             return RedirectToAction("Index", "ControleAlunos");
         }
     }

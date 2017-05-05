@@ -13,11 +13,13 @@ namespace Pbl.Controllers
         // GET: ControleProfessores
         public ActionResult Index()
         {
+            ViewBag.Message = TempData["Message"];
             return View(new MProfessor().BringAll());
         }
 
         public ActionResult Create()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
         [HttpPost]
@@ -25,10 +27,10 @@ namespace Pbl.Controllers
         public ActionResult Create(Professor professor)
         {
             MProfessor mProfessor = new MProfessor();
-            ViewBag.Message = mProfessor.Add(professor) ? "Professor cadastrado com sucesso" : "Ação não foi realizada";
-            return View();
+            TempData["Message"] = mProfessor.Add(professor) ? "Professor cadastrado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Create");
         }
-        
+
         public ActionResult Update(int id)
         {
             MProfessor mProfessor = new MProfessor();
@@ -39,16 +41,16 @@ namespace Pbl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Update(Professor professor)
         {
-            new MProfessor().Update(professor);
-            return View("Index", new MProfessor().BringAll());
-        } 
+            TempData["Message"] = new MProfessor().Update(professor) ? "Professor atualizado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Delete(int id)
         {
             MProfessor mProfessor = new MProfessor();
             Professor professor = mProfessor.BringOne(c => c.idProfessor == id);
-            ViewBag.Message = mProfessor.Delete(professor) ? "Professor deletado com sucesso" : "Ação não foi realizada";
-            return View("Index",mProfessor.BringAll());
+            TempData["Message"] = mProfessor.Delete(professor) ? "Professor deletado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
     }
 }

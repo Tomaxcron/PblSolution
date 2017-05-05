@@ -13,11 +13,13 @@ namespace Pbl.Controllers
         // GET: ControleTipoDisciplina
         public ActionResult Index()
         {
+            ViewBag.Message = TempData["Message"];
             return View(new MTipoDisciplina().BringAll());
         }
 
         public ActionResult Create()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
@@ -26,8 +28,8 @@ namespace Pbl.Controllers
         public ActionResult Create(TipoDisciplina TipoDisciplina)
         {
             MTipoDisciplina mTipoDisciplina = new MTipoDisciplina();
-            ViewBag.Message = mTipoDisciplina.Add(TipoDisciplina) ? "TipoDisciplina cadastrado" : "Ação não foi realizada";
-            return View();
+            TempData["Message"] = mTipoDisciplina.Add(TipoDisciplina) ? "Tipo de disciplina cadastrado" : "Ação não foi realizada";
+            return RedirectToAction("Create");
         }
         public ActionResult Update(int id)
         {
@@ -39,16 +41,16 @@ namespace Pbl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Update(TipoDisciplina TipoDisciplina)
         {
-            new MTipoDisciplina().Update(TipoDisciplina);
-            return View("Index", new MTipoDisciplina().BringAll());
+            TempData["Message"] = new MTipoDisciplina().Update(TipoDisciplina) ? "Tipo de disciplina atualizado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
             MTipoDisciplina mTipoDisciplina = new MTipoDisciplina();
             TipoDisciplina TipoDisciplina = mTipoDisciplina.BringOne(c => c.idTipoDisciplina == id);
-            ViewBag.Message = mTipoDisciplina.Delete(TipoDisciplina) ? "TipoDisciplina deletado com sucesso" : "Ação não foi realizada";
-            return View("Index", mTipoDisciplina.BringAll());
+            TempData["Message"] = mTipoDisciplina.Delete(TipoDisciplina) ? "Tipo de disciplina deletado com sucesso" : "Ação não foi realizada";
+            return RedirectToAction("Index");
         }
     }
 }
