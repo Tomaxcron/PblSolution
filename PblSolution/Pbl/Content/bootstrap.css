@@ -2020,8 +2020,11 @@ textarea.input-lg {
             text-align: center;
         }
 
-
+    .form-styles textarea {
+        height:5em !important;
+    }
     .form-styles input[type="text"],
+    .form-styles input[type="password"],
     .form-styles textarea,
     .form-styles select {
         box-sizing: border-box;
@@ -4856,6 +4859,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .alter:hover {
+    color: #090909;
+    text-decoration:none;
+}
+.alter:focus {
     color: #090909;
     text-decoration:none;
 }
