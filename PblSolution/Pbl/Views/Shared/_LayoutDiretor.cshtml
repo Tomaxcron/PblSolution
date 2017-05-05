@@ -38,35 +38,37 @@
 
 
                     <li class="active-link">
-                        <a href="index.html"><i class="fa fa-desktop active "></i>Dashboard <span class="badge">Included</span></a>
+                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-desktop active "></i>Home <span class="badge">Included</span></a>
                     </li>
 
 
                     <li>
-                        <a href="ui.html"><i class="fa fa-table "></i>UI Elements  <span class="badge">Included</span></a>
+                        <a href="@Url.Action("Index", "ControleAlunos")"><i class="fa fa-table "></i>Alunos  <span class="badge">Included</span></a>
                     </li>
                     <li>
-                        <a href="blank.html"><i class="fa fa-edit "></i>Blank Page  <span class="badge">Included</span></a>
+                        <a href="@Url.Action("Index", "ControleProfessores")"><i class="fa fa-edit "></i>Professores <span class="badge">Included</span></a>
                     </li>
 
 
                     <li>
-                        <a href="#"><i class="fa fa-qrcode "></i>My Link One</a>
+                        <a href="@Url.Action("Index", "ControleMed")"><i class="fa fa-qrcode "></i>MED</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o"></i>My Link Two</a>
+                        <a href="@Url.Action("Index", "ControleSemestres")"><i class="fa fa-bar-chart-o"></i>Semestre</a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-edit "></i>My Link Three </a>
+                        <a href="@Url.Action("Index", "ControleProblemas")"><i class="fa fa-edit "></i>Problemas</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table "></i>My Link Four</a>
+                        <a href="#" data-toggle="collapse" data-target="#toggleSub"><i class="fa fa-table "></i>Disciplinas</a>
+                        <div class="collapse" id="toggleSub" style="height: 0px;">
+                            <ul class="nav nav-list">
+                                <li><a href="#">Gerenciar Tipos</a></li>
+                                <li><a href="#">Gerenciar Disciplinas</a></li>
+                            </ul>
+                        </div>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-edit "></i>My Link Five </a>
-                    </li>
-
                 </ul>
             </div>
 
