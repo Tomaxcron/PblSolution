@@ -30,6 +30,7 @@ namespace Pbl
                       "~/Content/custom.css",
                       "~/Content/font-awesome.css",
                       "~/Content/site.css",
+                      "~/Content/login.css",
                       "~/Content/DataTables/css/jquery.dataTables.min.css"));
         }
     }
