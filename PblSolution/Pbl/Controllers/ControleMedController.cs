@@ -76,5 +76,6 @@ namespace Pbl.Controllers
             dados.ListProblemaDisponiveis = new MProblemaXMed().RetornaProblemasDisponiveis(dados.MedAtual.idMed);
             return View("VincularProblemas",dados);
         }
+        
     }
 }

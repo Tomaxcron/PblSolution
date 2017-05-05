@@ -256,7 +256,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModel\DisciplinaViewModel.cs" />
     <Compile Include="Models\ViewModel\GerenciarMedViewModel.cs" />
-    <Compile Include="Models\ViewModel\InserirAlunosViewModel.cs" />
+    <Compile Include="Models\ViewModel\InscricaoAlunoViewModel.cs" />
     <Compile Include="Models\ViewModel\SemestreViewModel.cs" />
     <Compile Include="Models\ViewModel\VincularProblemaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -565,7 +565,6 @@
     <Content Include="Views\ControleMed\AdicionarTurma.cshtml" />
     <Content Include="Views\ControleMed\GerenciarMed.cshtml" />
     <Content Include="Views\ControleMed\Index.cshtml" />
-    <Content Include="Views\ControleMed\InserirAlunos.cshtml" />
     <Content Include="Views\ControleMed\VincularProblemas.cshtml" />
     <Content Include="Views\ControleProblemas\Create.cshtml" />
     <Content Include="Views\ControleProblemas\Index.cshtml" />
@@ -580,6 +579,7 @@
     <Content Include="Views\ControleTipoDisciplina\Index.cshtml" />
     <Content Include="Views\ControleTipoDisciplina\Update.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\ControleMed\ControleTurma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
