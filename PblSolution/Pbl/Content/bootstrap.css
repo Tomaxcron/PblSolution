@@ -1821,7 +1821,7 @@ fieldset[disabled] .form-control {
 }
 
 .container-fluid{
-    margin-top:-2%;
+    margin-top:3%;
 }
 
 textarea.form-control {
@@ -4732,8 +4732,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+    background-color: #001a3b;
+    border-color: #F0F0F0;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4764,7 +4764,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #ffffff;
-  background-color: #080808;
+  background-color: #001a3b;
 }
 
 .navbar-inverse .navbar-nav > .disabled > a,

@@ -10,24 +10,34 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="~/Content/login.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
 </head>
 <body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-brand">
+            <a href="#">
+                <img src="~/Content/img/logo.png" alt="#" />
+            </a>
+        </div>
+    </div>
 
-    <form action="" method="post" class="form-styles">
-        <h1>Pagina de Login</h1>
-        <ul>
-            <li>
-                <input name="email" type="text" placeholder="E-mail" />
-            </li>
-            <li>
-                <input name="senha" type="text" placeholder="Senha" />
-            </li>
-            <li>
-                <input type="submit" value="Logar" />
-            </li>
-        </ul>
-    </form>
-    
+    <div class="wrapper">
+        <form action="" method="post" class="form-styles">
+            <p class="title">Login</p>
 
+                    <input name="email" type="text" placeholder="E-mail" />
+                    <i class="fa fa-user"></i>
+
+                    <input name="senha" type="text" placeholder="Senha" />
+                    <i class="fa fa-key"></i>
+
+                    <a href="#">Esqueceu sua senha?</a>
+
+                <button>
+                    <i class="spinner"></i>
+                    <span class="state">Logar</span>
+                </button>
+        </form>
+     </div>
 </body>
 </html>
