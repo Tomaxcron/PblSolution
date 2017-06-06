@@ -77,5 +77,26 @@ namespace Pbl.Controllers
             return View("VincularProblemas",dados);
         }
         
+        public ActionResult ControleTurma()
+        {
+            InscricaoAlunoViewModel viewModel = new InscricaoAlunoViewModel();
+            viewModel.alunosCadastrados = new MAluno().BringAll();
+            viewModel.alunosDisponiveis = new List<Aluno>();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ControleTurma(ICollection<int> alunos)
+        {
+            MAluno mAluno = new MAluno();
+            foreach (var aluno in alunos)
+            {
+                //Console.WriteLine(aluno.nomeAluno);
+                Console.WriteLine(mAluno.BringOne(c => c.idAluno == aluno).nomeAluno);
+            }
+            return View();
+        }
+
     }
 }

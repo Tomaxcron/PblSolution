@@ -39,15 +39,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var aluno in Model.alunosCadastrados)
+            @for (int i = 0; i < Model.alunosCadastrados.Count; i++)
             {
                 <tr>
-                    <td>@Html.DisplayFor(c => aluno.nomeAluno)</td>
-                    <td>@Html.DisplayFor(c => aluno.cpfAluno)</td>
+                    <td><input type="hidden" name="["+@i+"]alunos" value="@Model.alunosCadastrados[i].idAluno" /></td>
+                    <td>@Html.DisplayFor(c => Model.alunosCadastrados[i].nomeAluno , new {@name = "["+i+"]alunos", @value = Model.alunosCadastrados[i].idAluno })</td>
+                    <td>@Html.DisplayFor(c => Model.alunosCadastrados[i].cpfAluno)</td>
                     <td>Botão DELETAR :D (JAVASCRIPT)</td>
                 </tr>
             }
         </tbody>
     </table>
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Salvar</button>
 }
