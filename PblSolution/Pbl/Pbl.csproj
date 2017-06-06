@@ -417,9 +417,11 @@
     <Content Include="Content\img\client.png" />
     <Content Include="Content\img\delet.png" />
     <Content Include="Content\img\edit.png" />
+    <Content Include="Content\img\geren.png" />
     <Content Include="Content\img\home.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logout.png" />
+    <Content Include="Content\img\vinc.png" />
     <Content Include="Content\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

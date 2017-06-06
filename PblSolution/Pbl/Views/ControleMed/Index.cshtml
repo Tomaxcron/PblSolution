@@ -28,7 +28,7 @@
                                         <td>MED @Html.DisplayFor(c => item.descMed)</td>
                                         <td>@Html.DisplayFor(c => item.Semestre.descSemestre)</td>
                                         <td>
-                                            <img class="actimg" src="~/Content/img/geren.png" /> @Html.ActionLink("Gerenciar", "GerenciarMed", new { id = item.idMed, @class = "alter" })
+                                            <img class="actimg" src="~/Content/img/geren.png" /> @Html.ActionLink("Gerenciar", "GerenciarMed", new { id = item.idMed}, new { @class = "alter" })
                                         </td>
                                     </tr>
                                 }

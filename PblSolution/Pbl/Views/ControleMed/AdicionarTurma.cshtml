@@ -3,18 +3,21 @@
     ViewBag.Title = "AdicionarTurma";
     Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
 }
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index","ControleMed")" title="Vá para Controle Med" class="tip-bottom"><img src="~/Content/img/client.png" class="home" />Med</a></div>
+</div>
 
-<h2>Adicionar Turma</h2>
+    <h2>Adicionar Turma</h2>
 
-@using (Html.BeginForm("AdicionarNovaTurma","ControleMed"))
-{
-    @Html.ValidationSummary(true, "Algo deu errado");
-    @Html.TextBoxFor(c => c.idMed, new { @class = "form-control", value = Model.idMed, type = "hidden"})
-    <div class="form-group">
-        <label for="descTurma">Descrição</label>
-        @Html.TextBoxFor(c => c.descTurma, new { @class = "form-control"})
-        @Html.ValidationMessageFor(c => c.descTurma)
-    </div>
-    @Html.AntiForgeryToken();
-    <button type="submit" class="btn btn-primary">Salvar</button>
-}
+    @using (Html.BeginForm("AdicionarNovaTurma", "ControleMed"))
+    {
+        @Html.ValidationSummary(true, "Algo deu errado");
+        @Html.TextBoxFor(c => c.idMed, new { @class = "form-control", value = Model.idMed, type = "hidden" })
+        <div class="form-group">
+            <label for="descTurma">Descrição</label>
+            @Html.TextBoxFor(c => c.descTurma, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.descTurma)
+        </div>
+        @Html.AntiForgeryToken();
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    }
