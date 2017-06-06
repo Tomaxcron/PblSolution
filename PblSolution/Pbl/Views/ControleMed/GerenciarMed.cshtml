@@ -37,7 +37,8 @@
                                 </tbody>
                             </table>
                             @Html.ValidationSummary(true, "Algo deu errado")
-                            @Html.TextBox("idMed", Model.med.idMed, new { @class = "form-control", @type = "hidden" })
+                            <input type="hidden" name="id" value="@Model.med.idMed" />
+                            
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-primary">Nova turma</button>
                         }

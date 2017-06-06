@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
 
 namespace Pbl.Controllers
 {
@@ -30,11 +31,11 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AdicionarTurma(int idMed)
+        public ActionResult AdicionarTurma(int id)
         {
             ViewBag.Message = TempData["Message"];
             Turma nova = new Turma();
-            nova.idMed = idMed;
+            nova.idMed = id;
             return View(nova);
         }
 
@@ -47,7 +48,7 @@ namespace Pbl.Controllers
             dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados((int)nova.idMed);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == nova.idMed);
             dados.med = new MMed().BringOne(c => c.idMed == nova.idMed);
-            return RedirectToAction("GerenciarMed", nova.idMed);
+            return RedirectToAction("GerenciarMed", new {id = nova.idMed });
         }
 
         [HttpPost]
@@ -61,8 +62,8 @@ namespace Pbl.Controllers
             return View(dados);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+      
+        
         public ActionResult AdicionarProblema(int idMed, int idProblema)
         {
             MProblemaXMed mProblemaXMed = new MProblemaXMed();
