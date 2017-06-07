@@ -63,7 +63,7 @@ namespace Pbl.Controllers
         }
 
       
-        
+        [HttpPost]
         public ActionResult AdicionarProblema(int idMed, int idProblema)
         {
             MProblemaXMed mProblemaXMed = new MProblemaXMed();

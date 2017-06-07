@@ -23,7 +23,8 @@ namespace Pbl
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/custom.js",
-                      "~/Scripts/DataTables/jquery.dataTables.min.js"));
+                      "~/Scripts/DataTables/jquery.dataTables.min.js",
+                      "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
