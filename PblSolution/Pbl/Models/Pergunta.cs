@@ -14,8 +14,17 @@ namespace Pbl.Models
     
     public partial class Pergunta
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pergunta()
+        {
+            this.PerguntaXFicha = new HashSet<PerguntaXFicha>();
+        }
+    
         public int idPergunta { get; set; }
         public string pergunta1 { get; set; }
         public Nullable<decimal> valor { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PerguntaXFicha> PerguntaXFicha { get; set; }
     }
 }

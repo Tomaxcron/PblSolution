@@ -14,11 +14,19 @@ namespace Pbl.Models
     
     public partial class Grupo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Grupo()
+        {
+            this.InscricaoTurma = new HashSet<InscricaoTurma>();
+        }
+    
         public int idGrupo { get; set; }
         public Nullable<int> idProfessor { get; set; }
         public string descGrupo { get; set; }
         public Nullable<bool> ativo { get; set; }
     
         public virtual Professor Professor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InscricaoTurma> InscricaoTurma { get; set; }
     }
 }

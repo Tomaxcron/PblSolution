@@ -1,6 +1,6 @@
 ﻿@model Pbl.Models.ViewModel.DisciplinaViewModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nova Disciplina";
     Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
 }
 
@@ -18,19 +18,17 @@
         <div class="span6">
             <div class="widget-box">
                 <form action="" method="post" class="form-styles">
-                    <h1>Cadastro de Problemas</h1>
+                    <h1>Nova Disciplina</h1>
                    @using (Html.BeginForm("Create", "ControleDisciplinas"))
                    {
                         @Html.ValidationSummary(true, "Algo não está certo");
                         <ul>
                             <li>
-                                <textarea name="descDisciplina" placeholder="Descrição"></textarea>
+                                @Html.TextBoxFor(c => c.disciplina.descDisciplina,new { placeholder="Descrição" })
                                 <span>Informe a descrição</span>
                             </li>
                             <li>
-                                <select id="disciplina_idTipoDisciplina" name="c.disciplina.idTipoDisciplina">
-                                    <option value="@Model.listaTipoDisciplina"></option>
-                                </select>
+                                @Html.DropDownListFor(c => c.disciplina.idTipoDisciplina, new SelectList(Model.listaTipoDisciplina, "idTipoDisciplina", "descTipoDisciplina"), "", new { @class = "form-control" })
                             </li>
                             @Html.AntiForgeryToken()
                             <li>

@@ -176,6 +176,12 @@
     <Compile Include="Models\ControleNotas.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ControleNotasXAula.cs">
+      <DependentUpon>ModelFamerv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ControleNotasXProva.cs">
+      <DependentUpon>ModelFamerv.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DbClasses\MAluno.cs" />
     <Compile Include="Models\DbClasses\MDisciplina.cs" />
     <Compile Include="Models\DbClasses\MMed.cs" />
@@ -222,6 +228,9 @@
     <Compile Include="Models\Pergunta.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PerguntaXFicha.cs">
+      <DependentUpon>ModelFamerv.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Problema.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
@@ -242,6 +251,9 @@
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelFamerv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoDisciplina.cs">

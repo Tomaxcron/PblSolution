@@ -18,6 +18,7 @@ namespace Pbl.Models
         public ControleNotas()
         {
             this.AvaliacaoTutoria = new HashSet<AvaliacaoTutoria>();
+            this.ControleNotasXProva = new HashSet<ControleNotasXProva>();
         }
     
         public int idControleNotas { get; set; }
@@ -28,5 +29,8 @@ namespace Pbl.Models
         public virtual ICollection<AvaliacaoTutoria> AvaliacaoTutoria { get; set; }
         public virtual InscricaoTurma InscricaoTurma { get; set; }
         public virtual Modulo Modulo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ControleNotasXProva> ControleNotasXProva { get; set; }
+        public virtual ControleNotasXAula ControleNotasXAula { get; set; }
     }
 }

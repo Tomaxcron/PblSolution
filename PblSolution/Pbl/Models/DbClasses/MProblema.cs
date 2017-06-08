@@ -62,7 +62,12 @@ namespace Pbl.Models.DbClasses
         {
             try
             {
-                db.SpCrudProblema(t.idProblema, t.tituloProblema, t.descProblema, "Update");
+                //db.SpCrudProblema(t.idProblema, t.tituloProblema, t.descProblema, "Update");
+                Problema p = db.Problema.Where(c => c.idProblema == t.idProblema).FirstOrDefault();
+                p.ativo = t.ativo;
+                p.descProblema = t.descProblema;
+                p.tituloProblema = t.tituloProblema;
+                db.SaveChanges();
             }
             catch (Exception Ex)
             {

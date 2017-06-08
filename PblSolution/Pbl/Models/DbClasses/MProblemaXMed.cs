@@ -21,6 +21,7 @@ namespace Pbl.Models.DbClasses
             try
             {
                 db.ProblemaXMed.Add(t);
+                db.SaveChanges();
             }
             catch (Exception Ex)
             {
@@ -48,22 +49,35 @@ namespace Pbl.Models.DbClasses
 
         public List<Problema> RetornaProblemasDisponiveis(int idMed)
         {
-             return db.Problema.Except(RetornaProblemasCadastrados(idMed)).ToList();
+            List<Problema> TodosOsProblemas = new MProblema().BringAll();
+            List<Problema> ProblemasCadastrados = RetornaProblemasCadastrados(idMed);
+            TodosOsProblemas.RemoveAll(c => ProblemasCadastrados.Contains(c));
+            return TodosOsProblemas;
         }
 
         public List<ProblemaXMed> BringAll()
         {
-            throw new NotImplementedException();
+            return db.ProblemaXMed.ToList();
         }
 
         public ProblemaXMed BringOne(Expression<Func<ProblemaXMed, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return db.ProblemaXMed.Where(predicate).FirstOrDefault();
         }
 
         public bool Delete(ProblemaXMed t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.ProblemaXMed.Remove(t);
+                db.SaveChanges();
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine(Ex.Message);
+                return false;
+            }
+            return true;
         }
 
         public bool Update(ProblemaXMed t)

@@ -18,6 +18,7 @@ namespace Pbl.Models
         public InscricaoTurma()
         {
             this.ControleNotas = new HashSet<ControleNotas>();
+            this.Grupo = new HashSet<Grupo>();
         }
     
         public int idInscricaoTurma { get; set; }
@@ -29,5 +30,7 @@ namespace Pbl.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ControleNotas> ControleNotas { get; set; }
         public virtual Turma Turma { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grupo> Grupo { get; set; }
     }
 }

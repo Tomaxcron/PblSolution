@@ -48,7 +48,7 @@ namespace Pbl.Controllers
             dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados((int)nova.idMed);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == nova.idMed);
             dados.med = new MMed().BringOne(c => c.idMed == nova.idMed);
-            return RedirectToAction("GerenciarMed", new {id = nova.idMed });
+            return RedirectToAction("GerenciarMed", new { id = nova.idMed });
         }
 
         [HttpPost]
@@ -62,7 +62,20 @@ namespace Pbl.Controllers
             return View(dados);
         }
 
-      
+        [HttpPost]
+        public ActionResult DeletarVinculoProblema(int idProblema, int idMed)
+        {
+            MProblemaXMed mProblemaXMed = new MProblemaXMed();
+            ProblemaXMed cadastroProblemaEncontrado = mProblemaXMed.BringOne(c => (c.idMed == idMed) && (c.idProblema == idProblema));
+            TempData["Message"] = mProblemaXMed.Delete(cadastroProblemaEncontrado) ? "Vinculo deletado" : "Algo Errado Ocorreu";
+            GerenciarMedViewModel dados = new GerenciarMedViewModel();
+            dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados(idMed);
+            dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == idMed);
+            dados.med = new MMed().BringOne(c => c.idMed == idMed);
+            //Response.Redirect(Url.Action("GerenciarMed", "ControleMed", idMed));
+            return RedirectToAction("GerenciarMed", new { id = idMed });
+        }
+
         [HttpPost]
         public ActionResult AdicionarProblema(int idMed, int idProblema)
         {
@@ -75,9 +88,9 @@ namespace Pbl.Controllers
             dados.MedAtual = new MMed().BringOne(c => c.idMed == novo.idMed);
             dados.ListProblemasCadastrados = new MProblemaXMed().Bring(c => c.idMed == novo.idMed);
             dados.ListProblemaDisponiveis = new MProblemaXMed().RetornaProblemasDisponiveis(dados.MedAtual.idMed);
-            return View("VincularProblemas",dados);
+            return View("VincularProblemas", dados);
         }
-        
+
         public ActionResult ControleTurma()
         {
             InscricaoAlunoViewModel viewModel = new InscricaoAlunoViewModel();
@@ -96,6 +109,13 @@ namespace Pbl.Controllers
                 //Console.WriteLine(aluno.nomeAluno);
                 Console.WriteLine(mAluno.BringOne(c => c.idAluno == aluno).nomeAluno);
             }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdicionarAlunosTurma(int idTurma)
+        {
+
             return View();
         }
 

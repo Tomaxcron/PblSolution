@@ -14,11 +14,19 @@ namespace Pbl.Models
     
     public partial class FichaAvaliacao
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FichaAvaliacao()
+        {
+            this.PerguntaXFicha = new HashSet<PerguntaXFicha>();
+        }
+    
         public int idFichaAvaliacao { get; set; }
         public Nullable<int> idInscricaoTurma { get; set; }
         public Nullable<int> idAvaliacaoTutoria { get; set; }
         public Nullable<decimal> nota { get; set; }
     
         public virtual AvaliacaoTutoria AvaliacaoTutoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PerguntaXFicha> PerguntaXFicha { get; set; }
     }
 }

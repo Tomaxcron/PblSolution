@@ -30,8 +30,9 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Disciplina Disciplina)
+        public ActionResult Create([Bind(Include = "idTipoDisciplina,descDisciplina")] Disciplina Disciplina)//Disciplina Disciplina)
         {
+            Disciplina.ativo = true;
             MDisciplina mDisciplina = new MDisciplina();
             TempData["Message"] = mDisciplina.Add(Disciplina) ? "Disciplina cadastrada" : "Ação não foi realizada";
             return RedirectToAction("Create");
@@ -45,7 +46,7 @@ namespace Pbl.Controllers
             viewModel.listaTipoDisciplina = mTipoDisciplina.BringAll();
             return View(viewModel);
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Update(Disciplina Disciplina)

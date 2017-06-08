@@ -14,10 +14,18 @@ namespace Pbl.Models
     
     public partial class Prova
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Prova()
+        {
+            this.ControleNotasXProva = new HashSet<ControleNotasXProva>();
+        }
+    
         public int idProva { get; set; }
         public Nullable<int> idTipoProva { get; set; }
         public Nullable<decimal> valorQuestao { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ControleNotasXProva> ControleNotasXProva { get; set; }
         public virtual TipoProva TipoProva { get; set; }
     }
 }

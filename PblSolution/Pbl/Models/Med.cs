@@ -19,6 +19,7 @@ namespace Pbl.Models
         {
             this.ProblemaXMed = new HashSet<ProblemaXMed>();
             this.Turma = new HashSet<Turma>();
+            this.Disciplina = new HashSet<Disciplina>();
         }
     
         public int idMed { get; set; }
@@ -31,5 +32,7 @@ namespace Pbl.Models
         public virtual ICollection<ProblemaXMed> ProblemaXMed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Turma> Turma { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Disciplina> Disciplina { get; set; }
     }
 }

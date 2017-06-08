@@ -31,6 +31,7 @@
                                             <td>
                                                 <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = turma.idTurma }, new { @class = "alter" })
                                                 <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = turma.idTurma }, new { @class = "alter" })
+                                                @Ajax.ActionLink("Adicionar Alunos", "AdicionarAlunosTurma", "ControleMed", new { idTurma = turma.idTurma }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "alter" })
                                             </td>
                                         </tr>
                                     }
@@ -38,7 +39,7 @@
                             </table>
                             @Html.ValidationSummary(true, "Algo deu errado")
                             <input type="hidden" name="id" value="@Model.med.idMed" />
-                            
+
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-primary">Nova turma</button>
                         }
@@ -72,17 +73,16 @@
                                         <tr class="gradeX">
                                             <td>@Html.DisplayFor(modelItem => problema.tituloProblema)</td>
                                             <td>
-                                                <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = problema.idProblema }, new { @class = "alter" })
-                                                <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema }, new { @class = "alter" })
+                                                <img class="actimg" src="~/Content/img/delet.png" />@Ajax.ActionLink("Deletar", "DeletarVinculoProblema", "ControleMed", new { idMed = Model.med.idMed, idProblema = problema.idProblema }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "alter" })
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                                                    @Html.ValidationSummary(true, "Algo deu errado")
-                                                    @Html.TextBox("idMed", Model.med.idMed, new { @class = "form-control", @type = "hidden" })
-                                                    @Html.AntiForgeryToken()
-                                                    <button type="submit" class="btn btn-primary">Vincular Problema</button>
+                            @Html.ValidationSummary(true, "Algo deu errado")
+                            @Html.TextBox("idMed", Model.med.idMed, new { @class = "form-control", @type = "hidden" })
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-primary">Vincular Problema</button>
                         }
                     </div>
                 </div>

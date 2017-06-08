@@ -14,6 +14,12 @@ namespace Pbl.Models
     
     public partial class Aula
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Aula()
+        {
+            this.ControleNotasXAula = new HashSet<ControleNotasXAula>();
+        }
+    
         public int idAula { get; set; }
         public int idDisciplina { get; set; }
         public Nullable<int> idTurma { get; set; }
@@ -21,6 +27,8 @@ namespace Pbl.Models
         public Nullable<bool> ativo { get; set; }
     
         public virtual Turma Turma { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ControleNotasXAula> ControleNotasXAula { get; set; }
         public virtual Disciplina Disciplina { get; set; }
         public virtual Professor Professor { get; set; }
     }

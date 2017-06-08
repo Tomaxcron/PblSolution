@@ -32,6 +32,8 @@ namespace Pbl.Models
         public virtual DbSet<Aula> Aula { get; set; }
         public virtual DbSet<AvaliacaoTutoria> AvaliacaoTutoria { get; set; }
         public virtual DbSet<ControleNotas> ControleNotas { get; set; }
+        public virtual DbSet<ControleNotasXAula> ControleNotasXAula { get; set; }
+        public virtual DbSet<ControleNotasXProva> ControleNotasXProva { get; set; }
         public virtual DbSet<Disciplina> Disciplina { get; set; }
         public virtual DbSet<FichaAvaliacao> FichaAvaliacao { get; set; }
         public virtual DbSet<Grupo> Grupo { get; set; }
@@ -39,11 +41,13 @@ namespace Pbl.Models
         public virtual DbSet<Med> Med { get; set; }
         public virtual DbSet<Modulo> Modulo { get; set; }
         public virtual DbSet<Pergunta> Pergunta { get; set; }
+        public virtual DbSet<PerguntaXFicha> PerguntaXFicha { get; set; }
         public virtual DbSet<Problema> Problema { get; set; }
         public virtual DbSet<ProblemaXMed> ProblemaXMed { get; set; }
         public virtual DbSet<Professor> Professor { get; set; }
         public virtual DbSet<Prova> Prova { get; set; }
         public virtual DbSet<Semestre> Semestre { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoDisciplina> TipoDisciplina { get; set; }
         public virtual DbSet<TipoProva> TipoProva { get; set; }
         public virtual DbSet<Turma> Turma { get; set; }
