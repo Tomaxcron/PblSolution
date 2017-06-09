@@ -14,7 +14,7 @@
           <Property Name="cpfAluno" Type="varchar" MaxLength="12" />
           <Property Name="senhaAluno" Type="varchar" MaxLength="50" />
           <Property Name="matriculaAluno" Type="varchar" MaxLength="50" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Ano">
           <Key>
@@ -1151,7 +1151,7 @@
           <Property Name="cpfAluno" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="senhaAluno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="matriculaAluno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.FK_InscricaoMed_Aluno" FromRole="Aluno" ToRole="InscricaoTurma" />
         </EntityType>
         <EntityType Name="Ano">

@@ -115,7 +115,24 @@ namespace Pbl.Controllers
         [HttpPost]
         public ActionResult AdicionarAlunosTurma(int idTurma)
         {
+            AlunosTurmaViewModel viewModel = new AlunosTurmaViewModel();
+            MTurma mTurma = new MTurma();
+            //viewModel.AlunosCadastrados = new MInscricaoTurma().BringAll().
+            viewModel.turmaAtual = mTurma.BringOne(c => c.idTurma == idTurma);
+            
+            //viewModel.AlunosCadastrados = 
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult AdicionarAlunosTurmaAction(int idAluno, int idTurma)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RemoverAlunosTurma(int idAluno, int idTurma)
+        {
             return View();
         }
 

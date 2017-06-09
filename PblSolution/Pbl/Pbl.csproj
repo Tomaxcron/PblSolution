@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="Models\DbClasses\MAluno.cs" />
     <Compile Include="Models\DbClasses\MDisciplina.cs" />
+    <Compile Include="Models\DbClasses\MInscricaoTurma.cs" />
     <Compile Include="Models\DbClasses\MMed.cs" />
     <Compile Include="Models\DbClasses\MProblema.cs" />
     <Compile Include="Models\DbClasses\MProblemaXMed.cs" />
@@ -266,6 +267,7 @@
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModel\AlunosTurmaViewModel.cs" />
     <Compile Include="Models\ViewModel\DisciplinaViewModel.cs" />
     <Compile Include="Models\ViewModel\GerenciarMedViewModel.cs" />
     <Compile Include="Models\ViewModel\InscricaoAlunoViewModel.cs" />
@@ -601,6 +603,7 @@
     <Content Include="Views\ControleTipoDisciplina\Update.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\ControleMed\ControleTurma.cshtml" />
+    <Content Include="Views\ControleMed\AdicionarAlunosTurma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
