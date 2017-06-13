@@ -129,7 +129,8 @@ namespace Pbl.Controllers
             viewModel.AlunosDisponiveis = AlunosDisponiveis;
             viewModel.turmaAtual = mTurma.BringOne(c => c.idTurma == idTurma);
             //Teste(viewModel);
-            return View("AdicionarAlunosTurma",viewModel);
+            return //PartialView("AdicionarAlunosTurma", viewModel); 
+               View("AdicionarAlunosTurma",viewModel);
         }
 
         private ActionResult Teste(AlunosTurmaViewModel viewModel)

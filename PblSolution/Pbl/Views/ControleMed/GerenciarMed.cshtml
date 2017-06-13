@@ -32,12 +32,15 @@
                                 <tbody>
                                     @foreach (var turma in Model.turmasCadastradas)
                                     {
+                                        <input type="hidden" name="idTurma" value="@turma.idMed" />
                                         <tr class="gradeX">
                                             <td>@Html.DisplayFor(modelItem => turma.descTurma)</td>
                                             <td>
                                                 <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = turma.idTurma }, new { @class = "alter" })
                                                 <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = turma.idTurma }, new { @class = "alter" })
-                                                @Ajax.ActionLink("Adicionar Alunos", "AdicionarAlunosTurma", "ControleMed", new { idTurma = turma.idTurma }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "alter" })
+                                                @Ajax.ActionLink("Adicionar Alunos", "AdicionarAlunosTurma", "ControleMed", new { idTurma = turma.idTurma }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId="_LayoutDiretor" }, new { @class = "alter" })
+                                                
+                                                <a href="@Url.Action("AdicionarAlunosTurma","ControleMed",new { idTurma = turma.idTurma })">Adicionar Alunos </a>
                                             </td>
                                         </tr>
                                     }
