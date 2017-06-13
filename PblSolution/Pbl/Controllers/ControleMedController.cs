@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using System.Web.UI;
 
 namespace Pbl.Controllers
 {
@@ -63,7 +64,7 @@ namespace Pbl.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeletarVinculoProblema(int idProblema, int idMed)
+        public void DeletarVinculoProblema(int idProblema, int idMed)
         {
             MProblemaXMed mProblemaXMed = new MProblemaXMed();
             ProblemaXMed cadastroProblemaEncontrado = mProblemaXMed.BringOne(c => (c.idMed == idMed) && (c.idProblema == idProblema));
@@ -73,7 +74,9 @@ namespace Pbl.Controllers
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == idMed);
             dados.med = new MMed().BringOne(c => c.idMed == idMed);
             //Response.Redirect(Url.Action("GerenciarMed", "ControleMed", idMed));
-            return RedirectToAction("GerenciarMed", new { id = idMed });
+             Response.Redirect(Request.RawUrl);
+            //Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            //return RedirectToAction("GerenciarMed", new { id = idMed });
         }
 
         [HttpPost]
@@ -112,16 +115,26 @@ namespace Pbl.Controllers
             return View();
         }
 
-        [HttpPost]
+        
         public ActionResult AdicionarAlunosTurma(int idTurma)
         {
             AlunosTurmaViewModel viewModel = new AlunosTurmaViewModel();
             MTurma mTurma = new MTurma();
-            //viewModel.AlunosCadastrados = new MInscricaoTurma().BringAll().
+            MInscricaoTurma mInscricaoTurma = new MInscricaoTurma();
+            MAluno mAluno = new MAluno();
+            List<Aluno> AlunosCadastrados = mInscricaoTurma.Bring(c => c.idTurma == idTurma).Select(c => c.Aluno).ToList();
+            viewModel.AlunosCadastrados = AlunosCadastrados;
+            List<Aluno> AlunosDisponiveis = mAluno.BringAll();
+            AlunosDisponiveis.RemoveAll(c => AlunosCadastrados.Contains(c));
+            viewModel.AlunosDisponiveis = AlunosDisponiveis;
             viewModel.turmaAtual = mTurma.BringOne(c => c.idTurma == idTurma);
-            
-            //viewModel.AlunosCadastrados = 
-            return View();
+            //Teste(viewModel);
+            return View("AdicionarAlunosTurma",viewModel);
+        }
+
+        private ActionResult Teste(AlunosTurmaViewModel viewModel)
+        {
+            return View("AdicionarAlunosTurma", viewModel);
         }
 
         [HttpPost]
@@ -133,8 +146,11 @@ namespace Pbl.Controllers
         [HttpPost]
         public ActionResult RemoverAlunosTurma(int idAluno, int idTurma)
         {
+            
             return View();
         }
+
+        
 
     }
 }

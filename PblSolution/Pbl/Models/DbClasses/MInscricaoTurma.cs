@@ -65,7 +65,9 @@ namespace Pbl.Models.DbClasses
         {
             try
             {
-
+                InscricaoTurma insc = db.InscricaoTurma.Where(c => c.idInscricaoTurma == t.idInscricaoTurma).FirstOrDefault();
+                insc.ativo = t.ativo;
+                db.SaveChanges();
             }
             catch (Exception Ex)
             {
