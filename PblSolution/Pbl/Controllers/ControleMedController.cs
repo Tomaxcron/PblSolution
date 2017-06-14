@@ -74,7 +74,7 @@ namespace Pbl.Controllers
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == idMed);
             dados.med = new MMed().BringOne(c => c.idMed == idMed);
             //Response.Redirect(Url.Action("GerenciarMed", "ControleMed", idMed));
-             Response.Redirect(Request.RawUrl);
+            Response.Redirect(Request.RawUrl);
             //Page.Response.Redirect(Page.Request.Url.ToString(), true);
             //return RedirectToAction("GerenciarMed", new { id = idMed });
         }
@@ -115,7 +115,7 @@ namespace Pbl.Controllers
             return View();
         }
 
-        
+
         public ActionResult AdicionarAlunosTurma(int idTurma)
         {
             AlunosTurmaViewModel viewModel = new AlunosTurmaViewModel();
@@ -130,28 +130,35 @@ namespace Pbl.Controllers
             viewModel.turmaAtual = mTurma.BringOne(c => c.idTurma == idTurma);
             //Teste(viewModel);
             return //PartialView("AdicionarAlunosTurma", viewModel); 
-               View("AdicionarAlunosTurma",viewModel);
+               View("AdicionarAlunosTurma", viewModel);
         }
 
-        private ActionResult Teste(AlunosTurmaViewModel viewModel)
-        {
-            return View("AdicionarAlunosTurma", viewModel);
-        }
-
-        [HttpPost]
         public ActionResult AdicionarAlunosTurmaAction(int idAluno, int idTurma)
         {
-            return View();
+            InscricaoTurma novo = new InscricaoTurma();
+            novo.idTurma = idTurma;
+            novo.idAluno = idAluno;
+            new MInscricaoTurma().Add(novo);
+            return AdicionarAlunosTurma(idTurma);
+        }
+
+
+        public ActionResult RemoverAlunosTurma(int idAluno, int idTurma)
+        {
+            MInscricaoTurma mIncricaoTurma = new MInscricaoTurma();
+            mIncricaoTurma.Delete(mIncricaoTurma.BringOne(c => (c.idAluno == idAluno) && (c.idTurma == idTurma)));
+            return AdicionarAlunosTurma(idTurma);
         }
 
         [HttpPost]
-        public ActionResult RemoverAlunosTurma(int idAluno, int idTurma)
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarGrupos(int idMed)
         {
-            
+            ViewData["idProfessor"] = new SelectList(new MProfessor().BringAll(), "idProfessor", "nomeProfessor");
+            //new MProfessor().BringAll();
             return View();
         }
 
-        
 
     }
 }

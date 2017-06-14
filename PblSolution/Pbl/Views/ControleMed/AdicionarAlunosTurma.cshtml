@@ -37,7 +37,7 @@
                     <td>aluno Inativo</td>
                 }
                 <td>
-                    @Ajax.ActionLink("Remover Alunos", "RemoverAlunosTurma", "ControleMed", new { idAluno = aluno.idAluno, idTurma = Model.turmaAtual.idTurma }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "alter" })
+                    <a href="@Url.Action("RemoverAlunosTurma", "ControleMed",new { idAluno = aluno.idAluno, idTurma = Model.turmaAtual.idMed})" class="alter">Remover Aluno</a>
                 </td>
             </tr>
         }
@@ -61,10 +61,9 @@
                 <td>@Html.DisplayFor(modelItem => aluno.cpfAluno)</td>
                 <td>@Html.DisplayFor(modelItem => aluno.matriculaAluno)</td>
                 <td>
-                    @Ajax.ActionLink("Adicionar Aluno", "AdicionarAlunosTurmaAction", "ControleMed", new { idAluno = aluno.idAluno, idTurma = Model.turmaAtual.idTurma }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "alter" })
+                    <a href="@Url.Action("AdicionarAlunosTurmaAction", "ControleMed", new { idAluno = aluno.idAluno, idTurma = Model.turmaAtual.idTurma })" class="alter">Adicionar Alunos</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-

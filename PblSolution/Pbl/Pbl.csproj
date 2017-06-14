@@ -604,6 +604,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\ControleMed\ControleTurma.cshtml" />
     <Content Include="Views\ControleMed\AdicionarAlunosTurma.cshtml" />
+    <Content Include="Views\ControleMed\AdicionarGrupos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
