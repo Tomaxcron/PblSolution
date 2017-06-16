@@ -155,10 +155,13 @@ namespace Pbl.Controllers
         public ActionResult AdicionarGrupos(int idMed)
         {
             ViewData["idProfessor"] = new SelectList(new MProfessor().BringAll(), "idProfessor", "nomeProfessor");
-            //new MProfessor().BringAll();
             return View();
         }
 
-
+        public ActionResult AdicionarGrupoAction(Grupo grupo)
+        {
+            new MGrupo().Add(grupo);
+            return GerenciarMed(1);
+        }
     }
 }
