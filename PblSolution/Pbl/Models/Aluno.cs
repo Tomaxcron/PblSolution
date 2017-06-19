@@ -25,7 +25,7 @@ namespace Pbl.Models
         public string cpfAluno { get; set; }
         public string senhaAluno { get; set; }
         public string matriculaAluno { get; set; }
-        public bool ativo { get; set; }
+        public Nullable<bool> ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InscricaoTurma> InscricaoTurma { get; set; }

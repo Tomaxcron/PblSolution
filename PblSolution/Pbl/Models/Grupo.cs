@@ -22,9 +22,11 @@ namespace Pbl.Models
     
         public int idGrupo { get; set; }
         public Nullable<int> idProfessor { get; set; }
+        public int idMed { get; set; }
         public string descGrupo { get; set; }
         public Nullable<bool> ativo { get; set; }
     
+        public virtual Med Med { get; set; }
         public virtual Professor Professor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InscricaoTurma> InscricaoTurma { get; set; }

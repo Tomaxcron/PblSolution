@@ -47,7 +47,6 @@ namespace Pbl.Models
         public virtual DbSet<Professor> Professor { get; set; }
         public virtual DbSet<Prova> Prova { get; set; }
         public virtual DbSet<Semestre> Semestre { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoDisciplina> TipoDisciplina { get; set; }
         public virtual DbSet<TipoProva> TipoProva { get; set; }
         public virtual DbSet<Turma> Turma { get; set; }

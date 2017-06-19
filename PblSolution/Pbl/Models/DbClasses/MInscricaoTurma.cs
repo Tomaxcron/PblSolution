@@ -13,7 +13,7 @@ namespace Pbl.Models.DbClasses
 
         public MInscricaoTurma()
         {
-            db = Singletone.InstanceFamerv;
+            db = Singletone.InstanceFamerv;           
         }
 
         public bool Add(InscricaoTurma t)

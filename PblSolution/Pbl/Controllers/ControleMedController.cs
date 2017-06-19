@@ -26,6 +26,7 @@ namespace Pbl.Controllers
             GerenciarMedViewModel dados = new GerenciarMedViewModel();
             dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados(id);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == id);
+            dados.gruposCadastrados = new MGrupo().Bring(c => c.idMed == id);
             dados.med = new MMed().BringOne(c => c.idMed == id);
             return View(dados);
         }
@@ -155,13 +156,16 @@ namespace Pbl.Controllers
         public ActionResult AdicionarGrupos(int idMed)
         {
             ViewData["idProfessor"] = new SelectList(new MProfessor().BringAll(), "idProfessor", "nomeProfessor");
+            ViewData["idMed"] = idMed;
             return View();
         }
 
         public ActionResult AdicionarGrupoAction(Grupo grupo)
         {
+            grupo.ativo = true;
             new MGrupo().Add(grupo);
-            return GerenciarMed(1);
+            return RedirectToAction("GerenciarMed", "ControleMed", new { id = grupo.idMed }); 
+                //Redirect(Url.Action("GerenciarMed", "ControleMed", grupo.idMed));
         }
     }
 }

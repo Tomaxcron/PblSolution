@@ -255,9 +255,6 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ModelFamerv.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TipoDisciplina.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>

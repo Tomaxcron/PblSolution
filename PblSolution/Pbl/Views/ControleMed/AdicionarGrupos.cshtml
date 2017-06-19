@@ -30,17 +30,7 @@
                 @Html.ValidationMessageFor(model => model.descGrupo, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ativo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.ativo)
-                    @Html.ValidationMessageFor(model => model.ativo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
+        @Html.TextBoxFor(model => model.idMed, new {@type = "hidden" })
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

@@ -18,18 +18,15 @@ namespace Pbl.Models
         public Disciplina()
         {
             this.Aula = new HashSet<Aula>();
-            this.Med = new HashSet<Med>();
         }
     
         public int idDisciplina { get; set; }
         public Nullable<int> idTipoDisciplina { get; set; }
         public string descDisciplina { get; set; }
-        public bool ativo { get; set; }
+        public Nullable<bool> ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aula> Aula { get; set; }
         public virtual TipoDisciplina TipoDisciplina { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Med> Med { get; set; }
     }
 }

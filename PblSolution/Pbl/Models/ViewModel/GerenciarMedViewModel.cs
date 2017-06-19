@@ -10,6 +10,6 @@ namespace Pbl.Models.ViewModel
         public Med med;
         public List<Turma> turmasCadastradas;
         public List<Problema> problemasCadastrados;
-        
+        public List<Grupo> gruposCadastrados;
     }
 }

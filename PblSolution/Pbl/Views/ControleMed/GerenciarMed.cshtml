@@ -104,17 +104,25 @@
             <div class="widget-box">
                 <div class="widget-content nopadding">
                     <div class="table-responsive">
-                        @using (Html.BeginForm("AdicionarGrupos","ControleMed",new { idMed = Model.med.idMed }))
+                        @using (Html.BeginForm("AdicionarGrupos", "ControleMed", new { idMed = Model.med.idMed }))
                         {
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Grupos</th>
+                                        <th>Grupo</th>
+                                        <th>Professor Responsável</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    @foreach (var grupo in Model.gruposCadastrados)
+                                    {
+                                        <tr>
+                                            <td>@grupo.descGrupo</td>
+                                            <td>@grupo.Professor.nomeProfessor</td>
+                                            <td>Option</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                             @Html.AntiForgeryToken()
