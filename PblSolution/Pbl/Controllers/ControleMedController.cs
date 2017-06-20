@@ -209,9 +209,12 @@ namespace Pbl.Controllers
                 tst.SaveChanges();
             }
             return View(viewModel);
-            //InscricaoTurmaXGrupo
-            //viewModel.AlunosDisponiveis = 
-            //return RedirectToAction("GerenciarMed", "ControleMed", new { id = idMed });
+        }
+
+        public ActionResult RemoverAlunosGrupo()
+        {
+            //TODO
+            return null;
         }
     }
 }
