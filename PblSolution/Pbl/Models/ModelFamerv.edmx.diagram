@@ -54,7 +54,16 @@
         <AssociationConnector Association="pblsolutionModel.FK_PerguntaXFicha_Pergunta" />
         <AssociationConnector Association="pblsolutionModel.FK_ProblemaXMed_Problema" />
         <AssociationConnector Association="pblsolutionModel.FK_Prova_TipoProva" />
-        <AssociationConnector Association="pblsolutionModel.InscricaoTurmaXGrupo" />
+        <AssociationConnector Association="pblsolutionModel.InscricaoTurmaXGrupo" ManuallyRouted="true" >
+          <ConnectorPoint PointX="7.5" PointY="6.4803930664062488" />
+          <ConnectorPoint PointX="7.7475" PointY="6.4803930664062488" />
+          <ConnectorPoint PointX="7.7475" PointY="7.5741430664062488" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="7.5741430664062479" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="7.5741430664062488" />
+          <ConnectorPoint PointX="8.0025" PointY="7.5741430664062488" />
+          <ConnectorPoint PointX="8.0025" PointY="6.4803930664062488" />
+          <ConnectorPoint PointX="8.25" PointY="6.4803930664062488" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

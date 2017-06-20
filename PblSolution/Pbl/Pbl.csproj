@@ -265,6 +265,7 @@
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModel\AlunosGrupoViewModel.cs" />
     <Compile Include="Models\ViewModel\AlunosTurmaViewModel.cs" />
     <Compile Include="Models\ViewModel\DisciplinaViewModel.cs" />
     <Compile Include="Models\ViewModel\GerenciarMedViewModel.cs" />
@@ -603,6 +604,7 @@
     <Content Include="Views\ControleMed\ControleTurma.cshtml" />
     <Content Include="Views\ControleMed\AdicionarAlunosTurma.cshtml" />
     <Content Include="Views\ControleMed\AdicionarGrupos.cshtml" />
+    <Content Include="Views\ControleMed\AdicionarAlunosGrupo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

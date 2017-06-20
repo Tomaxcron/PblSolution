@@ -28,7 +28,7 @@
                 <td>@Html.DisplayFor(modelItem => aluno.nomeAluno)</td>
                 <td>@Html.DisplayFor(modelItem => aluno.cpfAluno)</td>
                 <td>@Html.DisplayFor(modelItem => aluno.matriculaAluno)</td>
-                @if (aluno.ativo)
+                @if (aluno.ativo.Value)
                 {
                     <td>Aluno Ativo</td>
                 }

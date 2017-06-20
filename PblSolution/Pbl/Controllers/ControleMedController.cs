@@ -167,5 +167,51 @@ namespace Pbl.Controllers
             return RedirectToAction("GerenciarMed", "ControleMed", new { id = grupo.idMed }); 
                 //Redirect(Url.Action("GerenciarMed", "ControleMed", grupo.idMed));
         }
+
+        public ActionResult DeletarGrupo(int idGrupo)
+        {
+            MGrupo mGrupo = new MGrupo();
+            Grupo selecionado = mGrupo.BringOne(c => c.idGrupo == idGrupo);
+            int idMed = selecionado.idMed;
+            TempData["Message"] = mGrupo.Delete(selecionado) ? "Grupo Deletado com Sucesso" : "Algo Errado Ocorreu";
+            return RedirectToAction("GerenciarMed", "ControleMed", new { id = idMed });
+        }
+
+        public ActionResult AdicionarAlunosGrupo(int idGrupo, int? idInscricaoTurma)
+        {
+            AlunosGrupoViewModel viewModel = new AlunosGrupoViewModel();
+            MGrupo mGrupo = new MGrupo();
+            MInscricaoTurma mIncricaoTurma = new MInscricaoTurma();
+            viewModel.grupo = mGrupo.BringOne(c => c.idGrupo == idGrupo);
+            List<Turma> turmasMed = new MTurma().Bring(c => c.idMed == viewModel.grupo.idMed);
+            viewModel.AlunosDisponiveis = new List<InscricaoTurma>();
+            foreach (var turma in turmasMed)
+            {
+                List<InscricaoTurma> alunosTurma = mIncricaoTurma.Bring(c => c.idTurma == turma.idTurma);
+                //viewModel.AlunosDisponiveis.AddRange(alunosTurma);
+                foreach (var aluno in alunosTurma)
+                {
+                    viewModel.AlunosDisponiveis.Add(aluno);
+                }
+            }
+            List<Aluno> AlunosInscritos = new List<Aluno>();
+            viewModel.AlunosInscritos = mGrupo.BringOne(c => c.idGrupo == idGrupo).InscricaoTurma.ToList();
+            viewModel.AlunosDisponiveis.RemoveAll(c => viewModel.AlunosInscritos.Contains(c));
+            var test = viewModel.grupo.InscricaoTurma;
+            foreach (var inscrito in test)
+            {
+                AlunosInscritos.Add(inscrito.Aluno);
+            }
+            if (idInscricaoTurma.HasValue)
+            {
+                FamervEntities tst = new FamervEntities();
+                tst.Grupo.Where(c => c.idGrupo == idGrupo).First().InscricaoTurma.Add(tst.InscricaoTurma.Where(c => c.idInscricaoTurma == idInscricaoTurma).First());
+                tst.SaveChanges();
+            }
+            return View(viewModel);
+            //InscricaoTurmaXGrupo
+            //viewModel.AlunosDisponiveis = 
+            //return RedirectToAction("GerenciarMed", "ControleMed", new { id = idMed });
+        }
     }
 }
