@@ -606,6 +606,8 @@
     <Content Include="Views\ControleMed\AdicionarAlunosTurma.cshtml" />
     <Content Include="Views\ControleMed\AdicionarGrupos.cshtml" />
     <Content Include="Views\ControleMed\AdicionarAlunosGrupo.cshtml" />
+    <Content Include="Views\Shared\_LayoutProfessor.cshtml" />
+    <Content Include="Views\Shared\_LayoutPadrao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
