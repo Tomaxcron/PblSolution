@@ -36,7 +36,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Aluno.matriculaAluno)
             </td>
-            <td></td>
+            <td><a href="@Url.Action("RemoverAlunosGrupo", "ControleMed", new { idGrupo = Model.grupo.idGrupo, idInscricaoTurma = item.idInscricaoTurma })">Desvincular</a></td>
         </tr>
     }
 

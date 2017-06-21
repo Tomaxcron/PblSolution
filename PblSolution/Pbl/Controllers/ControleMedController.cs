@@ -153,6 +153,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarGrupos(int idMed)
         {
             ViewData["idProfessor"] = new SelectList(new MProfessor().BringAll(), "idProfessor", "nomeProfessor");
@@ -164,8 +165,8 @@ namespace Pbl.Controllers
         {
             grupo.ativo = true;
             new MGrupo().Add(grupo);
-            return RedirectToAction("GerenciarMed", "ControleMed", new { id = grupo.idMed }); 
-                //Redirect(Url.Action("GerenciarMed", "ControleMed", grupo.idMed));
+            return RedirectToAction("GerenciarMed", "ControleMed", new { id = grupo.idMed });
+            //Redirect(Url.Action("GerenciarMed", "ControleMed", grupo.idMed));
         }
 
         public ActionResult DeletarGrupo(int idGrupo)
@@ -179,6 +180,10 @@ namespace Pbl.Controllers
 
         public ActionResult AdicionarAlunosGrupo(int idGrupo, int? idInscricaoTurma)
         {
+            if (idInscricaoTurma.HasValue)
+            {
+                new MInscricaoTurmaXGrupo().Add(idGrupo, idInscricaoTurma.Value);
+            }
             AlunosGrupoViewModel viewModel = new AlunosGrupoViewModel();
             MGrupo mGrupo = new MGrupo();
             MInscricaoTurma mIncricaoTurma = new MInscricaoTurma();
@@ -202,19 +207,14 @@ namespace Pbl.Controllers
             {
                 AlunosInscritos.Add(inscrito.Aluno);
             }
-            if (idInscricaoTurma.HasValue)
-            {
-                FamervEntities tst = new FamervEntities();
-                tst.Grupo.Where(c => c.idGrupo == idGrupo).First().InscricaoTurma.Add(tst.InscricaoTurma.Where(c => c.idInscricaoTurma == idInscricaoTurma).First());
-                tst.SaveChanges();
-            }
-            return View(viewModel);
+
+            return View(viewModel); //View(viewModel);
         }
 
-        public ActionResult RemoverAlunosGrupo()
+        public ActionResult RemoverAlunosGrupo(int idGrupo, int idInscricaoTurma)
         {
-            //TODO
-            return null;
+            new MInscricaoTurmaXGrupo().Remove(idGrupo, idInscricaoTurma);
+            return RedirectToAction("AdicionarAlunosGrupo", "ControleMed", new { idGrupo = idGrupo });
         }
     }
 }

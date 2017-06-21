@@ -186,6 +186,7 @@
     <Compile Include="Models\DbClasses\MDisciplina.cs" />
     <Compile Include="Models\DbClasses\MGrupo.cs" />
     <Compile Include="Models\DbClasses\MInscricaoTurma.cs" />
+    <Compile Include="Models\DbClasses\MInscricaoTurmaXGrupo.cs" />
     <Compile Include="Models\DbClasses\MMed.cs" />
     <Compile Include="Models\DbClasses\MProblema.cs" />
     <Compile Include="Models\DbClasses\MProblemaXMed.cs" />

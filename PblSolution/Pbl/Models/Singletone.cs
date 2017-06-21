@@ -20,5 +20,16 @@ namespace Pbl.Models
                 return db;
             }
         }
+
+
+        public static FamervEntities Refresh
+        {
+            get
+            {
+                db.Dispose();
+                db = new FamervEntities();
+                return db;
+            }
+        }
     }
 }
