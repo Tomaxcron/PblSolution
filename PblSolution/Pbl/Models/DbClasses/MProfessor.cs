@@ -67,7 +67,6 @@ namespace Pbl.Models.DbClasses
                 Professor alterar = this.BringOne(c => c.idProfessor == t.idProfessor);
                 alterar.cpfProfessor = t.cpfProfessor;
                 alterar.nomeProfessor = t.nomeProfessor;
-                alterar.senhaProfessor = t.senhaProfessor;
                 db.SaveChanges();
             }
             catch (Exception Ex)

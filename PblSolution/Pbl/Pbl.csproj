@@ -187,6 +187,7 @@
     <Compile Include="Models\DbClasses\MGrupo.cs" />
     <Compile Include="Models\DbClasses\MInscricaoTurma.cs" />
     <Compile Include="Models\DbClasses\MInscricaoTurmaXGrupo.cs" />
+    <Compile Include="Models\DbClasses\MUsuario.cs" />
     <Compile Include="Models\DbClasses\MMed.cs" />
     <Compile Include="Models\DbClasses\MProblema.cs" />
     <Compile Include="Models\DbClasses\MProblemaXMed.cs" />
@@ -262,10 +263,16 @@
     <Compile Include="Models\TipoProva.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TipoUsuario.cs">
+      <DependentUpon>ModelFamerv.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Turma.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>ModelFamerv.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModel\AlunosGrupoViewModel.cs" />
     <Compile Include="Models\ViewModel\AlunosTurmaViewModel.cs" />
     <Compile Include="Models\ViewModel\DisciplinaViewModel.cs" />

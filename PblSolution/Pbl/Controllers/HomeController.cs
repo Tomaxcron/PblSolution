@@ -1,15 +1,20 @@
-﻿using System.Web.Mvc;
+﻿using Pbl.Models;
+using System.Web.Mvc;
 
 namespace Pbl.Controllers
 {
     public class HomeController : Controller
     {
+
+        //[Authorize(Users =]
         public ActionResult Index()
         {
-            if (Session["user"] == null)
+            if (Session["Usuario"] == null)
             {
-                //return RedirectToAction("Login","Login");
+                return RedirectToAction("Login","Login");
             }
+
+            Usuario u = (Usuario)Session["Usuario"];
             return View();
         }
     }

@@ -12,25 +12,17 @@ namespace Pbl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Professor
+    public partial class TipoUsuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Professor()
+        public TipoUsuario()
         {
-            this.Aula = new HashSet<Aula>();
-            this.Grupo = new HashSet<Grupo>();
             this.Usuario = new HashSet<Usuario>();
         }
     
-        public int idProfessor { get; set; }
-        public string nomeProfessor { get; set; }
-        public string cpfProfessor { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public int idTipoUsuario { get; set; }
+        public string descricao { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Aula> Aula { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grupo> Grupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }
     }

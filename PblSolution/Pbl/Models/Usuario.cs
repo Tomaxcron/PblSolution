@@ -12,26 +12,24 @@ namespace Pbl.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Professor
+    public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Professor()
+        public Usuario()
         {
-            this.Aula = new HashSet<Aula>();
-            this.Grupo = new HashSet<Grupo>();
-            this.Usuario = new HashSet<Usuario>();
+            this.Aluno = new HashSet<Aluno>();
+            this.Professor = new HashSet<Professor>();
         }
     
-        public int idProfessor { get; set; }
-        public string nomeProfessor { get; set; }
-        public string cpfProfessor { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public int idUsuario { get; set; }
+        public string login { get; set; }
+        public string senha { get; set; }
+        public int idTipoUsuario { get; set; }
     
+        public virtual TipoUsuario TipoUsuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Aula> Aula { get; set; }
+        public virtual ICollection<Aluno> Aluno { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grupo> Grupo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
+        public virtual ICollection<Professor> Professor { get; set; }
     }
 }

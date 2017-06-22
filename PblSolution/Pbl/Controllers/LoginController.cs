@@ -1,4 +1,5 @@
 ﻿using Pbl.Models;
+using Pbl.Models.DbClasses;
 using System.Web.Mvc;
 
 namespace Pbl.Controllers
@@ -14,12 +15,14 @@ namespace Pbl.Controllers
         [HttpPost]
         public ActionResult Login(string login, string senha)
         {
-            if ("admin".Equals(login) && "123".Equals(senha))
+            MUsuario mUser = new MUsuario();
+            Usuario user = mUser.BringOne(c => (c.login == login) && (c.senha == senha));
+            if (user == null)
             {
-                Session["user"] = new User() { login = login, name = "Lucas" };
-                return RedirectToAction("Index", "Home");
+                return View();
             }
-            return View();
+            Session["Usuario"] = user;
+            return RedirectToAction("Index","Home");
         }
     }
 }

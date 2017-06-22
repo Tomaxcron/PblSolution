@@ -6,20 +6,21 @@ using System.Web;
 
 namespace Pbl.Models.DbClasses
 {
-    public class MAluno : IFunctions<Aluno>
+    public class MUsuario : IFunctions<Usuario>
     {
+
         private FamervEntities db;
 
-        public MAluno()
+        public MUsuario()
         {
             db = Singletone.InstanceFamerv;
         }
 
-        public bool Add(Aluno t)
+        public bool Add(Usuario t)
         {
             try
             {
-                db.Aluno.Add(t);
+                db.Usuario.Add(t);
                 db.SaveChanges();
             }
             catch (Exception Ex)
@@ -30,26 +31,26 @@ namespace Pbl.Models.DbClasses
             return true;
         }
 
-        public List<Aluno> Bring(Expression<Func<Aluno, bool>> predicate)
+        public List<Usuario> Bring(Expression<Func<Usuario, bool>> predicate)
         {
-            return db.Aluno.Where(predicate).ToList();
+            throw new NotImplementedException();
         }
 
-        public List<Aluno> BringAll()
+        public List<Usuario> BringAll()
         {
-            return db.Aluno.ToList();
+            throw new NotImplementedException();
         }
 
-        public Aluno BringOne(Expression<Func<Aluno, bool>> predicate)
+        public Usuario BringOne(Expression<Func<Usuario, bool>> predicate)
         {
-            return db.Aluno.Where(predicate).FirstOrDefault();
+            return db.Usuario.SingleOrDefault(predicate);
         }
 
-        public bool Delete(Aluno T)
+        public bool Delete(Usuario t)
         {
             try
             {
-                db.Aluno.Remove(T);
+                db.Usuario.Remove(t);
                 db.SaveChanges();
             }
             catch (Exception Ex)
@@ -60,14 +61,14 @@ namespace Pbl.Models.DbClasses
             return true;
         }
 
-        public bool Update(Aluno t)
+        public bool Update(Usuario t)
         {
             try
             {
-                Aluno alterar = this.BringOne(c => c.idAluno == t.idAluno);
-                alterar.cpfAluno = t.cpfAluno;
-                alterar.nomeAluno = t.nomeAluno;
-                alterar.matriculaAluno = t.matriculaAluno;
+                Usuario user = db.Usuario.SingleOrDefault(c => c.idUsuario == t.idUsuario);
+                user.login = t.login;
+                user.senha = t.senha;
+                user.idTipoUsuario = t.idTipoUsuario;
                 db.SaveChanges();
             }
             catch (Exception Ex)

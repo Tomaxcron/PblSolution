@@ -18,16 +18,18 @@ namespace Pbl.Models
         public Aluno()
         {
             this.InscricaoTurma = new HashSet<InscricaoTurma>();
+            this.Usuario = new HashSet<Usuario>();
         }
     
         public int idAluno { get; set; }
         public string nomeAluno { get; set; }
         public string cpfAluno { get; set; }
-        public string senhaAluno { get; set; }
         public string matriculaAluno { get; set; }
         public Nullable<bool> ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InscricaoTurma> InscricaoTurma { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }
