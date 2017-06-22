@@ -11,6 +11,7 @@ namespace Pbl.Controllers
     public class ControleAlunosController : Controller
     {
         // GET: ControleAlunos
+        [Authorize(Roles = "Diretor")]
         public ActionResult Index()
         {
             ViewBag.Message = TempData["Message"];
@@ -32,7 +33,15 @@ namespace Pbl.Controllers
             aluno.cpfAluno = cpfAluno;
             aluno.matriculaAluno = matriculaAluno;
             MAluno mAluno = new MAluno();
-            TempData["Message"] = mAluno.Add(aluno) ? "Aluno cadastrado" : "Ação não foi realizada";
+            if (mAluno.Add(aluno))
+            {
+                Usuario novo = new Usuario();
+                novo.login = aluno.cpfAluno;
+                novo.senha = aluno.cpfAluno;
+                novo.idTipoUsuario = 3;
+                new MUsuario().Add(novo);
+                TempData["Message"] = new MUsuarioAluno().Add(novo.idUsuario, aluno.idAluno) ? "Aluno cadastrado" : "Ação não foi realizada";
+            }
             return RedirectToAction("Create");
         }
         public ActionResult Update(int id)

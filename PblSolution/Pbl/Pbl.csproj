@@ -195,6 +195,7 @@
     <Compile Include="Models\DbClasses\MSemestre.cs" />
     <Compile Include="Models\DbClasses\MTipoDisciplina.cs" />
     <Compile Include="Models\DbClasses\MTurma.cs" />
+    <Compile Include="Models\DbClasses\MUsuarioAluno.cs" />
     <Compile Include="Models\Disciplina.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
@@ -251,6 +252,7 @@
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Singletone.cs" />
+    <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
