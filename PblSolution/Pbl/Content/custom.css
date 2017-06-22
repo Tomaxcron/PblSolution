@@ -125,6 +125,8 @@ body {
     FOOTER STYLES     
     =============================================*/
 .footer {
+    position:fixed;
+    bottom: 0;
     background-color:#214761;
     width:100%;
     color:#fff;
@@ -146,6 +148,7 @@ body {
      #page-wrapper{
                margin: 0 0 0 260px;
         padding: 15px 30px;
+        margin-bottom: 2em;
         height: 100%;
 		
     }

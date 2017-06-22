@@ -428,6 +428,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\adicao.png" />
+    <Content Include="Content\img\adicao2.png" />
     <Content Include="Content\img\client.png" />
     <Content Include="Content\img\delet.png" />
     <Content Include="Content\img\edit.png" />
