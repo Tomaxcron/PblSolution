@@ -33,7 +33,7 @@
                 </div>
 
                 <span class="logout-spn">
-                    <a href="#" style="color:#fff;"> LOGOUT <img class="logout-img" src="~/Content/img/logout.png" alt="Logout"> </a>
+                    <a href="@Url.Action("SignOut","Login")" style="color:#fff;"> LOGOUT <img class="logout-img" src="~/Content/img/logout.png" alt="Logout"> </a>
                 </span> 
             </div>
         </div>
@@ -75,6 +75,9 @@
                                 <li><a href="@Url.Action("Index","ControleDisciplinas")">Gerenciar Disciplinas</a></li>
                             </ul>
                         </div>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Details","Usuarios")">Usuario</a>
                     </li>
                 </ul>
             </div>

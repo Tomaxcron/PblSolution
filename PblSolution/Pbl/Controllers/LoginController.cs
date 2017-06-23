@@ -24,8 +24,14 @@ namespace Pbl.Controllers
                 return View();
             }
             Session["Usuario"] = user;
-            //Session.
             return RedirectToAction("Index","Home");
+        }
+
+        [Authorize]
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Login");
         }
     }
 }
