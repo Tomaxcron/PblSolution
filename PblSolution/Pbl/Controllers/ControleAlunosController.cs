@@ -18,6 +18,7 @@ namespace Pbl.Controllers
             return View(new MAluno().BringAll());
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Create()
         {
             ViewBag.Message = TempData["Message"];
@@ -26,6 +27,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult Create(string nomeAluno, string cpfAluno, string matriculaAluno)
         {
             Aluno aluno = new Aluno();
@@ -52,6 +54,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult Update(int idAluno, string nomeAluno, string cpfAluno, string matriculaAluno)
         {
             Aluno aluno = new Aluno();
@@ -68,6 +71,7 @@ namespace Pbl.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Delete(int id)
         {
             MAluno mAluno = new MAluno();

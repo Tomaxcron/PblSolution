@@ -11,12 +11,14 @@ namespace Pbl.Controllers
     public class ControleProfessoresController : Controller
     {
         // GET: ControleProfessores
+        [Authorize(Roles = "Diretor")]
         public ActionResult Index()
         {
             ViewBag.Message = TempData["Message"];
             return View(new MProfessor().BringAll());
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Create()
         {
             ViewBag.Message = TempData["Message"];
@@ -24,6 +26,7 @@ namespace Pbl.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult Create(Professor professor)
         {
             MProfessor mProfessor = new MProfessor();
@@ -31,6 +34,7 @@ namespace Pbl.Controllers
             return RedirectToAction("Create");
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Update(int id)
         {
             MProfessor mProfessor = new MProfessor();
@@ -39,12 +43,14 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult Update(Professor professor)
         {
             TempData["Message"] = new MProfessor().Update(professor) ? "Professor atualizado com sucesso" : "Ação não foi realizada";
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Delete(int id)
         {
             MProfessor mProfessor = new MProfessor();

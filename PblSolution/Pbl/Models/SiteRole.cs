@@ -9,7 +9,9 @@ namespace Pbl.Models
 {
     public class SiteRole : RoleProvider
     {
-        public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public override string ApplicationName { get; set; }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
@@ -39,7 +41,7 @@ namespace Pbl.Models
         public override string[] GetRolesForUser(string username)
         {
             Usuario user = new MUsuario().BringOne(c => c.login == username);
-            string[] role = { user.TipoUsuario.descricao };
+            string[] role = { user.TipoUsuario.descricao.TrimEnd() };
             return role;
         }
 

@@ -6,7 +6,7 @@ namespace Pbl.Controllers
     public class HomeController : Controller
     {
 
-        //[Authorize(Users =]
+
         public ActionResult Index()
         {
             if (Session["Usuario"] == null)

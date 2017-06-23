@@ -14,12 +14,14 @@ namespace Pbl.Controllers
     public class ControleMedController : Controller
     {
         // GET: ControleMed
+        [Authorize(Roles = "Diretor")]
         public ActionResult Index()
         {
             ViewBag.Message = TempData["Message"];
             return View(new MMed().BringAll());
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult GerenciarMed(int id)
         {
             ViewBag.Message = TempData["Message"];
@@ -33,6 +35,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarTurma(int id)
         {
             ViewBag.Message = TempData["Message"];
@@ -43,6 +46,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarNovaTurma(Turma nova)
         {
             TempData["Message"] = new MTurma().Add(nova) ? "Nova Turma Cadastrada" : "Algo Errado Ocorreu";
@@ -55,6 +59,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult VincularProblemas(int idMed)
         {
             VincularProblemaViewModel dados = new VincularProblemaViewModel();
@@ -65,6 +70,7 @@ namespace Pbl.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Diretor")]
         public void DeletarVinculoProblema(int idProblema, int idMed)
         {
             MProblemaXMed mProblemaXMed = new MProblemaXMed();
@@ -81,6 +87,7 @@ namespace Pbl.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarProblema(int idMed, int idProblema)
         {
             MProblemaXMed mProblemaXMed = new MProblemaXMed();
@@ -95,6 +102,7 @@ namespace Pbl.Controllers
             return View("VincularProblemas", dados);
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult ControleTurma()
         {
             InscricaoAlunoViewModel viewModel = new InscricaoAlunoViewModel();
@@ -105,6 +113,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult ControleTurma(ICollection<int> alunos)
         {
             MAluno mAluno = new MAluno();
@@ -116,7 +125,7 @@ namespace Pbl.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarAlunosTurma(int idTurma)
         {
             AlunosTurmaViewModel viewModel = new AlunosTurmaViewModel();
@@ -134,6 +143,7 @@ namespace Pbl.Controllers
                View("AdicionarAlunosTurma", viewModel);
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarAlunosTurmaAction(int idAluno, int idTurma)
         {
             InscricaoTurma novo = new InscricaoTurma();
@@ -143,7 +153,7 @@ namespace Pbl.Controllers
             return AdicionarAlunosTurma(idTurma);
         }
 
-
+        [Authorize(Roles = "Diretor")]
         public ActionResult RemoverAlunosTurma(int idAluno, int idTurma)
         {
             MInscricaoTurma mIncricaoTurma = new MInscricaoTurma();
@@ -161,6 +171,7 @@ namespace Pbl.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarGrupoAction(Grupo grupo)
         {
             grupo.ativo = true;
@@ -169,6 +180,7 @@ namespace Pbl.Controllers
             //Redirect(Url.Action("GerenciarMed", "ControleMed", grupo.idMed));
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult DeletarGrupo(int idGrupo)
         {
             MGrupo mGrupo = new MGrupo();
@@ -178,6 +190,7 @@ namespace Pbl.Controllers
             return RedirectToAction("GerenciarMed", "ControleMed", new { id = idMed });
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarAlunosGrupo(int idGrupo, int? idInscricaoTurma)
         {
             if (idInscricaoTurma.HasValue)
@@ -211,6 +224,7 @@ namespace Pbl.Controllers
             return View(viewModel); //View(viewModel);
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult RemoverAlunosGrupo(int idGrupo, int idInscricaoTurma)
         {
             new MInscricaoTurmaXGrupo().Remove(idGrupo, idInscricaoTurma);

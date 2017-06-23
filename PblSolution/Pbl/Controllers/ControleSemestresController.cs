@@ -12,12 +12,14 @@ namespace Pbl.Controllers
     public class ControleSemestresController : Controller
     {
         // GET: ControleSemestres
+        [Authorize(Roles = "Diretor")]
         public ActionResult Index()
         {
             ViewBag.Message = TempData["Message"];
             return View(new MSemestre().BringAll());
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Create()
         {
             ViewBag.Message = TempData["Message"];
@@ -26,6 +28,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult Create(SemestreViewModel semestre)
         {
             MSemestre mSemestre = new MSemestre();
@@ -33,6 +36,7 @@ namespace Pbl.Controllers
             return RedirectToAction("Create");
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Update(int id)
         {
             SemestreViewModel novo = new SemestreViewModel();
@@ -42,6 +46,7 @@ namespace Pbl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Diretor")]
         public ActionResult Update(SemestreViewModel semestre)
         {
             MSemestre mSemestre = new MSemestre();
@@ -49,6 +54,7 @@ namespace Pbl.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Diretor")]
         public ActionResult Delete(int idSemestre)
         {
             MSemestre mSemestre = new MSemestre();
