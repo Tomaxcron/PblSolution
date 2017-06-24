@@ -39,6 +39,10 @@ body {
     margin-right: 2px;
 }
 
+.fa-home {
+    font-size: 14px !important;
+}
+
 .fa-cog {
     margin-left: 5px;
     margin-right: 2px;
