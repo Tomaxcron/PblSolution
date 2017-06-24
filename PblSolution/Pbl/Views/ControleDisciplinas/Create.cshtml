@@ -23,15 +23,40 @@
                         @Html.ValidationSummary(true, "Algo não está certo");
                         <ul>
                             <li>
-                                @Html.TextBoxFor(c => c.disciplina.descDisciplina,new { placeholder="Descrição" })
-                                <span>Informe a descrição</span>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Descrição</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            <textarea class="form-control" name="descDisciplina" placeholder="Descrição"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
+                            @*<li>
+        @Html.TextBoxFor(c => c.disciplina.descDisciplina,new { placeholder="Descrição" })
+        <span>Informe a descrição</span>
+    </li>*@
                             <li>
-                                @Html.DropDownListFor(c => c.disciplina.idTipoDisciplina, new SelectList(Model.listaTipoDisciplina, "idTipoDisciplina", "descTipoDisciplina"), "", new { @class = "form-control" })
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Tipo Disciplina</label>
+                                    <div class="col-md-4 selectContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                            @Html.DropDownListFor(c => c.disciplina.idTipoDisciplina, new SelectList(Model.listaTipoDisciplina, "idTipoDisciplina", "descTipoDisciplina"), "", new { @class = "form-control selectpicker" })
+                                        </div>
+                                    </div>
+                                </div>
+                               @* @Html.DropDownListFor(c => c.disciplina.idTipoDisciplina, new SelectList(Model.listaTipoDisciplina, "idTipoDisciplina", "descTipoDisciplina"), "", new { @class = "form-control selectpicker" })*@
                             </li>
                             @Html.AntiForgeryToken()
                             <li>
-                                <input type="submit" value="Salvar" />
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <button type="submit" value="Salvar" class="btn btn-warning">Cadastrar <span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     }

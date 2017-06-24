@@ -16,20 +16,46 @@
                     <h1>Atualizar Aluno</h1>
                     <ul>
                         <li>
-                            <input name="nomeAluno" type="text" class="span11" value="@Model.nomeAluno" />
-                            <span>Nome do aluno</span>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nome</label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input name="nomeAluno" placeholder="Nome "  value="@Model.nomeAluno" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            <input name="cpfAluno" type="text" class="span11" value="@Model.cpfAluno" />
-                            <span>CPF do aluno</span>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nome</label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input name="cpfAluno" placeholder="Nome "  value="@Model.cpfAluno" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li>
-                            <input name="matriculaAluno" type="text" class="span11" value="@Model.matriculaAluno" />
-                            <span>Matricula do aluno</span>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nome</label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input name="matriculaAluno" placeholder="Nome " value="@Model.matriculaAluno" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         @Html.AntiForgeryToken()
                         <li>
-                            <input type="submit" value="Alterar" />
+                            <div class="form-group">
+                                <label class="col-md-4 control-label"></label>
+                                <div class="col-md-4">
+                                    <button type="submit" value="Alterar" class="btn btn-warning">Alterar <span class="glyphicon glyphicon-send"></span></button>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </form>

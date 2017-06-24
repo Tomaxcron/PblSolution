@@ -40,12 +40,15 @@ body {
 }
 
 /* Formulario Create */
+.form-group{
+    margin-left:-3.5em;
+}
+
 .form-group label{
     text-align:right;
 }
 
 .form-styles {
-    max-width: 400px;
     margin: 1.5em auto;
     background: #fff;
     border-radius: 2px;
@@ -57,9 +60,20 @@ body {
         display: block;
         text-align: center;
         padding: 0;
-        margin: 0px 0px 1em 0px;
+        margin: -1em 0px 1em 0px;
         color: #141414;
         font-size: x-large;
+    }
+
+    .form-styles ul {
+        list-style: none;
+    }
+
+    .form-styles li {
+        display: block;
+        padding: 9px;
+        margin-bottom: 1em;
+        border-radius: 3px;
     }
 
 /*    .form-styles ul {
