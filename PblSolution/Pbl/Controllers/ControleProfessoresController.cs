@@ -30,7 +30,16 @@ namespace Pbl.Controllers
         public ActionResult Create(Professor professor)
         {
             MProfessor mProfessor = new MProfessor();
-            TempData["Message"] = mProfessor.Add(professor) ? "Professor cadastrado com sucesso" : "Ação não foi realizada";
+            professor.ativo = true;
+            if (mProfessor.Add(professor))
+            {
+                Usuario novo = new Usuario();
+                novo.login = professor.cpfProfessor;
+                novo.senha = professor.cpfProfessor;
+                novo.idTipoUsuario = 3;
+                new MUsuario().Add(novo);
+                TempData["Message"] = new MUsuarioProfessor().Add(novo.idUsuario, professor.idProfessor) ? "Professor cadastrado" : "Ação não foi realizada";
+            }            
             return RedirectToAction("Create");
         }
 
