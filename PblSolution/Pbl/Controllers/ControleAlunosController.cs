@@ -34,6 +34,7 @@ namespace Pbl.Controllers
             aluno.nomeAluno = nomeAluno;
             aluno.cpfAluno = cpfAluno;
             aluno.matriculaAluno = matriculaAluno;
+            aluno.ativo = true;
             MAluno mAluno = new MAluno();
             if (mAluno.Add(aluno))
             {
