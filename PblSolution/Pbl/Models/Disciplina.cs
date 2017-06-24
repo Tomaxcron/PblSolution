@@ -18,6 +18,7 @@ namespace Pbl.Models
         public Disciplina()
         {
             this.Aula = new HashSet<Aula>();
+            this.Med = new HashSet<Med>();
         }
     
         public int idDisciplina { get; set; }
@@ -28,5 +29,7 @@ namespace Pbl.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aula> Aula { get; set; }
         public virtual TipoDisciplina TipoDisciplina { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Med> Med { get; set; }
     }
 }

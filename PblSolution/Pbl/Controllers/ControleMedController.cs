@@ -230,5 +230,14 @@ namespace Pbl.Controllers
             new MInscricaoTurmaXGrupo().Remove(idGrupo, idInscricaoTurma);
             return RedirectToAction("AdicionarAlunosGrupo", "ControleMed", new { idGrupo = idGrupo });
         }
+
+        [Authorize(Roles = "Diretor")]
+        public ActionResult AdicionarAulasTurma(int idTurma)
+        {
+
+
+
+            return null;
+        }
     }
 }
