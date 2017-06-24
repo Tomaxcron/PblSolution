@@ -42,41 +42,44 @@
                 <ul class="nav" id="main-menu">
 
 
-
-                    <li>
+                    <li @*class="@if(ViewBag.ControllerName == "HomeController") { @ViewBag.Active}"*@>
                         <a href="@Url.Action("Index", "Home")"><i class="fa fa-home  "></i>Home </a>
                     </li>
 
 
-                    <li>
+                    <li @*class="@if(ViewBag.ControllerName == "ControleAlunosController") { @ViewBag.Active}"*@>
                         <a href="@Url.Action("Index", "ControleAlunos")"><i class="fa fa-users"></i>Alunos </a>
                     </li>
 
-                    <li>
+                    <li @*class="@if(ViewBag.ControllerName == "ControleProfessoresController") { @ViewBag.Active}"*@>
                         <a href="@Url.Action("Index", "ControleProfessores")"><i class="fa fa-graduation-cap"></i>Professores </a>
                     </li>
 
 
-                    <li>
+                    <li @*class="@if(ViewBag.ControllerName == "ControleMedController") { @ViewBag.Active}"*@>
                         <a href="@Url.Action("Index", "ControleMed")"><i class="fa fa-user-md"></i>MED</a>
                     </li>
-                    <li>
+                    <li @*class="@if(ViewBag.ControllerName == "ControleSemestreController") { @ViewBag.Active}"*@>
                         <a href="@Url.Action("Index", "ControleSemestres")"><i class="fa fa-table"></i>Semestre</a>
                     </li>
 
-                    <li>
+                    <li @*class="@if(ViewBag.ControllerName == "ControleProblemasController") { @ViewBag.Active}"*@> 
                         <a href="@Url.Action("Index", "ControleProblemas")"><i class="	fa fa-warning"></i>Problemas</a>
                     </li>
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#toggleSub"><i class="glyphicon glyphicon-th-list"></i>Disciplinas</a>
                         <div class="collapse" id="toggleSub" style="height: 0px;">
                             <ul class="nav nav-list">
-                                <li><a href="@Url.Action("Index","ControleTipoDisciplina")">Gerenciar Tipos</a></li>
-                                <li><a href="@Url.Action("Index","ControleDisciplinas")">Gerenciar Disciplinas</a></li>
+                                <li @*class="@if(ViewBag.ControllerName == "ControleTipoDisciplinaController") { @ViewBag.Active}"*@>
+                                    <a href="@Url.Action("Index","ControleTipoDisciplina")">Gerenciar Tipos</a>
+                                </li>
+                                <li @*class="@if(ViewBag.ControllerName == "ControleDisciplinasController") { @ViewBag.Active}"*@>
+                                    <a href="@Url.Action("Index","ControleDisciplinas")">Gerenciar Disciplinas</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
-                    <li>
+                    <li @*class="@if(ViewBag.ControllerName == "UsuariosController") { @ViewBag.Active}"*@>
                         <a href="@Url.Action("Details","Usuarios")"<i class="glyphicon glyphicon-user"></i> Usuario</a>
                     </li>
                 </ul>

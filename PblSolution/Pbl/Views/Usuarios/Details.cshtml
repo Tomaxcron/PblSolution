@@ -3,8 +3,11 @@
 @{
     ViewBag.Title = "Details";
 }
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index","Usuarios/Details")" title="Vá para os Usuarios" class="tip-bottom"><img src="~/Content/img/client.png" class="home" />Usuarios</a></div>
+</div>
 
-<h2>Details</h2>
+<h2>Detalhes</h2><a href="@Url.Action("Edit", "Edit", new { id = Model.idUsuario })"><i class="glyphicon glyphicon-edit"></i></a>
 
 <div>
     <h4>Usuario</h4>
