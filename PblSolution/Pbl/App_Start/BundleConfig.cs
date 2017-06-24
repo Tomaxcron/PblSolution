@@ -23,6 +23,8 @@ namespace Pbl
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/custom.js",
+                      "~/Scripts/jquery-1.12.4.min.js",
+                      "~/Scripts/jquery-1.12.4.js",
                       "~/Scripts/DataTables/jquery.dataTables.min.js",
                       "~/Scripts/jquery.unobtrusive-ajax.js"));
 
