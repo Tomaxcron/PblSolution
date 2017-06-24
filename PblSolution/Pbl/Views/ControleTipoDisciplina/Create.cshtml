@@ -23,14 +23,39 @@
                         @Html.ValidationSummary(true, "Algo não está certo");
                         <ul>
                             <li>
-                                <textarea name="descTipoDisciplina" placeholder="Descrição"></textarea>
-                                <span>Informe a descrição</span>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Descrição</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            <textarea class="form-control" name="descTipoDisciplina" placeholder="Descrição"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             @Html.AntiForgeryToken()
                             <li>
-                                <input type="submit" value="Salvar" />
+                                <div class="form-group groupbutton">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <button type="submit" value="Salvar" class="btn btn-warning">Cadastrar <span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
+
                             </li>
                         </ul>
+                        @*
+    <ul>
+        <li>
+            <textarea name="descTipoDisciplina" placeholder="Descrição"></textarea>
+            <span>Informe a descrição</span>
+        </li>
+        @Html.AntiForgeryToken()
+        <li>
+            <input type="submit" value="Salvar" />
+        </li>
+    </ul>
+                        *@
                     }
                 </form>
             </div>
