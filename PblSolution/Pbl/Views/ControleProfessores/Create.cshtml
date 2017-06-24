@@ -24,6 +24,52 @@
                         @Html.ValidationSummary(true, "Algo não está certo.");
                         <ul>
                             <li>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nome do Professor</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input name="nomeProfessor" placeholder="Nome do Professor" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">CPF do Professor</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input name="cpfProfessor" placeholder="CPF do Professor" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Senha do Professor</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input name="senhaProfessor" placeholder="Senha do Professor" class="form-control" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            @Html.AntiForgeryToken()
+                            <li>
+                                <div class="form-group groupbutton">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <button type="submit" value="Salvar" class="btn btn-warning">Cadastrar <span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                        @*
+                        <ul>
+                            <li>
                                 <input name="nomeProfessor" type="text" placeholder="Nome Professor" />
                                 <span>Informe o Nome</span>
                             </li>
@@ -40,33 +86,34 @@
                                 <input type="submit" value="Salvar" />
                             </li>
                         </ul>
+                        *@
                     }
                 </form>
                 @*
-                    <h2>
-                        Cadastro de Professores
-                    </h2>
-                    @using (Html.BeginForm("Create", "ControleProfessores"))
-                    {
-                        @Html.ValidationSummary(true, "Algo não está certo.");
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.nomeProfessor)
-                            @Html.TextBoxFor(m => m.nomeProfessor, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.nomeProfessor)
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.cpfProfessor)
-                            @Html.TextBoxFor(m => m.cpfProfessor, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.cpfProfessor)
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.senhaProfessor)
-                            @Html.TextBoxFor(m => m.senhaProfessor, new { @class = "form-control", type = "password" })
-                            @Html.ValidationMessageFor(m => m.senhaProfessor)
-                        </div>
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    }*@
+    <h2>
+        Cadastro de Professores
+    </h2>
+    @using (Html.BeginForm("Create", "ControleProfessores"))
+    {
+        @Html.ValidationSummary(true, "Algo não está certo.");
+        <div class="form-group">
+            @Html.LabelFor(m => m.nomeProfessor)
+            @Html.TextBoxFor(m => m.nomeProfessor, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.nomeProfessor)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.cpfProfessor)
+            @Html.TextBoxFor(m => m.cpfProfessor, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.cpfProfessor)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.senhaProfessor)
+            @Html.TextBoxFor(m => m.senhaProfessor, new { @class = "form-control", type = "password" })
+            @Html.ValidationMessageFor(m => m.senhaProfessor)
+        </div>
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Save</button>
+    }*@
 
             </div>
         </div>

@@ -197,6 +197,7 @@
     <Compile Include="Models\DbClasses\MTipoDisciplina.cs" />
     <Compile Include="Models\DbClasses\MTurma.cs" />
     <Compile Include="Models\DbClasses\MUsuarioAluno.cs" />
+    <Compile Include="Models\DbClasses\MUsuarioProfessor.cs" />
     <Compile Include="Models\Disciplina.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
