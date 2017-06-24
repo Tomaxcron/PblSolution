@@ -78,7 +78,7 @@
                                         <tr class="gradeX">
                                             <td>@Html.DisplayFor(modelItem => problema.tituloProblema)</td>
                                             <td>
-                                                <img class="actimg" src="~/Content/img/delet.png" />@Ajax.ActionLink("Deletar", "DeletarVinculoProblema", "ControleMed", new { idMed = Model.med.idMed, idProblema = problema.idProblema }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "alter" })
+                                                <img class="actimg" src="~/Content/img/delet.png" /> @Ajax.ActionLink("Deletar", "DeletarVinculoProblema", "ControleMed", new { idMed = Model.med.idMed, idProblema = problema.idProblema }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "alter" })
                                             </td>
                                         </tr>
                                     }
@@ -119,9 +119,9 @@
                                         <tr>
                                             <td>@grupo.descGrupo</td>
                                             <td>@grupo.Professor.nomeProfessor</td>
-                                            <td>
-                                                <a href="@Url.Action("DeletarGrupo", "ControleMed", new { idGrupo = grupo.idGrupo })">Deletar</a>
-                                                <a href="@Url.Action("AdicionarAlunosGrupo", "ControleMed", new { idGrupo = grupo.idGrupo })">Adicionar Alunos</a>
+                                            <td>                                        
+                                                <img class="actimg" src="~/Content/img/delet.png" /> @Html.ActionLink("Deletar", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
+                                                <img class="actimg" src="~/Content/img/adicao2.png"> @Html.ActionLink("Adicionar Alunos", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
                                             </td>
                                         </tr>
                                         }
