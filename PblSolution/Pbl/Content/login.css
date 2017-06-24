@@ -24,18 +24,17 @@ body {
 .navbar {
     background-color: #001a3b;
     border-color: #F0F0F0;
-    height: auto;
+    min-height:50px;
 }
 
 .navbar-fixed-top {
     top: 0;
-    z-index: 1030;
+    z-index: 1000;
 }
 
 .navbar-inverse {
     background-color: #001a3b;
     border-color: #F0F0F0;
-    height: auto;
 }
 
 .navbar-inverse {
