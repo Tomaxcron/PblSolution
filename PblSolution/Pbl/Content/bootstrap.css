@@ -1820,10 +1820,6 @@ fieldset[disabled] .form-control {
   background-color: #eeeeee;
 }
 
-.container-fluid{
-    margin-top:3%;
-}
-
 textarea.form-control {
   height: auto;
 }
