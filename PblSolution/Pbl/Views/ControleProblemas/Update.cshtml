@@ -22,21 +22,58 @@
                     {
                         @Html.ValidationSummary(true, "Algo deu errado")
                         @Html.TextBoxFor(c => c.idProblema, new { @class = "form-control", @type = "hidden", @value = Model.idProblema })
+
                         <ul>
                             <li>
-                                <input name="tituloProblema" type="text" placeholder="Titulo" value="@Model.tituloProblema" />
-                                <span>Informe o titulo</span>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Titulo</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            <textarea class="form-control" name="tituloProblema" placeholder="Titulo">@Model.tituloProblema</textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                <textarea name="descProblema" placeholder="Descrição">@Model.descProblema</textarea>
-                                <!--<input name="descProblema" type="text" placeholder="Descrição" />-->
-                                <span>Informe a descrição</span>
+                                <div class="form-group formselect">
+                                    <label class="col-md-4 control-label formbox">Descrição</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            <textarea class="form-control" name="descProblema" placeholder="Descrição">@Model.descProblema</textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             @Html.AntiForgeryToken()
                             <li>
-                                <input type="submit" value="Salvar" />
+                                <div class="form-group groupbuttonb">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <button type="submit" value="Alterar" class="btn btn-warning">Alterar <span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
+                        @*
+    <ul>
+        <li>
+            <input name="tituloProblema" type="text" placeholder="Titulo" value="@Model.tituloProblema" />
+            <span>Informe o titulo</span>
+        </li>
+        <li>
+            <textarea name="descProblema" placeholder="Descrição">@Model.descProblema</textarea>
+            <!--<input name="descProblema" type="text" placeholder="Descrição" />-->
+            <span>Informe a descrição</span>
+        </li>
+        @Html.AntiForgeryToken()
+        <li>
+            <input type="submit" value="Salvar" />
+        </li>
+    </ul>
+                        *@
+
                     }
                 </form>
             </div>
