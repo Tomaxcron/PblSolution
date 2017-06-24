@@ -13,16 +13,42 @@
                 <form action="" method="post" class="form-styles">
                     <input name="idTIpoDisciplina" type="hidden" value="@Model.idTipoDisciplina" />
                     <h1>Update</h1>
+
                     <ul>
                         <li>
-                            <input name="descTipoDisciplina" type="text" value="@Model.descTipoDisciplina" />
-                            <span>Informa a Descrição</span>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Descrição</label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                        <textarea class="form-control" name="descTipoDisciplina" placeholder="Descrição">@Model.descTipoDisciplina</textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         @Html.AntiForgeryToken()
                         <li>
-                            <input type="submit" value="Alterar" />
+                            <div class="form-group groupbutton">
+                                <label class="col-md-4 control-label"></label>
+                                <div class="col-md-4">
+                                    <button type="submit" value="Alterar" class="btn btn-warning">Alterar <span class="glyphicon glyphicon-send"></span></button>
+                                </div>
+                            </div>
+
                         </li>
                     </ul>
+                    @*
+    <ul>
+        <li>
+            <input name="descTipoDisciplina" type="text" value="@Model.descTipoDisciplina" />
+            <span>Informa a Descrição</span>
+        </li>
+        @Html.AntiForgeryToken()
+        <li>
+            <input type="submit" value="Alterar" />
+        </li>
+    </ul>
+                    *@
                 </form>
             </div>
         </div>

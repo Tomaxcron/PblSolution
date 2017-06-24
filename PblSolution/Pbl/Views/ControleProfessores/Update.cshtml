@@ -16,21 +16,55 @@
                     @using (Html.BeginForm("Update", "ControleProfessores"))
                     {
                         @Html.TextBoxFor(c => c.idProfessor, new { @value = Model.idProfessor, @type = "hidden" })
-                        @Html.TextBoxFor(c => c.senhaProfessor, new { @value = Model.senhaProfessor, @type = "hidden" })
                         <ul>
                             <li>
-                                <input name="nomeProfessor" type="text" placeholder="Titulo" value="@Model.nomeProfessor" />
-                                <span>Informe o titulo</span>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nome do Professor</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input name="nomeProfessor" placeholder="Nome " value="@Model.nomeProfessor" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                <input name="cpfProfessor" type="text" placeholder="Titulo" value="@Model.cpfProfessor" />
-                                <span>Informe o titulo</span>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">CPF do Professor</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input name="cpfProfessor" placeholder="CPF " value="@Model.cpfProfessor" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             @Html.AntiForgeryToken()
                             <li>
-                                <input type="submit" value="Alterar" />
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-4">
+                                        <button type="submit" value="Alterar" class="btn btn-warning">Alterar <span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
+                        @*
+    <ul>
+        <li>
+            <input name="nomeProfessor" type="text" placeholder="Titulo" value="@Model.nomeProfessor" />
+            <span>Informe o titulo</span>
+        </li>
+        <li>
+            <input name="cpfProfessor" type="text" placeholder="Titulo" value="@Model.cpfProfessor" />
+            <span>Informe o titulo</span>
+        </li>
+        @Html.AntiForgeryToken()
+        <li>
+            <input type="submit" value="Alterar" />
+        </li>
+    </ul>
+                        *@
                     }
                 </form>
             </div>
