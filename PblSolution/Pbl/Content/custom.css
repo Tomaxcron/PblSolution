@@ -19,7 +19,33 @@ body {
 
  #wrapper {
     width: 100%;
-    margin-top:10px;
+}
+.navbar {
+    background-color: #001a3b;
+    border-color: #F0F0F0;
+    min-height: 63px;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-inverse {
+    background-color: #001a3b;
+    border-color: #F0F0F0;
+}
+
+.navbar-inverse {
+    background-color: #001a3b;
+    border-color: #080808;
+}
+
+.navbar-brandss{
+    position:relative;
+    top:10px;
+    margin-left:15px;
+    line-height:20px;
 }
 
 #page-wrapper {
@@ -202,20 +228,6 @@ h2,
             box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
         }
 
-.navbar-brand {
-    float: left;
-    padding: 15px 15px;
-    font-size: 18px;
-    line-height: 20px;
-}
-.navbar {
-    position: relative;
-    z-index: 1000;
-    min-height: 50px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-}
-
 .pad-top {
     padding-top:15px;
 }
@@ -373,6 +385,7 @@ h2,
     padding-top:20px;
 }
 
+
 .sidebar-collapse > .nav > li > a {
     padding: 15px 10px;
     font-family: 'Franklin Gothic', Arial, Helvetica, sans-serif,;
@@ -393,16 +406,6 @@ h2,
     font-family: 'Franklin Gothic', Arial, Helvetica, sans-serif,;
 }
 
-.navbar-side {
-    border: none;
-    background-color: #fff;
-}
-.navbar-inverse {
-    background-color: #001a3b;
-    border-color: #F0F0F0;
-    height: auto;
-}
-
 
 .nav > li > a > i {
     margin-right:10px;
@@ -413,7 +416,7 @@ h2,
     float: right;
     color: #fff;
     font-size: 10pt;
-    margin-top: 1.6%;
+    margin-top: 1.5%;
     margin-right:-13%;
 }
     .logout-spn a {
