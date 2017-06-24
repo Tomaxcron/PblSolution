@@ -48,7 +48,9 @@ namespace Pbl.Models.DbClasses
         {
             try
             {
-                db.SpCrudProblema(t.idProblema, null, null, "Invalida");
+                //db.SpCrudProblema(t.idProblema, null, null, "Invalida");
+                db.Problema.Remove(t);
+                db.SaveChanges();
             }
             catch (Exception Ex)
             {
