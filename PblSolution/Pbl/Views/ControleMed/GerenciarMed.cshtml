@@ -38,6 +38,7 @@
                                                 <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = turma.idTurma }, new { @class = "alter" })
                                                 <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = turma.idTurma }, new { @class = "alter" })
                                                 <img class="actimg" src="~/Content/img/adicao2.png"> <a href="@Url.Action("AdicionarAlunosTurma","ControleMed",new { idTurma = turma.idTurma })" class="alter">Adicionar Alunos </a>
+                                                <a href="@Url.Action("AdicionarAulasTurma", "ControleMed", new { idTurma = turma.idTurma })" class="alter">Administrar Aulas</a>
                                             </td>
                                         </tr>
                                     }
@@ -119,70 +120,70 @@
                                         <tr>
                                             <td>@grupo.descGrupo</td>
                                             <td>@grupo.Professor.nomeProfessor</td>
-                                            <td>                                        
+                                            <td>
                                                 <img class="actimg" src="~/Content/img/delet.png" /> @Html.ActionLink("Deletar", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
                                                 <img class="actimg" src="~/Content/img/adicao2.png"> @Html.ActionLink("Adicionar Alunos", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
                                             </td>
                                         </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                    }
+                                </tbody>
+                            </table>
                                 @Html.AntiForgeryToken()
                                 <button type="submit" class="btn btn-primary">Adicionar Grupo</button>
-                                }
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
-        @*
+@*
 
-            @using (Html.BeginForm("AdicionarTurma", "ControleMed"))
+    @using (Html.BeginForm("AdicionarTurma", "ControleMed"))
+    {
+        <table class="table">
+            <tr>
+                <th>Turmas</th>
+                <th></th>
+            </tr>
+            @foreach (var turma in Model.turmasCadastradas)
             {
-                <table class="table">
-                    <tr>
-                        <th>Turmas</th>
-                        <th></th>
-                    </tr>
-                    @foreach (var turma in Model.turmasCadastradas)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => turma.descTurma)</td>
-                            <td>@Html.ActionLink("Alterar","Update", new { id = turma.idTurma})</td>
-                            <td>@Html.ActionLink("Deletar", "Delete", new { id = turma.idTurma })</td>
-                        </tr>
-                    }
-                </table>
-                @Html.ValidationSummary(true, "Algo deu errado")
-                @Html.TextBox("idMed",Model.med.idMed,new { @class = "form-control", @type = "hidden" })
-                @Html.AntiForgeryToken()
-                <button type="submit" class="btn btn-primary">Nova Turma</button>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => turma.descTurma)</td>
+                    <td>@Html.ActionLink("Alterar","Update", new { id = turma.idTurma})</td>
+                    <td>@Html.ActionLink("Deletar", "Delete", new { id = turma.idTurma })</td>
+                </tr>
             }
-            <br>
-            @using (Html.BeginForm("VincularProblemas", "ControleMed"))
+        </table>
+        @Html.ValidationSummary(true, "Algo deu errado")
+        @Html.TextBox("idMed",Model.med.idMed,new { @class = "form-control", @type = "hidden" })
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Nova Turma</button>
+    }
+    <br>
+    @using (Html.BeginForm("VincularProblemas", "ControleMed"))
+    {
+        <table class="table">
+            <tr>
+                <th>Problemas</th>
+                <th></th>
+            </tr>
+            @foreach (var problema in Model.problemasCadastrados)
             {
-                <table class="table">
-                    <tr>
-                        <th>Problemas</th>
-                        <th></th>
-                    </tr>
-                    @foreach (var problema in Model.problemasCadastrados)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => problema.tituloProblema)</td>
-                            <td>@Html.ActionLink("Alterar", "Update", new { id = problema.idProblema })</td>
-                            <td>@Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema })</td>
-                        </tr>
-                    }
-                </table>
-                @Html.ValidationSummary(true, "Algo deu errado")
-                @Html.TextBox("idMed", Model.med.idMed, new { @class = "form-control", @type = "hidden" })
-                @Html.AntiForgeryToken()
-                <button type="submit" class="btn btn-primary">Vincular Problema</button>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => problema.tituloProblema)</td>
+                    <td>@Html.ActionLink("Alterar", "Update", new { id = problema.idProblema })</td>
+                    <td>@Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema })</td>
+                </tr>
             }
+        </table>
+        @Html.ValidationSummary(true, "Algo deu errado")
+        @Html.TextBox("idMed", Model.med.idMed, new { @class = "form-control", @type = "hidden" })
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Vincular Problema</button>
+    }
 
 
-        *@
+*@
