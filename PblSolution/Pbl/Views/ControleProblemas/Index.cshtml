@@ -23,7 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>Problema</th>
-                                    <th></th>
+                                    <th>Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,8 +32,8 @@
                                     <tr>
                                         <td>@Html.DisplayFor(c => problema.tituloProblema)</td>
                                         <td>
-                                            <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = problema.idProblema }, new { @class = "alter" })
-                                            <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema }, new { @class = "alter" })
+                                            <i class="fa fa-pencil "></i>  @Html.ActionLink("Alterar", "Update", new { id = problema.idProblema }, new { @class = "alter" })
+                                            <i class="fa fa-times "></i>  @Html.ActionLink("Deletar", "Delete", new { id = problema.idProblema }, new { @class = "alter" })
 
                                         </td>
                                     </tr>

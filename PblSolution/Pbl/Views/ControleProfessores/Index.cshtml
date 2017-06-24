@@ -24,7 +24,7 @@
                                 <tr>
                                     <th>Nome</th>
                                     <th>Cpf</th>
-                                    <th></th>
+                                    <th>Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,8 +34,8 @@
                                         <td>@Html.DisplayFor(modelItem => item.nomeProfessor)</td>
                                         <td>@Html.DisplayFor(modelItem => item.cpfProfessor)</td>
                                         <td>
-                                            <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = item.idProfessor }, new { @class = "alter" })
-                                            <img class="actimg" src="~/Content/img/delet.png" /> @Html.ActionLink("Deletar", "Delete", new { id = item.idProfessor }, new { @class = "alter" })
+                                            <i class="fa fa-pencil "></i>   @Html.ActionLink("Alterar", "Update", new { id = item.idProfessor }, new { @class = "alter" })
+                                            <i class="fa fa-times "></i>  @Html.ActionLink("Deletar", "Delete", new { id = item.idProfessor }, new { @class = "alter" })
                                         </td>
                                     </tr>
                                 }

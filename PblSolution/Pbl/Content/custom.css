@@ -25,6 +25,24 @@ body {
     border-color: #F0F0F0;
     min-height: 63px;
 }
+.fa-pencil {
+    margin-right:2px;
+}
+
+.fa-times {
+    margin-left: 5px;
+    margin-right:2px;
+}
+
+.fa-plus {
+    margin-left: 5px;
+    margin-right: 2px;
+}
+
+.fa-cog {
+    margin-left: 5px;
+    margin-right: 2px;
+}
 
 .btn-warning {
     background-color: #001a3b; 

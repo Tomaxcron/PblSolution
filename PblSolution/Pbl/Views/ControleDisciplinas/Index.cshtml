@@ -24,7 +24,7 @@
                                     <th>Disciplina</th>
                                     <th>Tipo</th>
                                     <th>Estado</th>
-                                    <th></th>
+                                    <th>Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,8 +42,8 @@
                                             <td>Disciplina Inativa</td>
                                         }
                                         <td>
-                                            <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = item.idDisciplina }, new { @class = "alter" })
-                                            <img class="actimg" src="~/Content/img/delet.png" /> @Html.ActionLink("Deletar", "Delete", new { id = item.idDisciplina }, new { @class = "alter" })
+                                            <i class="fa fa-pencil "></i>  @Html.ActionLink("Alterar", "Update", new { id = item.idDisciplina }, new { @class = "alter" })
+                                            <i class="fa fa-times "></i> @Html.ActionLink("Deletar", "Delete", new { id = item.idDisciplina }, new { @class = "alter" })
                                         </td>
                                     </tr>
                                 }

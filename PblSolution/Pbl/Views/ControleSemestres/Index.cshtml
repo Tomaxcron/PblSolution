@@ -19,7 +19,7 @@
                                 <tr>
                                     <th>Semestre</th>
                                     <th>Ano</th>
-                                    <th></th>
+                                    <th>Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,8 +29,8 @@
                                         <td>@Html.DisplayFor(c => item.descSemestre)</td>
                                         <td>@Html.DisplayFor(c => item.Ano.ano1)</td>
                                         <td>
-                                            <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = item.idSemestre }, new { @class = "alter" })
-                                            <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = item.idSemestre }, new { @class = "alter" })
+                                            <i class="fa fa-pencil "></i>  @Html.ActionLink("Alterar", "Update", new { id = item.idSemestre }, new { @class = "alter" })
+                                            <i class="fa fa-times "></i>  @Html.ActionLink("Deletar", "Delete", new { id = item.idSemestre }, new { @class = "alter" })
                                         </td>
                                     </tr>
                                 }

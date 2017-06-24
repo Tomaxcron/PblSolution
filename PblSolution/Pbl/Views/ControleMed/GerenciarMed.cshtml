@@ -25,7 +25,7 @@
                                 <thead>
                                     <tr>
                                         <th>Turmas</th>
-                                        <th></th>
+                                        <th>Opções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,10 +35,10 @@
                                         <tr class="gradeX">
                                             <td>@Html.DisplayFor(modelItem => turma.descTurma)</td>
                                             <td>
-                                                <img class="actimg" src="~/Content/img/edit.png" />  @Html.ActionLink("Alterar", "Update", new { id = turma.idTurma }, new { @class = "alter" })
-                                                <img class="actimg" src="~/Content/img/delet.png" />  @Html.ActionLink("Deletar", "Delete", new { id = turma.idTurma }, new { @class = "alter" })
-                                                <img class="actimg" src="~/Content/img/adicao2.png"> <a href="@Url.Action("AdicionarAlunosTurma","ControleMed",new { idTurma = turma.idTurma })" class="alter">Adicionar Alunos </a>
-                                                <a href="@Url.Action("AdicionarAulasTurma", "ControleMed", new { idTurma = turma.idTurma })" class="alter">Administrar Aulas</a>
+                                                <i class="fa fa-pencil "></i>  @Html.ActionLink("Alterar", "Update", new { id = turma.idTurma }, new { @class = "alter" })
+                                                <i class="fa fa-times "></i>  @Html.ActionLink("Deletar", "Delete", new { id = turma.idTurma }, new { @class = "alter" })
+                                                <i class="fa fa-plus "></i> <a href="@Url.Action("AdicionarAlunosTurma","ControleMed",new { idTurma = turma.idTurma })" class="alter">Adicionar Alunos </a>
+                                                <i class="fa fa-cog "></i> <a href="@Url.Action("AdicionarAulasTurma", "ControleMed", new { idTurma = turma.idTurma })" class="alter">Administrar Aulas</a>
                                             </td>
                                         </tr>
                                     }
