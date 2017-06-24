@@ -68,6 +68,7 @@
         <AssociationConnector Association="pblsolutionModel.FK_Grupo_Professor1" />
         <AssociationConnector Association="pblsolutionModel.UsuarioAluno" />
         <AssociationConnector Association="pblsolutionModel.UsuarioProfessor" />
+        <AssociationConnector Association="pblsolutionModel.DisciplinaMed" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

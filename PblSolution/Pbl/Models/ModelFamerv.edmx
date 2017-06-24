@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="pblsolutionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="pblsolutionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Aluno">
           <Key>
             <PropertyRef Name="idAluno" />
@@ -75,6 +75,14 @@
           <Property Name="idTipoDisciplina" Type="int" />
           <Property Name="descDisciplina" Type="varchar" MaxLength="50" />
           <Property Name="ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="DisciplinaMed">
+          <Key>
+            <PropertyRef Name="idMed" />
+            <PropertyRef Name="idDisciplina" />
+          </Key>
+          <Property Name="idMed" Type="int" Nullable="false" />
+          <Property Name="idDisciplina" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FichaAvaliacao">
           <Key>
@@ -353,6 +361,30 @@
             </Principal>
             <Dependent Role="Disciplina">
               <PropertyRef Name="idTipoDisciplina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisciplinaMed_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="DisciplinaMed" Type="Self.DisciplinaMed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="idDisciplina" />
+            </Principal>
+            <Dependent Role="DisciplinaMed">
+              <PropertyRef Name="idDisciplina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisciplinaMed_Med">
+          <End Role="Med" Type="Self.Med" Multiplicity="1" />
+          <End Role="DisciplinaMed" Type="Self.DisciplinaMed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Med">
+              <PropertyRef Name="idMed" />
+            </Principal>
+            <Dependent Role="DisciplinaMed">
+              <PropertyRef Name="idMed" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -765,6 +797,7 @@
           <EntitySet Name="ControleNotasXAula" EntityType="Self.ControleNotasXAula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ControleNotasXProva" EntityType="Self.ControleNotasXProva" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Disciplina" EntityType="Self.Disciplina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisciplinaMed" EntityType="Self.DisciplinaMed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FichaAvaliacao" EntityType="Self.FichaAvaliacao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InscricaoTurma" EntityType="Self.InscricaoTurma" Schema="dbo" store:Type="Tables" />
@@ -820,6 +853,14 @@
           <AssociationSet Name="FK_Disciplina_TipoDisciplina" Association="Self.FK_Disciplina_TipoDisciplina">
             <End Role="TipoDisciplina" EntitySet="TipoDisciplina" />
             <End Role="Disciplina" EntitySet="Disciplina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisciplinaMed_Disciplina" Association="Self.FK_DisciplinaMed_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="DisciplinaMed" EntitySet="DisciplinaMed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisciplinaMed_Med" Association="Self.FK_DisciplinaMed_Med">
+            <End Role="Med" EntitySet="Med" />
+            <End Role="DisciplinaMed" EntitySet="DisciplinaMed" />
           </AssociationSet>
           <AssociationSet Name="FK_FichaAvaliacao_AvaliacaoTutoria" Association="Self.FK_FichaAvaliacao_AvaliacaoTutoria">
             <End Role="AvaliacaoTutoria" EntitySet="AvaliacaoTutoria" />
@@ -1200,6 +1241,10 @@
             <End Role="Professor" EntitySet="Professor" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
+          <AssociationSet Name="DisciplinaMed" Association="pblsolutionModel.DisciplinaMed">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Med" EntitySet="Med" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1291,6 +1336,7 @@
           <Property Name="ativo" Type="Boolean" />
           <NavigationProperty Name="Aula" Relationship="pblsolutionModel.FK_Turma_Disciplina" FromRole="Disciplina" ToRole="Aula" />
           <NavigationProperty Name="TipoDisciplina" Relationship="pblsolutionModel.FK_Disciplina_TipoDisciplina" FromRole="Disciplina" ToRole="TipoDisciplina" />
+          <NavigationProperty Name="Med" Relationship="pblsolutionModel.DisciplinaMed" FromRole="Disciplina" ToRole="Med" />
         </EntityType>
         <EntityType Name="FichaAvaliacao">
           <Key>
@@ -1341,6 +1387,7 @@
           <NavigationProperty Name="Semestre" Relationship="pblsolutionModel.FK_Med_Semestre" FromRole="Med" ToRole="Semestre" />
           <NavigationProperty Name="ProblemaXMed" Relationship="pblsolutionModel.FK_ProblemaXMed_Med" FromRole="Med" ToRole="ProblemaXMed" />
           <NavigationProperty Name="Turma" Relationship="pblsolutionModel.FK_Turma_Med" FromRole="Med" ToRole="Turma" />
+          <NavigationProperty Name="Disciplina" Relationship="pblsolutionModel.DisciplinaMed" FromRole="Med" ToRole="Disciplina" />
         </EntityType>
         <EntityType Name="Modulo">
           <Key>
@@ -1827,6 +1874,10 @@
           <End Type="pblsolutionModel.Professor" Role="Professor" Multiplicity="*" />
           <End Type="pblsolutionModel.Usuario" Role="Usuario" Multiplicity="*" />
         </Association>
+        <Association Name="DisciplinaMed">
+          <End Type="pblsolutionModel.Disciplina" Role="Disciplina" Multiplicity="*" />
+          <End Type="pblsolutionModel.Med" Role="Med" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2134,6 +2185,14 @@
             </EndProperty>
             <EndProperty Name="Professor">
               <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DisciplinaMed" TypeName="pblsolutionModel.DisciplinaMed" StoreEntitySet="DisciplinaMed">
+            <EndProperty Name="Med">
+              <ScalarProperty Name="idMed" ColumnName="idMed" />
+            </EndProperty>
+            <EndProperty Name="Disciplina">
+              <ScalarProperty Name="idDisciplina" ColumnName="idDisciplina" />
             </EndProperty>
           </AssociationSetMapping>
           </EntityContainerMapping>
