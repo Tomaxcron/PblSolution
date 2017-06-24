@@ -50,20 +50,19 @@
         <AssociationConnector Association="pblsolutionModel.FK_ProblemaXMed_Problema" />
         <AssociationConnector Association="pblsolutionModel.FK_Prova_TipoProva" />
         <AssociationConnector Association="pblsolutionModel.InscricaoTurmaXGrupo" ManuallyRouted="true" >
-          <ConnectorPoint PointX="7.5" PointY="7.0571907552083326" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="45.013942728741924" />
-          <ConnectorPoint PointX="7.9293857425787246" PointY="45.089257867210115" />
-          <ConnectorPoint PointX="8.0756142574212753" PointY="45.169226606256821" />
-          <ConnectorPoint PointX="9.7916661666666673" PointY="46.107692728741924" />
-          <ConnectorPoint PointX="8.0025" PointY="46.107692728741924" />
-          <ConnectorPoint PointX="8.0025" PointY="45.013942728741924" />
-          <ConnectorPoint PointX="8.25" PointY="7.0571907552083326" />
+          <ConnectorPoint PointX="7.1176610858834728" PointY="7.0571907552083326" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="94.770548441717267" />
+          <ConnectorPoint PointX="7.9355656895419893" PointY="94.8492432395259" />
+          <ConnectorPoint PointX="8.08179420438454" PointY="94.92921197857261" />
+          <ConnectorPoint PointX="9.7916661666666673" PointY="95.864298441717267" />
+          <ConnectorPoint PointX="8.0025" PointY="95.864298441717267" />
+          <ConnectorPoint PointX="8.5653547148333136" PointY="7.0571907552083326" />
         </AssociationConnector>
         <EntityTypeShape EntityType="pblsolutionModel.TipoUsuario" Width="1.5" PointX="6" PointY="12.125" />
         <EntityTypeShape EntityType="pblsolutionModel.Usuario" Width="1.5" PointX="8.25" PointY="11.75" />
         <AssociationConnector Association="pblsolutionModel.FK_Usuario_TipoUsuario" />
         <EntityTypeShape EntityType="pblsolutionModel.Aluno" Width="1.5" PointX="12.375" PointY="12" />
-        <EntityTypeShape EntityType="pblsolutionModel.Professor" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="pblsolutionModel.Professor" Width="1.5" PointX="0.5" PointY="7.25" />
         <AssociationConnector Association="pblsolutionModel.FK_InscricaoMed_Aluno" />
         <AssociationConnector Association="pblsolutionModel.FK_Turma_Professor" />
         <AssociationConnector Association="pblsolutionModel.FK_Grupo_Professor1" />

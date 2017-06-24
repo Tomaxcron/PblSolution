@@ -152,6 +152,7 @@
     <Compile Include="Controllers\ControleAlunosController.cs" />
     <Compile Include="Controllers\ControleDisciplinasController.cs" />
     <Compile Include="Controllers\ControleMedController.cs" />
+    <Compile Include="Controllers\ControleNotasDisciplinasController.cs" />
     <Compile Include="Controllers\ControleProblemasController.cs" />
     <Compile Include="Controllers\ControleProfessoresController.cs" />
     <Compile Include="Controllers\ControleSemestresController.cs" />
@@ -184,6 +185,7 @@
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbClasses\MAluno.cs" />
+    <Compile Include="Models\DbClasses\MAula.cs" />
     <Compile Include="Models\DbClasses\MDisciplina.cs" />
     <Compile Include="Models\DbClasses\MGrupo.cs" />
     <Compile Include="Models\DbClasses\MInscricaoTurma.cs" />
@@ -684,6 +686,7 @@
     <Content Include="Views\Shared\_LayoutPadrao.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\ControleNotasDisciplinas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
