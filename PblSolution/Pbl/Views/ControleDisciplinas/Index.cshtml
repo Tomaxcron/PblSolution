@@ -33,7 +33,7 @@
                                     <tr class="gradeX">
                                         <td>@Html.DisplayFor(c => item.descDisciplina)</td>
                                         <td>@Html.DisplayFor(c => item.TipoDisciplina.descTipoDisciplina)</td>
-                                        @if (item.ativo)
+                                        @if (item.ativo.Value)
                                         {
                                             <td>Disciplina Ativa</td>
                                         }
