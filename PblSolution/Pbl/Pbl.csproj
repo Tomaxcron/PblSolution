@@ -157,6 +157,7 @@
     <Compile Include="Controllers\ControleProfessoresController.cs" />
     <Compile Include="Controllers\ControleSemestresController.cs" />
     <Compile Include="Controllers\ControleTipoDisciplinaController.cs" />
+    <Compile Include="Controllers\GerenciarDisciplinasMinistradasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -186,10 +187,12 @@
     </Compile>
     <Compile Include="Models\DbClasses\MAluno.cs" />
     <Compile Include="Models\DbClasses\MAula.cs" />
+    <Compile Include="Models\DbClasses\MControleNotasXAula.cs" />
     <Compile Include="Models\DbClasses\MDisciplina.cs" />
     <Compile Include="Models\DbClasses\MGrupo.cs" />
     <Compile Include="Models\DbClasses\MInscricaoTurma.cs" />
     <Compile Include="Models\DbClasses\MInscricaoTurmaXGrupo.cs" />
+    <Compile Include="Models\DbClasses\MModulo.cs" />
     <Compile Include="Models\DbClasses\MUsuario.cs" />
     <Compile Include="Models\DbClasses\MMed.cs" />
     <Compile Include="Models\DbClasses\MProblema.cs" />
@@ -708,6 +711,9 @@
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\ControleNotasDisciplinas\Index.cshtml" />
     <Content Include="Views\ControleMed\AdicionarDisciplinas.cshtml" />
+    <Content Include="Views\GerenciarDisciplinasMinistradas\Index.cshtml" />
+    <Content Include="Views\GerenciarDisciplinasMinistradas\SelecionarModulo.cshtml" />
+    <Content Include="Views\GerenciarDisciplinasMinistradas\SelecionarAlunos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
