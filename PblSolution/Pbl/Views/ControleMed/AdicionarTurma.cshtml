@@ -17,6 +17,15 @@
             @Html.TextBoxFor(c => c.descTurma, new { @class = "form-control" })
             @Html.ValidationMessageFor(c => c.descTurma)
         </div>
+        <div class="form-group">
+            @foreach (var item in (SelectList)ViewData["disciplinasMinistradas"])
+            {
+                <label>Disciplina</label>
+                <input type="hidden" name="idDisciplina[]" value="@item.Value"/>
+                <label>@item.Text</label>
+                @Html.DropDownList("idProfessor[]",(SelectList)ViewData["idProfessor"])
+            }
+        </div>
         @Html.AntiForgeryToken();
         <button type="submit" class="btn btn-primary">Salvar</button>
     }

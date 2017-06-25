@@ -279,6 +279,8 @@
     <Compile Include="Models\Usuario.cs">
       <DependentUpon>ModelFamerv.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\AdicionarDisciplinasViewModel.cs" />
+    <Compile Include="Models\ViewModel\AdicionarTurmaViewModel.cs" />
     <Compile Include="Models\ViewModel\AlunosGrupoViewModel.cs" />
     <Compile Include="Models\ViewModel\AlunosTurmaViewModel.cs" />
     <Compile Include="Models\ViewModel\DisciplinaViewModel.cs" />
@@ -705,6 +707,7 @@
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\ControleNotasDisciplinas\Index.cshtml" />
+    <Content Include="Views\ControleMed\AdicionarDisciplinas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

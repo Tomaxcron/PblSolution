@@ -21,15 +21,31 @@ namespace Pbl.Controllers
             return View(new MMed().BringAll());
         }
 
+        public ActionResult AdicionarDisciplinas(int idMed)
+        {
+            AdicionarDisciplinasViewModel viewModel = new AdicionarDisciplinasViewModel();
+            viewModel.med = new MMed().BringOne(c => c.idMed == idMed);
+            viewModel.disciplinasDisponiveis = new MDisciplina().BringAll();
+            viewModel.disciplinasCadastradas = viewModel.med.Disciplina.ToList();
+            viewModel.disciplinasDisponiveis.RemoveAll(c => viewModel.disciplinasCadastradas.Contains(c));
+            return View(viewModel);
+        }
+
         [Authorize(Roles = "Diretor")]
         public ActionResult GerenciarMed(int id)
         {
+            Med med = new MMed().BringOne(c => c.idMed == id);
+            
+            if (med.Disciplina.Count == 0)
+            {
+                return RedirectToAction("AdicionarDisciplinas", "ControleMed", new { idMed = med.idMed });
+            }
             ViewBag.Message = TempData["Message"];
             GerenciarMedViewModel dados = new GerenciarMedViewModel();
             dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados(id);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == id);
             dados.gruposCadastrados = new MGrupo().Bring(c => c.idMed == id);
-            dados.med = new MMed().BringOne(c => c.idMed == id);
+            dados.med = med;
             return View(dados);
         }
 
@@ -38,22 +54,51 @@ namespace Pbl.Controllers
         [Authorize(Roles = "Diretor")]
         public ActionResult AdicionarTurma(int id)
         {
+
+            ViewData["idProfessor"] = new SelectList(new MProfessor().BringAll(), "idProfessor", "nomeProfessor");
+            ViewData["disciplinasMinistradas"] = new SelectList(new MMed().BringOne(c => c.idMed == id).Disciplina, "idDisciplina", "descDisciplina");
             ViewBag.Message = TempData["Message"];
             Turma nova = new Turma();
             nova.idMed = id;
             return View(nova);
         }
-
+        /*
+            AdicionarTurmaViewModel viewModel = new AdicionarTurmaViewModel();
+            viewModel.aulasMinistradas = new List<Aula>();
+            Turma novaTurma = new Turma() { idMed = id };
+            viewModel.turma = novaTurma;
+            foreach (var disciplina in new MMed().BringOne(c => c.idMed == id).Disciplina)
+            {
+                Aula aula = new Aula();
+                aula.Disciplina = disciplina;
+                aula.idDisciplina = disciplina.idDisciplina;
+                viewModel.aulasMinistradas.Add(aula);
+            }
+            ViewData["aulas"] = viewModel.aulasMinistradas;
+            ViewData["idProfessor"] = new SelectList(new MProfessor().BringAll(), "idProfessor", "nomeProfessor");
+            ViewBag.Message = TempData["Message"];
+            return View(viewModel);
+             */
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Diretor")]
-        public ActionResult AdicionarNovaTurma(Turma nova)
+        public ActionResult AdicionarNovaTurma(Turma nova, int[] idDisciplina, int[] idProfessor)
         {
             TempData["Message"] = new MTurma().Add(nova) ? "Nova Turma Cadastrada" : "Algo Errado Ocorreu";
-            GerenciarMedViewModel dados = new GerenciarMedViewModel();
-            dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados((int)nova.idMed);
+            MAula mAula = new MAula();
+            for (int i = 0; i < idDisciplina.Length; i++)
+            {
+                Aula aula = new Aula();
+                aula.idDisciplina = idDisciplina[i];
+                aula.idProfessor = idProfessor[i];
+                aula.idTurma = nova.idTurma;
+                mAula.Add(aula);
+            }
+            
+            //GerenciarMedViewModel dados = new GerenciarMedViewModel();
+            /*dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados((int)nova.idMed);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == nova.idMed);
-            dados.med = new MMed().BringOne(c => c.idMed == nova.idMed);
+            dados.med = new MMed().BringOne(c => c.idMed == nova.idMed);*/
             return RedirectToAction("GerenciarMed", new { id = nova.idMed });
         }
 
