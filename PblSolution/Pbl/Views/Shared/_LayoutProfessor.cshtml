@@ -33,7 +33,7 @@
                 </div>
 
                 <span class="logout-spn">
-                    <a href="#" style="color:#fff;"> LOGOUT <img class="logout-img" src="~/Content/img/logout.png" alt="Logout"> </a>
+                    <a href="@Url.Action("SignOut","Login")" style="color:#fff;"> LOGOUT <img class="logout-img" src="~/Content/img/logout.png" alt="Logout"> </a>
                 </span>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="active-link"><a href="#">Gerenciar Home</a></li>
-                    <li><a href="#">Gerenciar Grupos</a></li>
+                    <li><a href="@Url.Action("Index","GerenciarProblemasMinistados")">Gerenciar Grupos</a></li>
                     <li><a href="@Url.Action("Index","GerenciarDisciplinasMinistradas")">Gerenciar Disciplinas</a></li>
 
                 </ul>

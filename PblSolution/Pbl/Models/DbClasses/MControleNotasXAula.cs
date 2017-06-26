@@ -22,6 +22,7 @@ namespace Pbl.Models.DbClasses
             {
                 db.ControleNotasXAula.Add(t);
                 db.SaveChanges();
+                db = Singletone.Refresh;
             }
             catch (Exception Ex)
             {
@@ -65,7 +66,7 @@ namespace Pbl.Models.DbClasses
         {
             try
             {
-                ControleNotasXAula controleNotasAula = db.ControleNotasXAula.Where(c => c.idControleNotas == t.idControleNotas).FirstOrDefault();
+                ControleNotasXAula controleNotasAula = db.ControleNotasXAula.Where(c => (c.idControleNotas == t.idControleNotas) && (c.idAula == t.idAula)).FirstOrDefault();
                 controleNotasAula.nota = t.nota;
                 db.SaveChanges();
             }
