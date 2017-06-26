@@ -35,7 +35,7 @@ namespace Pbl.Controllers
         public ActionResult GerenciarMed(int id)
         {
             Med med = new MMed().BringOne(c => c.idMed == id);
-            
+
             if (med.Disciplina.Count == 0)
             {
                 return RedirectToAction("AdicionarDisciplinas", "ControleMed", new { idMed = med.idMed });
@@ -94,7 +94,7 @@ namespace Pbl.Controllers
                 aula.idTurma = nova.idTurma;
                 mAula.Add(aula);
             }
-            
+
             //GerenciarMedViewModel dados = new GerenciarMedViewModel();
             /*dados.problemasCadastrados = new MProblemaXMed().RetornaProblemasCadastrados((int)nova.idMed);
             dados.turmasCadastradas = new MTurma().Bring(c => c.idMed == nova.idMed);
@@ -195,6 +195,16 @@ namespace Pbl.Controllers
             novo.idTurma = idTurma;
             novo.idAluno = idAluno;
             new MInscricaoTurma().Add(novo);
+            MControleNotas mControleNotas = new MControleNotas();
+            
+            Turma turma = new MTurma().BringOne(c => c.idTurma == idTurma);
+            foreach (var item in turma.Med.Semestre.Modulo)
+            {
+                ControleNotas controleNotas = new ControleNotas();
+                controleNotas.idInscricaoTurma = novo.idInscricaoTurma;
+                controleNotas.idModulo = item.idModulo;
+                mControleNotas.Add(controleNotas);
+            }
             return AdicionarAlunosTurma(idTurma);
         }
 

@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="Models\DbClasses\MAluno.cs" />
     <Compile Include="Models\DbClasses\MAula.cs" />
+    <Compile Include="Models\DbClasses\MControleNotas.cs" />
     <Compile Include="Models\DbClasses\MControleNotasXAula.cs" />
     <Compile Include="Models\DbClasses\MDisciplina.cs" />
     <Compile Include="Models\DbClasses\MGrupo.cs" />
@@ -289,6 +290,7 @@
     <Compile Include="Models\ViewModel\DisciplinaViewModel.cs" />
     <Compile Include="Models\ViewModel\GerenciarMedViewModel.cs" />
     <Compile Include="Models\ViewModel\InscricaoAlunoViewModel.cs" />
+    <Compile Include="Models\ViewModel\SelecionarAlunosViewModel.cs" />
     <Compile Include="Models\ViewModel\SemestreViewModel.cs" />
     <Compile Include="Models\ViewModel\VincularProblemaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -713,6 +715,7 @@
     <Content Include="Views\ControleMed\AdicionarDisciplinas.cshtml" />
     <Content Include="Views\GerenciarDisciplinasMinistradas\Index.cshtml" />
     <Content Include="Views\GerenciarDisciplinasMinistradas\SelecionarModulo.cshtml" />
+    <Content Include="Views\GerenciarDisciplinasMinistradas\AvaliarAluno.cshtml" />
     <Content Include="Views\GerenciarDisciplinasMinistradas\SelecionarAlunos.cshtml" />
   </ItemGroup>
   <ItemGroup>

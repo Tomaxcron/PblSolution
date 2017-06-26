@@ -27,6 +27,7 @@ namespace Pbl.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Aluno> Aluno { get; set; }
         public virtual DbSet<Ano> Ano { get; set; }
         public virtual DbSet<Aula> Aula { get; set; }
         public virtual DbSet<AvaliacaoTutoria> AvaliacaoTutoria { get; set; }
@@ -43,15 +44,14 @@ namespace Pbl.Models
         public virtual DbSet<PerguntaXFicha> PerguntaXFicha { get; set; }
         public virtual DbSet<Problema> Problema { get; set; }
         public virtual DbSet<ProblemaXMed> ProblemaXMed { get; set; }
+        public virtual DbSet<Professor> Professor { get; set; }
         public virtual DbSet<Prova> Prova { get; set; }
         public virtual DbSet<Semestre> Semestre { get; set; }
         public virtual DbSet<TipoDisciplina> TipoDisciplina { get; set; }
         public virtual DbSet<TipoProva> TipoProva { get; set; }
-        public virtual DbSet<Turma> Turma { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
+        public virtual DbSet<Turma> Turma { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<Aluno> Aluno { get; set; }
-        public virtual DbSet<Professor> Professor { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -386,15 +386,11 @@ namespace Pbl.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpCrudProva", idParameter, idTipoProvaParameter, valorQuestaoParameter, statementTypeParameter);
         }
     
-        public virtual int SpCrudSemestre(Nullable<int> id, Nullable<int> ano, string descricao, Nullable<System.DateTime> dtIni1, Nullable<System.DateTime> dtIni2, Nullable<System.DateTime> dtIni3, Nullable<System.DateTime> dtFim1, Nullable<System.DateTime> dtFim2, Nullable<System.DateTime> dtFim3, string statementType)
+        public virtual int SpCrudSemestre(Nullable<int> id, string descricao, Nullable<System.DateTime> dtIni1, Nullable<System.DateTime> dtIni2, Nullable<System.DateTime> dtIni3, Nullable<System.DateTime> dtFim1, Nullable<System.DateTime> dtFim2, Nullable<System.DateTime> dtFim3, string statementType)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
-    
-            var anoParameter = ano.HasValue ?
-                new ObjectParameter("Ano", ano) :
-                new ObjectParameter("Ano", typeof(int));
     
             var descricaoParameter = descricao != null ?
                 new ObjectParameter("descricao", descricao) :
@@ -428,7 +424,7 @@ namespace Pbl.Models
                 new ObjectParameter("StatementType", statementType) :
                 new ObjectParameter("StatementType", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpCrudSemestre", idParameter, anoParameter, descricaoParameter, dtIni1Parameter, dtIni2Parameter, dtIni3Parameter, dtFim1Parameter, dtFim2Parameter, dtFim3Parameter, statementTypeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpCrudSemestre", idParameter, descricaoParameter, dtIni1Parameter, dtIni2Parameter, dtIni3Parameter, dtFim1Parameter, dtFim2Parameter, dtFim3Parameter, statementTypeParameter);
         }
     
         public virtual int SpCrudTipoDisciplina(Nullable<int> id, string descricao, string statementType)

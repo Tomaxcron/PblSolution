@@ -1,5 +1,6 @@
 ﻿using Pbl.Models;
 using Pbl.Models.DbClasses;
+using Pbl.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,16 +41,34 @@ namespace Pbl.Controllers
             ViewData["Aula"] = aula;
             Turma turma = aula.Turma;
             List<InscricaoTurma> alunosInscritos = new MInscricaoTurma().Bring(c => c.idTurma == turma.idTurma);
+            List<SelecionarAlunosViewModel> viewModel = new List<SelecionarAlunosViewModel>();
+            MControleNotasXAula teste = new MControleNotasXAula();
+            foreach (var inscrito in alunosInscritos)
+            {
+                SelecionarAlunosViewModel novo = new SelecionarAlunosViewModel();
+                novo.inscricao = inscrito;
+                novo.nota = inscrito.ControleNotas.Where(c => c.idModulo == idModulo).First().ControleNotasXAula.Where(c => c.idAula == idAula).First().nota;
+                viewModel.Add(novo);
+            }
             ViewData["Aula"] = aula;
             ViewData["Modulo"] = modulo;
-            return View(alunosInscritos);
+            return View(viewModel);
         }
 
-        public ActionResult AvaliarAluno()
+        public ActionResult AvaliarAluno(int idInscricaoTurma, int idModulo, int idAula)
         {
-            ControleNotasXAula nota = new ControleNotasXAula();
-            
-            return View();
+            ControleNotas controleNotas = new MControleNotas().BringOne(c => (c.idInscricaoTurma == idInscricaoTurma) && (c.idModulo == idModulo));
+            ControleNotasXAula controleNotasAula = new ControleNotasXAula();
+            controleNotasAula.idAula = idAula;
+            //controleNotasAula.nota = nota;
+            controleNotasAula.idControleNotas = controleNotas.idControleNotas;
+            MControleNotasXAula mControleNotasXAula = new MControleNotasXAula();
+            return View(controleNotasAula);
+        }
+
+        public ActionResult AvaliarAlunoAction()
+        {
+            return null;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Pbl.Models
     public partial class ControleNotasXProva
     {
         public int idControleNotas { get; set; }
-        public Nullable<int> idProva { get; set; }
+        public int idProva { get; set; }
         public Nullable<int> numAcertos { get; set; }
     
         public virtual ControleNotas ControleNotas { get; set; }

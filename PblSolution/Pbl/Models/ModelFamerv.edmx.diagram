@@ -5,31 +5,37 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cb59318e1447452eb6f3036d9694a858" Name="Diagram1">
-        <EntityTypeShape EntityType="pblsolutionModel.Ano" Width="1.5" PointX="1.5" PointY="15.625" />
-        <EntityTypeShape EntityType="pblsolutionModel.Aula" Width="1.5" PointX="3" PointY="4.5" />
-        <EntityTypeShape EntityType="pblsolutionModel.AvaliacaoTutoria" Width="1.5" PointX="15.75" PointY="4.5" />
-        <EntityTypeShape EntityType="pblsolutionModel.ControleNotas" Width="1.5" PointX="10.5" PointY="4.5" />
-        <EntityTypeShape EntityType="pblsolutionModel.ControleNotasXAula" Width="1.5" PointX="5.25" PointY="1.875" />
-        <EntityTypeShape EntityType="pblsolutionModel.ControleNotasXProva" Width="1.5" PointX="12.75" PointY="4.875" />
-        <EntityTypeShape EntityType="pblsolutionModel.Disciplina" Width="1.5" PointX="0.75" PointY="18.375" />
-        <EntityTypeShape EntityType="pblsolutionModel.FichaAvaliacao" Width="1.5" PointX="18" PointY="4.75" />
-        <EntityTypeShape EntityType="pblsolutionModel.Grupo" Width="1.5" PointX="6" PointY="4.5" />
-        <EntityTypeShape EntityType="pblsolutionModel.InscricaoTurma" Width="1.5" PointX="8.25" PointY="4.5" />
-        <EntityTypeShape EntityType="pblsolutionModel.Med" Width="1.5" PointX="1.5" PointY="8.125" />
-        <EntityTypeShape EntityType="pblsolutionModel.Modulo" Width="1.5" PointX="8.25" PointY="1.125" />
-        <EntityTypeShape EntityType="pblsolutionModel.Pergunta" Width="1.5" PointX="18" PointY="2" />
-        <EntityTypeShape EntityType="pblsolutionModel.PerguntaXFicha" Width="1.5" PointX="20.25" PointY="4.875" />
-        <EntityTypeShape EntityType="pblsolutionModel.Problema" Width="1.5" PointX="11.25" PointY="0.875" />
-        <EntityTypeShape EntityType="pblsolutionModel.ProblemaXMed" Width="1.5" PointX="13.5" PointY="0.75" />
-        <EntityTypeShape EntityType="pblsolutionModel.Prova" Width="1.5" PointX="10.5" PointY="8.875" />
-        <EntityTypeShape EntityType="pblsolutionModel.Semestre" Width="1.5" PointX="1.5" PointY="12.25" />
-        <EntityTypeShape EntityType="pblsolutionModel.TipoDisciplina" Width="1.5" PointX="1.5" PointY="21.625" />
-        <EntityTypeShape EntityType="pblsolutionModel.TipoProva" Width="1.5" PointX="8.25" PointY="9" />
-        <EntityTypeShape EntityType="pblsolutionModel.Turma" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="pblsolutionModel.Aluno" Width="1.5" PointX="10.5" PointY="14.5" />
+        <EntityTypeShape EntityType="pblsolutionModel.Ano" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="pblsolutionModel.Aula" Width="1.5" PointX="8.25" PointY="7.75" />
+        <EntityTypeShape EntityType="pblsolutionModel.AvaliacaoTutoria" Width="1.5" PointX="17.25" PointY="9.875" />
+        <EntityTypeShape EntityType="pblsolutionModel.ControleNotas" Width="1.5" PointX="15" PointY="9.375" />
+        <EntityTypeShape EntityType="pblsolutionModel.ControleNotasXAula" Width="1.5" PointX="10.5" PointY="8.125" />
+        <EntityTypeShape EntityType="pblsolutionModel.ControleNotasXProva" Width="1.5" PointX="17.25" PointY="6.625" />
+        <EntityTypeShape EntityType="pblsolutionModel.Disciplina" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="pblsolutionModel.FichaAvaliacao" Width="1.5" PointX="19.5" PointY="10.125" />
+        <EntityTypeShape EntityType="pblsolutionModel.Grupo" Width="1.5" PointX="10.5" PointY="4.75" />
+        <EntityTypeShape EntityType="pblsolutionModel.InscricaoTurma" Width="1.5" PointX="12.75" PointY="9.375" />
+        <EntityTypeShape EntityType="pblsolutionModel.Med" Width="1.5" PointX="5.25" PointY="7.75" />
+        <EntityTypeShape EntityType="pblsolutionModel.Modulo" Width="1.5" PointX="12.75" PointY="5.875" />
+        <EntityTypeShape EntityType="pblsolutionModel.Pergunta" Width="1.5" PointX="19.5" PointY="7.375" />
+        <EntityTypeShape EntityType="pblsolutionModel.PerguntaXFicha" Width="1.5" PointX="21.75" PointY="10.25" />
+        <EntityTypeShape EntityType="pblsolutionModel.Problema" Width="1.5" PointX="8.25" PointY="4.125" />
+        <EntityTypeShape EntityType="pblsolutionModel.ProblemaXMed" Width="1.5" PointX="10.5" PointY="11" />
+        <EntityTypeShape EntityType="pblsolutionModel.Professor" Width="1.5" PointX="6" PointY="4.375" />
+        <EntityTypeShape EntityType="pblsolutionModel.Prova" Width="1.5" PointX="15" PointY="2.625" />
+        <EntityTypeShape EntityType="pblsolutionModel.Semestre" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="pblsolutionModel.TipoDisciplina" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="pblsolutionModel.TipoProva" Width="1.5" PointX="12.75" PointY="2.75" />
+        <EntityTypeShape EntityType="pblsolutionModel.TipoUsuario" Width="1.5" PointX="10.5" PointY="17.75" />
+        <EntityTypeShape EntityType="pblsolutionModel.Turma" Width="1.5" PointX="7.5" PointY="14.125" />
+        <EntityTypeShape EntityType="pblsolutionModel.Usuario" Width="1.5" PointX="12.75" PointY="13.375" />
+        <AssociationConnector Association="pblsolutionModel.FK_InscricaoMed_Aluno" />
         <AssociationConnector Association="pblsolutionModel.FK_Semestre_Ano" />
         <AssociationConnector Association="pblsolutionModel.FK_Aula_Turma" />
         <AssociationConnector Association="pblsolutionModel.FK_ControleNotasXAula_Aula" />
         <AssociationConnector Association="pblsolutionModel.FK_Turma_Disciplina" />
+        <AssociationConnector Association="pblsolutionModel.FK_Turma_Professor" />
         <AssociationConnector Association="pblsolutionModel.FK_FichaAvaliacao_AvaliacaoTutoria" />
         <AssociationConnector Association="pblsolutionModel.FK_FichaAvaliacao_ControleNotas" />
         <AssociationConnector Association="pblsolutionModel.FK_FichaAvaliacao_ProblemaXMed" />
@@ -41,6 +47,7 @@
         <AssociationConnector Association="pblsolutionModel.FK_Disciplina_TipoDisciplina" />
         <AssociationConnector Association="pblsolutionModel.FK_PerguntaXFicha_FichaAvaliacao1" />
         <AssociationConnector Association="pblsolutionModel.FK_Grupo_Med" />
+        <AssociationConnector Association="pblsolutionModel.FK_Grupo_Professor1" />
         <AssociationConnector Association="pblsolutionModel.FK_InscricaoTurma_Turma" />
         <AssociationConnector Association="pblsolutionModel.FK_Med_Semestre" />
         <AssociationConnector Association="pblsolutionModel.FK_ProblemaXMed_Med" />
@@ -49,26 +56,11 @@
         <AssociationConnector Association="pblsolutionModel.FK_PerguntaXFicha_Pergunta" />
         <AssociationConnector Association="pblsolutionModel.FK_ProblemaXMed_Problema" />
         <AssociationConnector Association="pblsolutionModel.FK_Prova_TipoProva" />
-        <AssociationConnector Association="pblsolutionModel.InscricaoTurmaXGrupo" ManuallyRouted="true" >
-          <ConnectorPoint PointX="7.1176610858834728" PointY="7.0571907552083326" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="94.770548441717267" />
-          <ConnectorPoint PointX="7.9355656895419893" PointY="94.8492432395259" />
-          <ConnectorPoint PointX="8.08179420438454" PointY="94.92921197857261" />
-          <ConnectorPoint PointX="9.7916661666666673" PointY="95.864298441717267" />
-          <ConnectorPoint PointX="8.0025" PointY="95.864298441717267" />
-          <ConnectorPoint PointX="8.5653547148333136" PointY="7.0571907552083326" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="pblsolutionModel.TipoUsuario" Width="1.5" PointX="6" PointY="12.125" />
-        <EntityTypeShape EntityType="pblsolutionModel.Usuario" Width="1.5" PointX="8.25" PointY="11.75" />
         <AssociationConnector Association="pblsolutionModel.FK_Usuario_TipoUsuario" />
-        <EntityTypeShape EntityType="pblsolutionModel.Aluno" Width="1.5" PointX="12.375" PointY="12" />
-        <EntityTypeShape EntityType="pblsolutionModel.Professor" Width="1.5" PointX="0.5" PointY="7.25" />
-        <AssociationConnector Association="pblsolutionModel.FK_InscricaoMed_Aluno" />
-        <AssociationConnector Association="pblsolutionModel.FK_Turma_Professor" />
-        <AssociationConnector Association="pblsolutionModel.FK_Grupo_Professor1" />
+        <AssociationConnector Association="pblsolutionModel.DisciplinaMed" />
+        <AssociationConnector Association="pblsolutionModel.InscricaoTurmaXGrupo" />
         <AssociationConnector Association="pblsolutionModel.UsuarioAluno" />
         <AssociationConnector Association="pblsolutionModel.UsuarioProfessor" />
-        <AssociationConnector Association="pblsolutionModel.DisciplinaMed" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

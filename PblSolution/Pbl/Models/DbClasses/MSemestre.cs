@@ -20,7 +20,7 @@ namespace Pbl.Models.DbClasses
         {
             try
             {
-                db.SpCrudSemestre(null, t.DataInicioModulo1.Year, t.Descricao, t.DataInicioModulo1, t.DataInicioModulo2, t.DataInicioModulo3, t.DataFinalModulo1, t.DataFinalModulo2, t.DataFinalModulo3, "Insert");
+                //db.SpCrudSemestre(null, t.DataInicioModulo1.Year, t.Descricao, t.DataInicioModulo1, t.DataInicioModulo2, t.DataInicioModulo3, t.DataFinalModulo1, t.DataFinalModulo2, t.DataFinalModulo3, "Insert");
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace Pbl.Models.DbClasses
         {
             try
             {
-                db.SpCrudSemestre(T.idSemestre, null, null, null, null, null, null, null, null, "Inativa");
+                //db.SpCrudSemestre(T.idSemestre, null, null, null, null, null, null, null, null, "Inativa");
             }
             catch (Exception Ex)
             {
@@ -68,7 +68,7 @@ namespace Pbl.Models.DbClasses
         {
             try
             {
-                db.SpCrudSemestre(t.idSemestre, t.Ano.Year, t.Descricao, t.DataInicioModulo1, t.DataInicioModulo2, t.DataInicioModulo3, t.DataFinalModulo1, t.DataFinalModulo2, t.DataFinalModulo3, "Update");
+                //db.SpCrudSemestre(t.idSemestre, t.Ano.Year, t.Descricao, t.DataInicioModulo1, t.DataInicioModulo2, t.DataInicioModulo3, t.DataFinalModulo1, t.DataFinalModulo2, t.DataFinalModulo3, "Update");
             }
             catch (Exception Ex)
             {

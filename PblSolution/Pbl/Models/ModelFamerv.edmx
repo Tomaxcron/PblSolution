@@ -54,17 +54,19 @@
         <EntityType Name="ControleNotasXAula">
           <Key>
             <PropertyRef Name="idControleNotas" />
+            <PropertyRef Name="idAula" />
           </Key>
           <Property Name="idControleNotas" Type="int" Nullable="false" />
-          <Property Name="idAula" Type="int" />
+          <Property Name="idAula" Type="int" Nullable="false" />
           <Property Name="nota" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="ControleNotasXProva">
           <Key>
             <PropertyRef Name="idControleNotas" />
+            <PropertyRef Name="idProva" />
           </Key>
           <Property Name="idControleNotas" Type="int" Nullable="false" />
-          <Property Name="idProva" Type="int" />
+          <Property Name="idProva" Type="int" Nullable="false" />
           <Property Name="numAcertos" Type="int" />
         </EntityType>
         <EntityType Name="Disciplina">
@@ -305,7 +307,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ControleNotasXAula_Aula">
-          <End Role="Aula" Type="Self.Aula" Multiplicity="0..1" />
+          <End Role="Aula" Type="Self.Aula" Multiplicity="1" />
           <End Role="ControleNotasXAula" Type="Self.ControleNotasXAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Aula">
@@ -318,7 +320,7 @@
         </Association>
         <Association Name="FK_ControleNotasXProva_ControleNotas">
           <End Role="ControleNotas" Type="Self.ControleNotas" Multiplicity="1" />
-          <End Role="ControleNotasXProva" Type="Self.ControleNotasXProva" Multiplicity="0..1" />
+          <End Role="ControleNotasXProva" Type="Self.ControleNotasXProva" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ControleNotas">
               <PropertyRef Name="idControleNotas" />
@@ -329,7 +331,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ControleNotasXProva_Prova">
-          <End Role="Prova" Type="Self.Prova" Multiplicity="0..1" />
+          <End Role="Prova" Type="Self.Prova" Multiplicity="1" />
           <End Role="ControleNotasXProva" Type="Self.ControleNotasXProva" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Prova">
@@ -342,7 +344,7 @@
         </Association>
         <Association Name="FK_ControleNotasXTurma_ControleNotas">
           <End Role="ControleNotas" Type="Self.ControleNotas" Multiplicity="1" />
-          <End Role="ControleNotasXAula" Type="Self.ControleNotasXAula" Multiplicity="0..1" />
+          <End Role="ControleNotasXAula" Type="Self.ControleNotasXAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ControleNotas">
               <PropertyRef Name="idControleNotas" />
@@ -768,7 +770,6 @@
         </Function>
         <Function Name="SpCrudSemestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="Ano" Type="int" Mode="In" />
           <Parameter Name="descricao" Type="varchar" Mode="In" />
           <Parameter Name="dtIni1" Type="date" Mode="In" />
           <Parameter Name="dtIni2" Type="date" Mode="In" />
@@ -1061,7 +1062,6 @@
           </FunctionImport>
           <FunctionImport Name="SpCrudSemestre">
             <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="Ano" Mode="In" Type="Int32" />
             <Parameter Name="descricao" Mode="In" Type="String" />
             <Parameter Name="dtIni1" Mode="In" Type="DateTime" />
             <Parameter Name="dtIni2" Mode="In" Type="DateTime" />
@@ -1096,6 +1096,7 @@
             <Parameter Name="nota" Mode="In" Type="Decimal" />
             <Parameter Name="StatementType" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Aluno" EntityType="pblsolutionModel.Aluno" />
           <EntitySet Name="Ano" EntityType="pblsolutionModel.Ano" />
           <EntitySet Name="Aula" EntityType="pblsolutionModel.Aula" />
           <EntitySet Name="AvaliacaoTutoria" EntityType="pblsolutionModel.AvaliacaoTutoria" />
@@ -1112,11 +1113,18 @@
           <EntitySet Name="PerguntaXFicha" EntityType="pblsolutionModel.PerguntaXFicha" />
           <EntitySet Name="Problema" EntityType="pblsolutionModel.Problema" />
           <EntitySet Name="ProblemaXMed" EntityType="pblsolutionModel.ProblemaXMed" />
+          <EntitySet Name="Professor" EntityType="pblsolutionModel.Professor" />
           <EntitySet Name="Prova" EntityType="pblsolutionModel.Prova" />
           <EntitySet Name="Semestre" EntityType="pblsolutionModel.Semestre" />
           <EntitySet Name="TipoDisciplina" EntityType="pblsolutionModel.TipoDisciplina" />
           <EntitySet Name="TipoProva" EntityType="pblsolutionModel.TipoProva" />
+          <EntitySet Name="TipoUsuario" EntityType="pblsolutionModel.TipoUsuario" />
           <EntitySet Name="Turma" EntityType="pblsolutionModel.Turma" />
+          <EntitySet Name="Usuario" EntityType="pblsolutionModel.Usuario" />
+          <AssociationSet Name="FK_InscricaoMed_Aluno" Association="pblsolutionModel.FK_InscricaoMed_Aluno">
+            <End Role="Aluno" EntitySet="Aluno" />
+            <End Role="InscricaoTurma" EntitySet="InscricaoTurma" />
+          </AssociationSet>
           <AssociationSet Name="FK_Semestre_Ano" Association="pblsolutionModel.FK_Semestre_Ano">
             <End Role="Ano" EntitySet="Ano" />
             <End Role="Semestre" EntitySet="Semestre" />
@@ -1131,6 +1139,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Turma_Disciplina" Association="pblsolutionModel.FK_Turma_Disciplina">
             <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Aula" EntitySet="Aula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turma_Professor" Association="pblsolutionModel.FK_Turma_Professor">
+            <End Role="Professor" EntitySet="Professor" />
             <End Role="Aula" EntitySet="Aula" />
           </AssociationSet>
           <AssociationSet Name="FK_FichaAvaliacao_AvaliacaoTutoria" Association="pblsolutionModel.FK_FichaAvaliacao_AvaliacaoTutoria">
@@ -1177,6 +1189,10 @@
             <End Role="Med" EntitySet="Med" />
             <End Role="Grupo" EntitySet="Grupo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Grupo_Professor1" Association="pblsolutionModel.FK_Grupo_Professor1">
+            <End Role="Professor" EntitySet="Professor" />
+            <End Role="Grupo" EntitySet="Grupo" />
+          </AssociationSet>
           <AssociationSet Name="FK_InscricaoTurma_Turma" Association="pblsolutionModel.FK_InscricaoTurma_Turma">
             <End Role="Turma" EntitySet="Turma" />
             <End Role="InscricaoTurma" EntitySet="InscricaoTurma" />
@@ -1209,29 +1225,17 @@
             <End Role="TipoProva" EntitySet="TipoProva" />
             <End Role="Prova" EntitySet="Prova" />
           </AssociationSet>
-          <AssociationSet Name="InscricaoTurmaXGrupo" Association="pblsolutionModel.InscricaoTurmaXGrupo">
-            <End Role="Grupo" EntitySet="Grupo" />
-            <End Role="InscricaoTurma" EntitySet="InscricaoTurma" />
-          </AssociationSet>
-          <EntitySet Name="TipoUsuario" EntityType="pblsolutionModel.TipoUsuario" />
-          <EntitySet Name="Usuario" EntityType="pblsolutionModel.Usuario" />
           <AssociationSet Name="FK_Usuario_TipoUsuario" Association="pblsolutionModel.FK_Usuario_TipoUsuario">
             <End Role="TipoUsuario" EntitySet="TipoUsuario" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <EntitySet Name="Aluno" EntityType="pblsolutionModel.Aluno" />
-          <EntitySet Name="Professor" EntityType="pblsolutionModel.Professor" />
-          <AssociationSet Name="FK_InscricaoMed_Aluno" Association="pblsolutionModel.FK_InscricaoMed_Aluno">
-            <End Role="Aluno" EntitySet="Aluno" />
-            <End Role="InscricaoTurma" EntitySet="InscricaoTurma" />
+          <AssociationSet Name="DisciplinaMed" Association="pblsolutionModel.DisciplinaMed">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Med" EntitySet="Med" />
           </AssociationSet>
-          <AssociationSet Name="FK_Turma_Professor" Association="pblsolutionModel.FK_Turma_Professor">
-            <End Role="Professor" EntitySet="Professor" />
-            <End Role="Aula" EntitySet="Aula" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Grupo_Professor1" Association="pblsolutionModel.FK_Grupo_Professor1">
-            <End Role="Professor" EntitySet="Professor" />
+          <AssociationSet Name="InscricaoTurmaXGrupo" Association="pblsolutionModel.InscricaoTurmaXGrupo">
             <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="InscricaoTurma" EntitySet="InscricaoTurma" />
           </AssociationSet>
           <AssociationSet Name="UsuarioAluno" Association="pblsolutionModel.UsuarioAluno">
             <End Role="Aluno" EntitySet="Aluno" />
@@ -1240,10 +1244,6 @@
           <AssociationSet Name="UsuarioProfessor" Association="pblsolutionModel.UsuarioProfessor">
             <End Role="Professor" EntitySet="Professor" />
             <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
-          <AssociationSet Name="DisciplinaMed" Association="pblsolutionModel.DisciplinaMed">
-            <End Role="Disciplina" EntitySet="Disciplina" />
-            <End Role="Med" EntitySet="Med" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1257,6 +1257,18 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Aluno">
+          <Key>
+            <PropertyRef Name="idAluno" />
+          </Key>
+          <Property Name="idAluno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomeAluno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpfAluno" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="matriculaAluno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.FK_InscricaoMed_Aluno" FromRole="Aluno" ToRole="InscricaoTurma" />
+          <NavigationProperty Name="Usuario" Relationship="pblsolutionModel.UsuarioAluno" FromRole="Aluno" ToRole="Usuario" />
+        </EntityType>
         <EntityType Name="Ano">
           <Key>
             <PropertyRef Name="idAno" />
@@ -1309,9 +1321,10 @@
         <EntityType Name="ControleNotasXAula">
           <Key>
             <PropertyRef Name="idControleNotas" />
+            <PropertyRef Name="idAula" />
           </Key>
           <Property Name="idControleNotas" Type="Int32" Nullable="false" />
-          <Property Name="idAula" Type="Int32" />
+          <Property Name="idAula" Type="Int32" Nullable="false" />
           <Property Name="nota" Type="Decimal" Precision="5" Scale="2" />
           <NavigationProperty Name="Aula" Relationship="pblsolutionModel.FK_ControleNotasXAula_Aula" FromRole="ControleNotasXAula" ToRole="Aula" />
           <NavigationProperty Name="ControleNotas" Relationship="pblsolutionModel.FK_ControleNotasXTurma_ControleNotas" FromRole="ControleNotasXAula" ToRole="ControleNotas" />
@@ -1319,9 +1332,10 @@
         <EntityType Name="ControleNotasXProva">
           <Key>
             <PropertyRef Name="idControleNotas" />
+            <PropertyRef Name="idProva" />
           </Key>
           <Property Name="idControleNotas" Type="Int32" Nullable="false" />
-          <Property Name="idProva" Type="Int32" />
+          <Property Name="idProva" Type="Int32" Nullable="false" />
           <Property Name="numAcertos" Type="Int32" />
           <NavigationProperty Name="ControleNotas" Relationship="pblsolutionModel.FK_ControleNotasXProva_ControleNotas" FromRole="ControleNotasXProva" ToRole="ControleNotas" />
           <NavigationProperty Name="Prova" Relationship="pblsolutionModel.FK_ControleNotasXProva_Prova" FromRole="ControleNotasXProva" ToRole="Prova" />
@@ -1359,8 +1373,8 @@
           <Property Name="descGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ativo" Type="Boolean" />
           <NavigationProperty Name="Med" Relationship="pblsolutionModel.FK_Grupo_Med" FromRole="Grupo" ToRole="Med" />
-          <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.InscricaoTurmaXGrupo" FromRole="Grupo" ToRole="InscricaoTurma" />
           <NavigationProperty Name="Professor" Relationship="pblsolutionModel.FK_Grupo_Professor1" FromRole="Grupo" ToRole="Professor" />
+          <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.InscricaoTurmaXGrupo" FromRole="Grupo" ToRole="InscricaoTurma" />
         </EntityType>
         <EntityType Name="InscricaoTurma">
           <Key>
@@ -1370,10 +1384,10 @@
           <Property Name="idTurma" Type="Int32" />
           <Property Name="idAluno" Type="Int32" />
           <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="Aluno" Relationship="pblsolutionModel.FK_InscricaoMed_Aluno" FromRole="InscricaoTurma" ToRole="Aluno" />
           <NavigationProperty Name="ControleNotas" Relationship="pblsolutionModel.FK_ControleNotas_InscricaoTurma" FromRole="InscricaoTurma" ToRole="ControleNotas" />
           <NavigationProperty Name="Turma" Relationship="pblsolutionModel.FK_InscricaoTurma_Turma" FromRole="InscricaoTurma" ToRole="Turma" />
           <NavigationProperty Name="Grupo" Relationship="pblsolutionModel.InscricaoTurmaXGrupo" FromRole="InscricaoTurma" ToRole="Grupo" />
-          <NavigationProperty Name="Aluno" Relationship="pblsolutionModel.FK_InscricaoMed_Aluno" FromRole="InscricaoTurma" ToRole="Aluno" />
         </EntityType>
         <EntityType Name="Med">
           <Key>
@@ -1442,6 +1456,18 @@
           <NavigationProperty Name="Med" Relationship="pblsolutionModel.FK_ProblemaXMed_Med" FromRole="ProblemaXMed" ToRole="Med" />
           <NavigationProperty Name="Problema" Relationship="pblsolutionModel.FK_ProblemaXMed_Problema" FromRole="ProblemaXMed" ToRole="Problema" />
         </EntityType>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="idProfessor" />
+          </Key>
+          <Property Name="idProfessor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomeProfessor" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="cpfProfessor" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="Aula" Relationship="pblsolutionModel.FK_Turma_Professor" FromRole="Professor" ToRole="Aula" />
+          <NavigationProperty Name="Grupo" Relationship="pblsolutionModel.FK_Grupo_Professor1" FromRole="Professor" ToRole="Grupo" />
+          <NavigationProperty Name="Usuario" Relationship="pblsolutionModel.UsuarioProfessor" FromRole="Professor" ToRole="Usuario" />
+        </EntityType>
         <EntityType Name="Prova">
           <Key>
             <PropertyRef Name="idProva" />
@@ -1482,6 +1508,14 @@
           <Property Name="descTipoProva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Prova" Relationship="pblsolutionModel.FK_Prova_TipoProva" FromRole="TipoProva" ToRole="Prova" />
         </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="idTipoUsuario" />
+          </Key>
+          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="pblsolutionModel.FK_Usuario_TipoUsuario" FromRole="TipoUsuario" ToRole="Usuario" />
+        </EntityType>
         <EntityType Name="Turma">
           <Key>
             <PropertyRef Name="idTurma" />
@@ -1494,6 +1528,30 @@
           <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.FK_InscricaoTurma_Turma" FromRole="Turma" ToRole="InscricaoTurma" />
           <NavigationProperty Name="Med" Relationship="pblsolutionModel.FK_Turma_Med" FromRole="Turma" ToRole="Med" />
         </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="senha" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoUsuario" Relationship="pblsolutionModel.FK_Usuario_TipoUsuario" FromRole="Usuario" ToRole="TipoUsuario" />
+          <NavigationProperty Name="Aluno" Relationship="pblsolutionModel.UsuarioAluno" FromRole="Usuario" ToRole="Aluno" />
+          <NavigationProperty Name="Professor" Relationship="pblsolutionModel.UsuarioProfessor" FromRole="Usuario" ToRole="Professor" />
+        </EntityType>
+        <Association Name="FK_InscricaoMed_Aluno">
+          <End Type="pblsolutionModel.Aluno" Role="Aluno" Multiplicity="0..1" />
+          <End Type="pblsolutionModel.InscricaoTurma" Role="InscricaoTurma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluno">
+              <PropertyRef Name="idAluno" />
+            </Principal>
+            <Dependent Role="InscricaoTurma">
+              <PropertyRef Name="idAluno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Semestre_Ano">
           <End Type="pblsolutionModel.Ano" Role="Ano" Multiplicity="0..1" />
           <End Type="pblsolutionModel.Semestre" Role="Semestre" Multiplicity="*" />
@@ -1519,7 +1577,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ControleNotasXAula_Aula">
-          <End Type="pblsolutionModel.Aula" Role="Aula" Multiplicity="0..1" />
+          <End Type="pblsolutionModel.Aula" Role="Aula" Multiplicity="1" />
           <End Type="pblsolutionModel.ControleNotasXAula" Role="ControleNotasXAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Aula">
@@ -1539,6 +1597,18 @@
             </Principal>
             <Dependent Role="Aula">
               <PropertyRef Name="idDisciplina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turma_Professor">
+          <End Type="pblsolutionModel.Professor" Role="Professor" Multiplicity="1" />
+          <End Type="pblsolutionModel.Aula" Role="Aula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professor">
+              <PropertyRef Name="idProfessor" />
+            </Principal>
+            <Dependent Role="Aula">
+              <PropertyRef Name="idProfessor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1604,7 +1674,7 @@
         </Association>
         <Association Name="FK_ControleNotasXProva_ControleNotas">
           <End Type="pblsolutionModel.ControleNotas" Role="ControleNotas" Multiplicity="1" />
-          <End Type="pblsolutionModel.ControleNotasXProva" Role="ControleNotasXProva" Multiplicity="0..1" />
+          <End Type="pblsolutionModel.ControleNotasXProva" Role="ControleNotasXProva" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ControleNotas">
               <PropertyRef Name="idControleNotas" />
@@ -1616,7 +1686,7 @@
         </Association>
         <Association Name="FK_ControleNotasXTurma_ControleNotas">
           <End Type="pblsolutionModel.ControleNotas" Role="ControleNotas" Multiplicity="1" />
-          <End Type="pblsolutionModel.ControleNotasXAula" Role="ControleNotasXAula" Multiplicity="0..1" />
+          <End Type="pblsolutionModel.ControleNotasXAula" Role="ControleNotasXAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ControleNotas">
               <PropertyRef Name="idControleNotas" />
@@ -1627,7 +1697,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ControleNotasXProva_Prova">
-          <End Type="pblsolutionModel.Prova" Role="Prova" Multiplicity="0..1" />
+          <End Type="pblsolutionModel.Prova" Role="Prova" Multiplicity="1" />
           <End Type="pblsolutionModel.ControleNotasXProva" Role="ControleNotasXProva" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Prova">
@@ -1671,6 +1741,18 @@
             </Principal>
             <Dependent Role="Grupo">
               <PropertyRef Name="idMed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupo_Professor1">
+          <End Type="pblsolutionModel.Professor" Role="Professor" Multiplicity="0..1" />
+          <End Type="pblsolutionModel.Grupo" Role="Grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professor">
+              <PropertyRef Name="idProfessor" />
+            </Principal>
+            <Dependent Role="Grupo">
+              <PropertyRef Name="idProfessor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1770,30 +1852,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="InscricaoTurmaXGrupo">
-          <End Type="pblsolutionModel.Grupo" Role="Grupo" Multiplicity="*" />
-          <End Type="pblsolutionModel.InscricaoTurma" Role="InscricaoTurma" Multiplicity="*" />
-        </Association>
-        <EntityType Name="TipoUsuario">
-          <Key>
-            <PropertyRef Name="idTipoUsuario" />
-          </Key>
-          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descricao" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Usuario" Relationship="pblsolutionModel.FK_Usuario_TipoUsuario" FromRole="TipoUsuario" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-          </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="senha" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TipoUsuario" Relationship="pblsolutionModel.FK_Usuario_TipoUsuario" FromRole="Usuario" ToRole="TipoUsuario" />
-          <NavigationProperty Name="Aluno" Relationship="pblsolutionModel.UsuarioAluno" FromRole="Usuario" ToRole="Aluno" />
-          <NavigationProperty Name="Professor" Relationship="pblsolutionModel.UsuarioProfessor" FromRole="Usuario" ToRole="Professor" />
-          </EntityType>
         <Association Name="FK_Usuario_TipoUsuario">
           <End Type="pblsolutionModel.TipoUsuario" Role="TipoUsuario" Multiplicity="1" />
           <End Type="pblsolutionModel.Usuario" Role="Usuario" Multiplicity="*" />
@@ -1806,65 +1864,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Aluno">
-          <Key>
-            <PropertyRef Name="idAluno" />
-          </Key>
-          <Property Name="idAluno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nomeAluno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cpfAluno" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="matriculaAluno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
-          <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.FK_InscricaoMed_Aluno" FromRole="Aluno" ToRole="InscricaoTurma" />
-          <NavigationProperty Name="Usuario" Relationship="pblsolutionModel.UsuarioAluno" FromRole="Aluno" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="Professor">
-          <Key>
-            <PropertyRef Name="idProfessor" />
-          </Key>
-          <Property Name="idProfessor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nomeProfessor" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="cpfProfessor" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
-          <NavigationProperty Name="Aula" Relationship="pblsolutionModel.FK_Turma_Professor" FromRole="Professor" ToRole="Aula" />
-          <NavigationProperty Name="Grupo" Relationship="pblsolutionModel.FK_Grupo_Professor1" FromRole="Professor" ToRole="Grupo" />
-          <NavigationProperty Name="Usuario" Relationship="pblsolutionModel.UsuarioProfessor" FromRole="Professor" ToRole="Usuario" />
-        </EntityType>
-        <Association Name="FK_InscricaoMed_Aluno">
-          <End Type="pblsolutionModel.Aluno" Role="Aluno" Multiplicity="0..1" />
-          <End Type="pblsolutionModel.InscricaoTurma" Role="InscricaoTurma" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Aluno">
-              <PropertyRef Name="idAluno" />
-            </Principal>
-            <Dependent Role="InscricaoTurma">
-              <PropertyRef Name="idAluno" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="DisciplinaMed">
+          <End Type="pblsolutionModel.Disciplina" Role="Disciplina" Multiplicity="*" />
+          <End Type="pblsolutionModel.Med" Role="Med" Multiplicity="*" />
         </Association>
-        <Association Name="FK_Turma_Professor">
-          <End Type="pblsolutionModel.Professor" Role="Professor" Multiplicity="1" />
-          <End Type="pblsolutionModel.Aula" Role="Aula" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Professor">
-              <PropertyRef Name="idProfessor" />
-            </Principal>
-            <Dependent Role="Aula">
-              <PropertyRef Name="idProfessor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Grupo_Professor1">
-          <End Type="pblsolutionModel.Professor" Role="Professor" Multiplicity="0..1" />
+        <Association Name="InscricaoTurmaXGrupo">
           <End Type="pblsolutionModel.Grupo" Role="Grupo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Professor">
-              <PropertyRef Name="idProfessor" />
-            </Principal>
-            <Dependent Role="Grupo">
-              <PropertyRef Name="idProfessor" />
-            </Dependent>
-          </ReferentialConstraint>
+          <End Type="pblsolutionModel.InscricaoTurma" Role="InscricaoTurma" Multiplicity="*" />
         </Association>
         <Association Name="UsuarioAluno">
           <End Type="pblsolutionModel.Aluno" Role="Aluno" Multiplicity="*" />
@@ -1873,10 +1879,6 @@
         <Association Name="UsuarioProfessor">
           <End Type="pblsolutionModel.Professor" Role="Professor" Multiplicity="*" />
           <End Type="pblsolutionModel.Usuario" Role="Usuario" Multiplicity="*" />
-        </Association>
-        <Association Name="DisciplinaMed">
-          <End Type="pblsolutionModel.Disciplina" Role="Disciplina" Multiplicity="*" />
-          <End Type="pblsolutionModel.Med" Role="Med" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1920,6 +1922,17 @@
           <FunctionImportMapping FunctionImportName="SpCrudSemestre" FunctionName="pblsolutionModel.Store.SpCrudSemestre" />
           <FunctionImportMapping FunctionImportName="SpCrudTipoDisciplina" FunctionName="pblsolutionModel.Store.SpCrudTipoDisciplina" />
           <FunctionImportMapping FunctionImportName="SpCrudTipoProva" FunctionName="pblsolutionModel.Store.SpCrudTipoProva" />
+          <EntitySetMapping Name="Aluno">
+            <EntityTypeMapping TypeName="pblsolutionModel.Aluno">
+              <MappingFragment StoreEntitySet="Aluno">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="matriculaAluno" ColumnName="matriculaAluno" />
+                <ScalarProperty Name="cpfAluno" ColumnName="cpfAluno" />
+                <ScalarProperty Name="nomeAluno" ColumnName="nomeAluno" />
+                <ScalarProperty Name="idAluno" ColumnName="idAluno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Ano">
             <EntityTypeMapping TypeName="pblsolutionModel.Ano">
               <MappingFragment StoreEntitySet="Ano">
@@ -2077,6 +2090,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Professor">
+            <EntityTypeMapping TypeName="pblsolutionModel.Professor">
+              <MappingFragment StoreEntitySet="Professor">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="cpfProfessor" ColumnName="cpfProfessor" />
+                <ScalarProperty Name="nomeProfessor" ColumnName="nomeProfessor" />
+                <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Prova">
             <EntityTypeMapping TypeName="pblsolutionModel.Prova">
               <MappingFragment StoreEntitySet="Prova">
@@ -2114,6 +2137,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="pblsolutionModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Turma">
             <EntityTypeMapping TypeName="pblsolutionModel.Turma">
               <MappingFragment StoreEntitySet="Turma">
@@ -2121,22 +2152,6 @@
                 <ScalarProperty Name="descTurma" ColumnName="descTurma" />
                 <ScalarProperty Name="idMed" ColumnName="idMed" />
                 <ScalarProperty Name="idTurma" ColumnName="idTurma" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="InscricaoTurmaXGrupo" TypeName="pblsolutionModel.InscricaoTurmaXGrupo" StoreEntitySet="InscricaoTurmaXGrupo">
-            <EndProperty Name="InscricaoTurma">
-              <ScalarProperty Name="idInscricaoTurma" ColumnName="idInscricaoTurma" />
-            </EndProperty>
-            <EndProperty Name="Grupo">
-              <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="TipoUsuario">
-            <EntityTypeMapping TypeName="pblsolutionModel.TipoUsuario">
-              <MappingFragment StoreEntitySet="TipoUsuario">
-                <ScalarProperty Name="descricao" ColumnName="descricao" />
-                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2150,27 +2165,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Aluno">
-            <EntityTypeMapping TypeName="pblsolutionModel.Aluno">
-              <MappingFragment StoreEntitySet="Aluno">
-                <ScalarProperty Name="ativo" ColumnName="ativo" />
-                <ScalarProperty Name="matriculaAluno" ColumnName="matriculaAluno" />
-                <ScalarProperty Name="cpfAluno" ColumnName="cpfAluno" />
-                <ScalarProperty Name="nomeAluno" ColumnName="nomeAluno" />
-                <ScalarProperty Name="idAluno" ColumnName="idAluno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Professor">
-            <EntityTypeMapping TypeName="pblsolutionModel.Professor">
-              <MappingFragment StoreEntitySet="Professor">
-                <ScalarProperty Name="ativo" ColumnName="ativo" />
-                <ScalarProperty Name="cpfProfessor" ColumnName="cpfProfessor" />
-                <ScalarProperty Name="nomeProfessor" ColumnName="nomeProfessor" />
-                <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="DisciplinaMed" TypeName="pblsolutionModel.DisciplinaMed" StoreEntitySet="DisciplinaMed">
+            <EndProperty Name="Med">
+              <ScalarProperty Name="idMed" ColumnName="idMed" />
+            </EndProperty>
+            <EndProperty Name="Disciplina">
+              <ScalarProperty Name="idDisciplina" ColumnName="idDisciplina" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="InscricaoTurmaXGrupo" TypeName="pblsolutionModel.InscricaoTurmaXGrupo" StoreEntitySet="InscricaoTurmaXGrupo">
+            <EndProperty Name="InscricaoTurma">
+              <ScalarProperty Name="idInscricaoTurma" ColumnName="idInscricaoTurma" />
+            </EndProperty>
+            <EndProperty Name="Grupo">
+              <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="UsuarioAluno" TypeName="pblsolutionModel.UsuarioAluno" StoreEntitySet="UsuarioAluno">
             <EndProperty Name="Usuario">
               <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
@@ -2185,14 +2195,6 @@
             </EndProperty>
             <EndProperty Name="Professor">
               <ScalarProperty Name="idProfessor" ColumnName="idProfessor" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="DisciplinaMed" TypeName="pblsolutionModel.DisciplinaMed" StoreEntitySet="DisciplinaMed">
-            <EndProperty Name="Med">
-              <ScalarProperty Name="idMed" ColumnName="idMed" />
-            </EndProperty>
-            <EndProperty Name="Disciplina">
-              <ScalarProperty Name="idDisciplina" ColumnName="idDisciplina" />
             </EndProperty>
           </AssociationSetMapping>
           </EntityContainerMapping>
