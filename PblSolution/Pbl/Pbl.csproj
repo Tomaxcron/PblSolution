@@ -188,6 +188,7 @@
     </Compile>
     <Compile Include="Models\DbClasses\MAluno.cs" />
     <Compile Include="Models\DbClasses\MAula.cs" />
+    <Compile Include="Models\DbClasses\MAvaliacaoTutoria.cs" />
     <Compile Include="Models\DbClasses\MControleNotas.cs" />
     <Compile Include="Models\DbClasses\MControleNotasXAula.cs" />
     <Compile Include="Models\DbClasses\MDisciplina.cs" />
@@ -719,6 +720,9 @@
     <Content Include="Views\GerenciarDisciplinasMinistradas\AvaliarAluno.cshtml" />
     <Content Include="Views\GerenciarDisciplinasMinistradas\SelecionarAlunos.cshtml" />
     <Content Include="Views\GerenciarProblemasMinistados\Index.cshtml" />
+    <Content Include="Views\GerenciarProblemasMinistados\SelecionarProblema.cshtml" />
+    <Content Include="Views\GerenciarProblemasMinistados\MontarFichaAvaliativa.cshtml" />
+    <Content Include="Views\GerenciarProblemasMinistados\SelecionarAluno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

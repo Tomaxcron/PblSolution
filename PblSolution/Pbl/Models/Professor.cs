@@ -25,7 +25,7 @@ namespace Pbl.Models
         public int idProfessor { get; set; }
         public string nomeProfessor { get; set; }
         public string cpfProfessor { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public bool ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aula> Aula { get; set; }

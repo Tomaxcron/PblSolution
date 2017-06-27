@@ -120,8 +120,8 @@
                                             <td>@grupo.descGrupo</td>
                                             <td>@grupo.Professor.nomeProfessor</td>
                                             <td>
-                                                <img class="actimg" src="~/Content/img/delet.png" /> @Html.ActionLink("Deletar", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
-                                                <img class="actimg" src="~/Content/img/adicao2.png"> @Html.ActionLink("Adicionar Alunos", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
+                                                <img class="actimg" src="~/Content/img/delet.png" /> @Html.ActionLink("Deletar", "DeletarGrupo", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
+                                                <img class="actimg" src="~/Content/img/adicao2.png"> @Html.ActionLink("Adicionar Alunos", "AdicionarAlunosGrupo", "ControleMed", new { idGrupo = grupo.idGrupo }, new { @class = "alter" })
                                             </td>
                                         </tr>
                                     }

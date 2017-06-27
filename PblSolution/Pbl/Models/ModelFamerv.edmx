@@ -30,7 +30,7 @@
           <Property Name="idDisciplina" Type="int" Nullable="false" />
           <Property Name="idTurma" Type="int" />
           <Property Name="idProfessor" Type="int" Nullable="false" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="AvaliacaoTutoria">
           <Key>
@@ -38,6 +38,7 @@
           </Key>
           <Property Name="idAvaliacaoTutoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idProblemaxMed" Type="int" />
+          <Property Name="idGrupo" Type="int" Nullable="false" />
           <Property Name="notaProfessor" Type="decimal" Precision="5" Scale="2" />
           <Property Name="idControleNotas" Type="int" />
           <Property Name="dtInicio" Type="date" />
@@ -76,7 +77,7 @@
           <Property Name="idDisciplina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idTipoDisciplina" Type="int" />
           <Property Name="descDisciplina" Type="varchar" MaxLength="50" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="DisciplinaMed">
           <Key>
@@ -103,7 +104,7 @@
           <Property Name="idProfessor" Type="int" />
           <Property Name="idMed" Type="int" Nullable="false" />
           <Property Name="descGrupo" Type="varchar" MaxLength="50" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="InscricaoTurma">
           <Key>
@@ -112,7 +113,7 @@
           <Property Name="idInscricaoTurma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idTurma" Type="int" />
           <Property Name="idAluno" Type="int" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="InscricaoTurmaXGrupo">
           <Key>
@@ -128,7 +129,7 @@
           </Key>
           <Property Name="idMed" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descMed" Type="varchar" MaxLength="50" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
           <Property Name="idSemestre" Type="int" />
         </EntityType>
         <EntityType Name="Modulo">
@@ -182,7 +183,7 @@
           <Property Name="idProfessor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomeProfessor" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="cpfProfessor" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Prova">
           <Key>
@@ -199,7 +200,7 @@
           <Property Name="idSemestre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descSemestre" Type="varchar" MaxLength="50" />
           <Property Name="idAno" Type="int" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoDisciplina">
           <Key>
@@ -231,7 +232,7 @@
           <Property Name="idTurma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idMed" Type="int" />
           <Property Name="descTurma" Type="varchar" MaxLength="100" />
-          <Property Name="ativo" Type="bit" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -279,6 +280,18 @@
             </Principal>
             <Dependent Role="Aula">
               <PropertyRef Name="idTurma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvaliacaoTutoria_Grupo">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="AvaliacaoTutoria" Type="Self.AvaliacaoTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="idGrupo" />
+            </Principal>
+            <Dependent Role="AvaliacaoTutoria">
+              <PropertyRef Name="idGrupo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -827,6 +840,10 @@
             <End Role="Turma" EntitySet="Turma" />
             <End Role="Aula" EntitySet="Aula" />
           </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoTutoria_Grupo" Association="Self.FK_AvaliacaoTutoria_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="AvaliacaoTutoria" EntitySet="AvaliacaoTutoria" />
+          </AssociationSet>
           <AssociationSet Name="FK_ControleNotas_InscricaoTurma" Association="Self.FK_ControleNotas_InscricaoTurma">
             <End Role="InscricaoTurma" EntitySet="InscricaoTurma" />
             <End Role="ControleNotas" EntitySet="ControleNotas" />
@@ -1245,6 +1262,10 @@
             <End Role="Professor" EntitySet="Professor" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoTutoria_Grupo" Association="pblsolutionModel.FK_AvaliacaoTutoria_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="AvaliacaoTutoria" EntitySet="AvaliacaoTutoria" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1285,7 +1306,7 @@
           <Property Name="idDisciplina" Type="Int32" Nullable="false" />
           <Property Name="idTurma" Type="Int32" />
           <Property Name="idProfessor" Type="Int32" Nullable="false" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Turma" Relationship="pblsolutionModel.FK_Aula_Turma" FromRole="Aula" ToRole="Turma" />
           <NavigationProperty Name="ControleNotasXAula" Relationship="pblsolutionModel.FK_ControleNotasXAula_Aula" FromRole="Aula" ToRole="ControleNotasXAula" />
           <NavigationProperty Name="Disciplina" Relationship="pblsolutionModel.FK_Turma_Disciplina" FromRole="Aula" ToRole="Disciplina" />
@@ -1304,6 +1325,8 @@
           <NavigationProperty Name="FichaAvaliacao" Relationship="pblsolutionModel.FK_FichaAvaliacao_AvaliacaoTutoria" FromRole="AvaliacaoTutoria" ToRole="FichaAvaliacao" />
           <NavigationProperty Name="ControleNotas" Relationship="pblsolutionModel.FK_FichaAvaliacao_ControleNotas" FromRole="AvaliacaoTutoria" ToRole="ControleNotas" />
           <NavigationProperty Name="ProblemaXMed" Relationship="pblsolutionModel.FK_FichaAvaliacao_ProblemaXMed" FromRole="AvaliacaoTutoria" ToRole="ProblemaXMed" />
+          <Property Name="idGrupo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Grupo" Relationship="pblsolutionModel.FK_AvaliacaoTutoria_Grupo" FromRole="AvaliacaoTutoria" ToRole="Grupo" />
         </EntityType>
         <EntityType Name="ControleNotas">
           <Key>
@@ -1347,7 +1370,7 @@
           <Property Name="idDisciplina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idTipoDisciplina" Type="Int32" />
           <Property Name="descDisciplina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Aula" Relationship="pblsolutionModel.FK_Turma_Disciplina" FromRole="Disciplina" ToRole="Aula" />
           <NavigationProperty Name="TipoDisciplina" Relationship="pblsolutionModel.FK_Disciplina_TipoDisciplina" FromRole="Disciplina" ToRole="TipoDisciplina" />
           <NavigationProperty Name="Med" Relationship="pblsolutionModel.DisciplinaMed" FromRole="Disciplina" ToRole="Med" />
@@ -1371,10 +1394,11 @@
           <Property Name="idProfessor" Type="Int32" />
           <Property Name="idMed" Type="Int32" Nullable="false" />
           <Property Name="descGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Med" Relationship="pblsolutionModel.FK_Grupo_Med" FromRole="Grupo" ToRole="Med" />
           <NavigationProperty Name="Professor" Relationship="pblsolutionModel.FK_Grupo_Professor1" FromRole="Grupo" ToRole="Professor" />
           <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.InscricaoTurmaXGrupo" FromRole="Grupo" ToRole="InscricaoTurma" />
+          <NavigationProperty Name="AvaliacaoTutoria" Relationship="pblsolutionModel.FK_AvaliacaoTutoria_Grupo" FromRole="Grupo" ToRole="AvaliacaoTutoria" />
         </EntityType>
         <EntityType Name="InscricaoTurma">
           <Key>
@@ -1383,7 +1407,7 @@
           <Property Name="idInscricaoTurma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idTurma" Type="Int32" />
           <Property Name="idAluno" Type="Int32" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Aluno" Relationship="pblsolutionModel.FK_InscricaoMed_Aluno" FromRole="InscricaoTurma" ToRole="Aluno" />
           <NavigationProperty Name="ControleNotas" Relationship="pblsolutionModel.FK_ControleNotas_InscricaoTurma" FromRole="InscricaoTurma" ToRole="ControleNotas" />
           <NavigationProperty Name="Turma" Relationship="pblsolutionModel.FK_InscricaoTurma_Turma" FromRole="InscricaoTurma" ToRole="Turma" />
@@ -1395,7 +1419,7 @@
           </Key>
           <Property Name="idMed" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descMed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <Property Name="idSemestre" Type="Int32" />
           <NavigationProperty Name="Grupo" Relationship="pblsolutionModel.FK_Grupo_Med" FromRole="Med" ToRole="Grupo" />
           <NavigationProperty Name="Semestre" Relationship="pblsolutionModel.FK_Med_Semestre" FromRole="Med" ToRole="Semestre" />
@@ -1463,7 +1487,7 @@
           <Property Name="idProfessor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeProfessor" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="cpfProfessor" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Aula" Relationship="pblsolutionModel.FK_Turma_Professor" FromRole="Professor" ToRole="Aula" />
           <NavigationProperty Name="Grupo" Relationship="pblsolutionModel.FK_Grupo_Professor1" FromRole="Professor" ToRole="Grupo" />
           <NavigationProperty Name="Usuario" Relationship="pblsolutionModel.UsuarioProfessor" FromRole="Professor" ToRole="Usuario" />
@@ -1485,7 +1509,7 @@
           <Property Name="idSemestre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descSemestre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idAno" Type="Int32" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Ano" Relationship="pblsolutionModel.FK_Semestre_Ano" FromRole="Semestre" ToRole="Ano" />
           <NavigationProperty Name="Med" Relationship="pblsolutionModel.FK_Med_Semestre" FromRole="Semestre" ToRole="Med" />
           <NavigationProperty Name="Modulo" Relationship="pblsolutionModel.FK_Modulo_Semestre" FromRole="Semestre" ToRole="Modulo" />
@@ -1523,7 +1547,7 @@
           <Property Name="idTurma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idMed" Type="Int32" />
           <Property Name="descTurma" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ativo" Type="Boolean" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Aula" Relationship="pblsolutionModel.FK_Aula_Turma" FromRole="Turma" ToRole="Aula" />
           <NavigationProperty Name="InscricaoTurma" Relationship="pblsolutionModel.FK_InscricaoTurma_Turma" FromRole="Turma" ToRole="InscricaoTurma" />
           <NavigationProperty Name="Med" Relationship="pblsolutionModel.FK_Turma_Med" FromRole="Turma" ToRole="Med" />
@@ -1880,6 +1904,18 @@
           <End Type="pblsolutionModel.Professor" Role="Professor" Multiplicity="*" />
           <End Type="pblsolutionModel.Usuario" Role="Usuario" Multiplicity="*" />
         </Association>
+        <Association Name="FK_AvaliacaoTutoria_Grupo">
+          <End Type="pblsolutionModel.Grupo" Role="Grupo" Multiplicity="1" />
+          <End Type="pblsolutionModel.AvaliacaoTutoria" Role="AvaliacaoTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="idGrupo" />
+            </Principal>
+            <Dependent Role="AvaliacaoTutoria">
+              <PropertyRef Name="idGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1955,6 +1991,7 @@
           <EntitySetMapping Name="AvaliacaoTutoria">
             <EntityTypeMapping TypeName="pblsolutionModel.AvaliacaoTutoria">
               <MappingFragment StoreEntitySet="AvaliacaoTutoria">
+                <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
                 <ScalarProperty Name="dtFim" ColumnName="dtFim" />
                 <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
                 <ScalarProperty Name="idControleNotas" ColumnName="idControleNotas" />

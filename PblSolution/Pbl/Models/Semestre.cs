@@ -24,7 +24,7 @@ namespace Pbl.Models
         public int idSemestre { get; set; }
         public string descSemestre { get; set; }
         public Nullable<int> idAno { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public bool ativo { get; set; }
     
         public virtual Ano Ano { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

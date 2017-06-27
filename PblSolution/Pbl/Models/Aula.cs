@@ -24,7 +24,7 @@ namespace Pbl.Models
         public int idDisciplina { get; set; }
         public Nullable<int> idTurma { get; set; }
         public int idProfessor { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public bool ativo { get; set; }
     
         public virtual Turma Turma { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

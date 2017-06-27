@@ -24,7 +24,7 @@ namespace Pbl.Models
         public int idDisciplina { get; set; }
         public Nullable<int> idTipoDisciplina { get; set; }
         public string descDisciplina { get; set; }
-        public Nullable<bool> ativo { get; set; }
+        public bool ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aula> Aula { get; set; }

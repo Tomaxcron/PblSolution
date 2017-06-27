@@ -61,6 +61,7 @@
         <AssociationConnector Association="pblsolutionModel.InscricaoTurmaXGrupo" />
         <AssociationConnector Association="pblsolutionModel.UsuarioAluno" />
         <AssociationConnector Association="pblsolutionModel.UsuarioProfessor" />
+        <AssociationConnector Association="pblsolutionModel.FK_AvaliacaoTutoria_Grupo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
