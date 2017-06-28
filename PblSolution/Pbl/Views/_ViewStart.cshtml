@@ -14,12 +14,15 @@
             }
             else
             {
-                Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+                if (user.idTipoUsuario == 3)
+                {
+                    Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+                }
+                else
+                {
+                    Layout = "~/Views/Login/Login.cshtml";
+                }
             }
         }
-    }
-    else
-    {
-        Layout = "~/Views/Login/Login.cshtml";
     }
 }

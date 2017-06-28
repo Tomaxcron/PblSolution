@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Pbl.Models.ControleNotas>
+
+@{
+    ViewBag.Title = "AcompanharMed";
+}
+
+<h2>AcompanharMed</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InscricaoTurma.idInscricaoTurma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modulo.descModulo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InscricaoTurma.idInscricaoTurma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modulo.descModulo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idControleNotas }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idControleNotas }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idControleNotas })
+        </td>
+    </tr>
+}
+
+</table>

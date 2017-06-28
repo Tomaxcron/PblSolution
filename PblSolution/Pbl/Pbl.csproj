@@ -149,6 +149,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AcompanhamentoAlunoController.cs" />
     <Compile Include="Controllers\ControleAlunosController.cs" />
     <Compile Include="Controllers\ControleDisciplinasController.cs" />
     <Compile Include="Controllers\ControleMedController.cs" />
@@ -725,6 +726,8 @@
     <Content Include="Views\GerenciarProblemasMinistados\SelecionarAluno.cshtml" />
     <Content Include="Views\GerenciarProblemasMinistados\AvaliarAluno.cshtml" />
     <Content Include="Views\Shared\_LayoutAluno.cshtml" />
+    <Content Include="Views\AcompanhamentoAluno\Index.cshtml" />
+    <Content Include="Views\AcompanhamentoAluno\AcompanharMed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
