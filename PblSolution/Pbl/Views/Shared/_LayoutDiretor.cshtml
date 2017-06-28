@@ -78,9 +78,10 @@
                             </ul>
                         </div>
                     </li>
-                    <li @*class="@if(ViewBag.ControllerName == "UsuariosController") { @ViewBag.Active}"*@>
+                    <li class="lastuser" @*class="@if(ViewBag.ControllerName == "UsuariosController") { @ViewBag.Active}"*@>
                         <a href="@Url.Action("Details","Usuarios")"<i class="glyphicon glyphicon-user"></i> Usuario</a>
                     </li>
+
                 </ul>
             </div>
 

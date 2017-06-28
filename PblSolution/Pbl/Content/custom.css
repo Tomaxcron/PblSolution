@@ -417,6 +417,10 @@ h2,
     padding-top:20px;
 }
 
+.lastuser{
+    padding-bottom:8px;
+}
+
 
 .sidebar-collapse > .nav > li > a {
     padding: 15px 10px;
