@@ -723,6 +723,8 @@
     <Content Include="Views\GerenciarProblemasMinistados\SelecionarProblema.cshtml" />
     <Content Include="Views\GerenciarProblemasMinistados\MontarFichaAvaliativa.cshtml" />
     <Content Include="Views\GerenciarProblemasMinistados\SelecionarAluno.cshtml" />
+    <Content Include="Views\GerenciarProblemasMinistados\AvaliarAluno.cshtml" />
+    <Content Include="Views\Shared\_LayoutAluno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
