@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "View";
 }
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index","ControleMed")" title="Vá para Controle Med" class="tip-bottom"><i class="fa fa-user-md"></i> Med</a></div>
+</div>
 
 <h1>Grupo: @Model.grupo.descGrupo</h1>
 <h1>Professor: @Model.grupo.Professor.nomeProfessor</h1>
