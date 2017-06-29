@@ -4,6 +4,11 @@
     ViewBag.Title = "Index";
 }
 
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index","GerenciarProblemasMinistados")" title="Vá para Gerencias Grupos" class="tip-bottom"><i class="fa fa-users"></i> Problemas</a></div>
+</div>
+<h2>Index <a href="@Url.Action("GerenciarProblemasMinistados", "Create")"><i class="fa fa-plus-square-o"></i></a></h2>
+
 <h2>Index</h2>
 
 <p>

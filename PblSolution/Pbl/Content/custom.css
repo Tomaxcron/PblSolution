@@ -43,6 +43,14 @@ body {
     font-size: 14px !important;
 }
 
+.fa-plus-square-o {
+    border-color: #001a3B;
+}
+
+    .fa-plus-square-o:hover {
+        color: #0d0d0d;
+    }
+
 .fa-cog {
     margin-left: 5px;
     margin-right: 2px;
