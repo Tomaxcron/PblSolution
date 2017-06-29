@@ -17,6 +17,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Modulo.descModulo)
         </th>
+        <th>Nota</th>
         <th></th>
     </tr>
 
@@ -28,10 +29,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Modulo.descModulo)
         </td>
+        <td>Nota</td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idControleNotas }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idControleNotas }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idControleNotas })
+            @Html.ActionLink("Edit", "Edit", new { id=item.idControleNotas })
         </td>
     </tr>
 }
