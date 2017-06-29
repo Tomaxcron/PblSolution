@@ -26,6 +26,8 @@ namespace Pbl.Controllers
         public ActionResult AcompanharMed(int idInscricaoTurma, int idMed)
         {
             List<ControleNotas> listControleNotas = new MControleNotas().Bring(c => (c.idInscricaoTurma == idInscricaoTurma));
+            int numDisciplinasPraticas = new MMed().BringOne(c => c.idMed == idMed).Disciplina.Where(c => c.idTipoDisciplina == 2).Count();
+            int numDisciplinasMorfofuncionais = new MMed().BringOne(c => c.idMed == idMed).Disciplina.Where(c => c.idTipoDisciplina == 1).Count();
             return View(listControleNotas);
         }
     }
