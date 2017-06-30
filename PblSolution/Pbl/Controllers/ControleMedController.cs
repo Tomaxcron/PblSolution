@@ -278,5 +278,16 @@ namespace Pbl.Controllers
 
             return null;
         }
+
+        public ActionResult AdicionarProvao(int idMed)
+        {
+            ViewData["idMed"] = idMed;
+            return View();
+        }
+
+        public ActionResult AdicionarProvaoAction(int idMed)
+        {
+            return null;
+        }
     }
 }

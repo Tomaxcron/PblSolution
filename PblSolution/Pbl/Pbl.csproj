@@ -728,6 +728,7 @@
     <Content Include="Views\Shared\_LayoutAluno.cshtml" />
     <Content Include="Views\AcompanhamentoAluno\Index.cshtml" />
     <Content Include="Views\AcompanhamentoAluno\AcompanharMed.cshtml" />
+    <Content Include="Views\ControleMed\AdicionarProvao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

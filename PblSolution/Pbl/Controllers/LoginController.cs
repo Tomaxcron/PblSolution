@@ -18,11 +18,11 @@ namespace Pbl.Controllers
         {
             MUsuario mUser = new MUsuario();
             Usuario user = mUser.BringOne(c => (c.login == login) && (c.senha == senha));
-            FormsAuthentication.SetAuthCookie(user.login, false);
             if (user == null)
             {
                 return View();
             }
+            FormsAuthentication.SetAuthCookie(user.login, false);
             Session["Usuario"] = user;
             return RedirectToAction("Index","Home");
         }
