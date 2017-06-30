@@ -61,6 +61,10 @@ body {
     border-color: #080808;
 }
 
+.fa-check-square {
+    margin-right: 2px;
+} 
+
 .btn-warning:hover {
     background-color: #0d0d0d;
     border-color: #080808;
@@ -87,6 +91,11 @@ body {
     margin-left:15px;
     line-height:20px;
 }
+
+.profs {
+    margin-bottom: 30px;
+}
+
 
 #page-wrapper {
     padding: 15px 15px;

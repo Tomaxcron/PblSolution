@@ -4,55 +4,133 @@
     ViewBag.Title = "MontarFichaAvaliativa";
 }
 
-<h2>MontarFichaAvaliativa</h2>
+<div id="content-header">
+    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index","GerenciarProblemasMinistados")" title="Vá para Gerencias Grupos" class="tip-bottom"><i class="fa fa-users"></i> Grupos</a></div>
+</div>
 
+<h2>Montar Ficha Avaliativa</h2>
 
-@using (Html.BeginForm("CriarAvaliacao", "GerenciarProblemasMinistados"))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>AvaliacaoTutoria</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.idAvaliacaoTutoria)
-        @Html.HiddenFor(model => model.idProblemaxMed)
-        @Html.HiddenFor(model => model.idGrupo)
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="widget-box">
+                <form action="" method="post" class="form-styles">
+                    <h1>Avaliacao Tutoria</h1>
+                    @using (Html.BeginForm("CriarAvaliacao", "GerenciarProblemasMinistados"))
+                    {
+                        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.dtInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.dtInicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dtInicio, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.idAvaliacaoTutoria)
+                        @Html.HiddenFor(model => model.idProblemaxMed)
+                        @Html.HiddenFor(model => model.idGrupo)
+                        <ul>
+                            <li>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Dt inicio</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.dtInicio, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.dtInicio, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.dtFim, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.dtFim, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dtFim, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="idModulo" >Modulo: </label>
-            <div class="col-md-10">
-                @Html.DropDownList("idModulo", (SelectList)ViewData["idModulo"])
-            </div>
-        </div>
+                            <li>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Dt Fim</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.dtFim, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.dtFim, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                            <li>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Tipo de Usuario</label>
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            @Html.DropDownList("idModulo", (SelectList)ViewData["idModulo"], htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            @Html.AntiForgeryToken()
+                            <li>
+                                <div class="form-group groupbutton">
+                                    <label class="col-md-4 formselect"></label>
+                                    <div class="col-md-4">
+                                        <button type="submit" value="Salvar" class="btn btn-warning">Cadastrar <span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    }
+                </form>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+@*
+    @using (Html.BeginForm("CriarAvaliacao", "GerenciarProblemasMinistados"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>AvaliacaoTutoria</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.idAvaliacaoTutoria)
+            @Html.HiddenFor(model => model.idProblemaxMed)
+            @Html.HiddenFor(model => model.idGrupo)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.dtInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.dtInicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.dtInicio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.dtFim, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.dtFim, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.dtFim, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idModulo" >Modulo: </label>
+                <div class="col-md-10">
+                    @Html.DropDownList("idModulo", (SelectList)ViewData["idModulo"])
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+*@
