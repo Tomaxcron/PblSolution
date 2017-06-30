@@ -43,6 +43,14 @@ body {
     font-size: 14px !important;
 }
 
+.fa-check {
+    margin-right: 2px;
+}
+
+.fa-check-square {
+    margin-right: 2px;
+}
+
 .fa-plus-square-o {
     border-color: #001a3B;
 }
@@ -317,6 +325,15 @@ h2,
     margin-top: 0.5% !important;
 }
 
+h4 {
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 1em 0em 2em 0em !important;
+    color: #141414;
+    font-size: x-large;
+}
+
 .form-styles {
     margin: 1.5em auto;
     background: #fff;
@@ -333,6 +350,7 @@ h2,
         color: #141414;
         font-size: x-large;
     }
+
 
     .form-styles ul {
         list-style: none;
