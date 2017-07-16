@@ -3,43 +3,118 @@
 @{
     ViewBag.Title = "Details";
 }
+
+
 <div id="content-header">
-    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index","Usuarios/Details")" title="Vá para os Usuarios" class="tip-bottom"><img src="~/Content/img/client.png" class="home" />Usuarios</a></div>
+    <div id="breadcrumb"> <a href="@Url.Action("Index", "Home")" title="Vá para Home" class="tip-bottom"><img src="~/Content/img/home.png" class="home" />Home</a><a href="@Url.Action("Index", "Usuarios/Details")" title="Vá para os Usuarios" class="tip-bottom"><img src="~/Content/img/client.png" class="home" />Usuarios</a></div>
 </div>
 
 <h2>Detalhes</h2>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
 
-<div>
-    <h4>Usuario</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.login)
-        </dt>
+                <form action="" method="post" class="form-styles">
+                    <ul>
+                        <li>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">@Html.DisplayNameFor(model => model.login)</label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <div class="form-control">
+                                            @Html.DisplayFor(model => model.login)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.login)
-        </dd>
+                        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.senha)
-        </dt>
+                        <li>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">@Html.DisplayNameFor(model => model.senha)</label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <div class="form-control">
+                                            @Html.DisplayFor(model => model.senha)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.senha)
-        </dd>
+                        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TipoUsuario.descricao)
-        </dt>
+                        <li>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">@Html.DisplayNameFor(model => model.TipoUsuario.descricao)</label>
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <div class="form-control">
+                                            @Html.DisplayFor(model => model.TipoUsuario.descricao)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TipoUsuario.descricao)
-        </dd>
+                        </li>
 
-    </dl>
+                        <li>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label"></label>
+                                <div class="col-md-4">
+                                    <button>@Html.ActionLink("Editar", "Edit", new { id = Model.idUsuario }, new { @class = " btn btn-warning " })</button>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                    </form>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idUsuario }) |
-    @Html.ActionLink("Back to List", "Index", "home")
-</p>
+        </div>
+    </div>
+
+</div>
+
+@*
+
+    <h2>Detalhes</h2>
+
+    <div>
+        <h4>Usuario</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.login)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.login)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.senha)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.senha)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoUsuario.descricao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoUsuario.descricao)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.idUsuario }) |
+        @Html.ActionLink("Back to List", "Index", "home")
+    </p>
+*@

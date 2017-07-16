@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     <style type="text/css">
         #flotcontainer {
             width: 600px;
@@ -32,8 +34,8 @@
                 </div>
 
                 <span class="logout-spn">
-                    <a href="@Url.Action("SignOut","Login")" style="color:#fff;"> LOGOUT <img class="logout-img" src="~/Content/img/logout.png" alt="Logout"> </a>
-                </span> 
+                    <a href="#" style="color:#fff;"> LOGOUT <img class="logout-img" src="~/Content/img/logout.png" alt="Logout"> </a>
+                </span>
             </div>
         </div>
         <!-- /. NAV TOP  -->
@@ -41,47 +43,14 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-                    <li @*class="@if(ViewBag.ControllerName == "HomeController") { @ViewBag.Active}"*@>
-                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home </a>
-                    </li>
 
 
-                    <li @*class="@if(ViewBag.ControllerName == "ControleAlunosController") { @ViewBag.Active}"*@>
-                        <a href="@Url.Action("Index", "ControleAlunos")"><i class="fa fa-users"></i>Alunos </a>
-                    </li>
-
-                    <li @*class="@if(ViewBag.ControllerName == "ControleProfessoresController") { @ViewBag.Active}"*@>
-                        <a href="@Url.Action("Index", "ControleProfessores")"><i class="fa fa-graduation-cap"></i>Professores </a>
-                    </li>
-
-                    
-                    <li @*class="@if(ViewBag.ControllerName == "ControleMedController") { @ViewBag.Active}"*@>
-                        <a href="@Url.Action("Index", "ControleMed")"><i class="fa fa-user-md"></i>MED</a>
-                    </li>
-                    <li @*class="@if(ViewBag.ControllerName == "ControleSemestreController") { @ViewBag.Active}"*@>
-                        <a href="@Url.Action("Index", "ControleSemestres")"><i class="fa fa-table"></i>Semestre</a>
-                    </li>
-
-                    <li @*class="@if(ViewBag.ControllerName == "ControleProblemasController") { @ViewBag.Active}"*@> 
-                        <a href="@Url.Action("Index", "ControleProblemas")"><i class="	fa fa-warning"></i>Problemas</a>
+                    <li class="active-link">
+                        <a href="@Url.Action("Index", "AcompanhamentoAluno")"><i class="fa fa-desktop active "></i>Acompanhar notas <span class="badge">Included</span></a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#toggleSub"><i class="glyphicon glyphicon-th-list"></i>Disciplinas</a>
-                        <div class="collapse" id="toggleSub" style="height: 0px;">
-                            <ul class="nav nav-list">
-                                <li @*class="@if(ViewBag.ControllerName == "ControleTipoDisciplinaController") { @ViewBag.Active}"*@>
-                                    <a href="@Url.Action("Index","ControleTipoDisciplina")">Gerenciar Tipos</a>
-                                </li>
-                                <li @*class="@if(ViewBag.ControllerName == "ControleDisciplinasController") { @ViewBag.Active}"*@>
-                                    <a href="@Url.Action("Index","ControleDisciplinas")">Gerenciar Disciplinas</a>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </li>
-                    <li class="lastuser" @*class="@if(ViewBag.ControllerName == "UsuariosController") { @ViewBag.Active}"*@>
-                        <a href="@Url.Action("Details","Usuarios")"<i class="glyphicon glyphicon-user"></i> Usuario</a>
-                    </li>
-
                 </ul>
             </div>
 
@@ -107,7 +76,7 @@
 
 
 
-   
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript">
         $(document).ready(function () {
@@ -115,6 +84,7 @@
         });
     </script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://static.pureexample.com/js/flot/excanvas.min.js"></script>
     <script src="http://static.pureexample.com/js/flot/jquery.flot.min.js"></script>
     <script src="http://static.pureexample.com/js/flot/jquery.flot.pie.min.js"></script>

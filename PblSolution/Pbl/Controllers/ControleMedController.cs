@@ -62,23 +62,7 @@ namespace Pbl.Controllers
             nova.idMed = id;
             return View(nova);
         }
-        /*
-            AdicionarTurmaViewModel viewModel = new AdicionarTurmaViewModel();
-            viewModel.aulasMinistradas = new List<Aula>();
-            Turma novaTurma = new Turma() { idMed = id };
-            viewModel.turma = novaTurma;
-            foreach (var disciplina in new MMed().BringOne(c => c.idMed == id).Disciplina)
-            {
-                Aula aula = new Aula();
-                aula.Disciplina = disciplina;
-                aula.idDisciplina = disciplina.idDisciplina;
-                viewModel.aulasMinistradas.Add(aula);
-            }
-            ViewData["aulas"] = viewModel.aulasMinistradas;
-            ViewData["idProfessor"] = new SelectList(new MProfessor().BringAll(), "idProfessor", "nomeProfessor");
-            ViewBag.Message = TempData["Message"];
-            return View(viewModel);
-             */
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Diretor")]
@@ -292,6 +276,17 @@ namespace Pbl.Controllers
 
 
 
+            return null;
+        }
+
+        public ActionResult AdicionarProvao(int idMed)
+        {
+            ViewData["idMed"] = idMed;
+            return View();
+        }
+
+        public ActionResult AdicionarProvaoAction(int idMed)
+        {
             return null;
         }
     }

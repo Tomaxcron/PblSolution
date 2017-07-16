@@ -39,7 +39,8 @@ namespace Pbl.Controllers
             List<AvaliacaoTutoria> avaliacaoTutoria = mAvaliacaoTutoria.Bring(c => (c.idGrupo == idGrupo) && (c.idProblemaxMed == idProblemaXMed));
             if (avaliacaoTutoria.Count != 0)
             {
-                return RedirectToAction("SelecionarAluno", "GerenciarProblemasMinistados",new { avaliacoes = avaliacaoTutoria });
+                TempData["avaliacoes"] = avaliacaoTutoria;
+                return RedirectToAction("SelecionarAluno", "GerenciarProblemasMinistados");
             }
             List<Modulo> modulos = new MModulo().Bring(c => c.idSemestre == problemaXMed.Med.idSemestre);
             AvaliacaoTutoria novaAvaliacao = new AvaliacaoTutoria();
@@ -72,17 +73,33 @@ namespace Pbl.Controllers
                 avaliacaoAluno.idProblemaxMed = novaAvaliacao.idProblemaxMed;
                 mAvaliacaoTutoria.Add(avaliacaoAluno);
             }
-                List<AvaliacaoTutoria> avaliacoesTutoria = mAvaliacaoTutoria.Bring(c => (c.idGrupo == grupo.idGrupo) && (c.idProblemaxMed == novaAvaliacao.idProblemaxMed));
-            return RedirectToAction("SelecionarAluno", "GerenciarProblemasMinistados",new { avaliacoes = avaliacoesTutoria } );
+            List<AvaliacaoTutoria> avaliacoesTutoria = mAvaliacaoTutoria.Bring(c => (c.idGrupo == grupo.idGrupo) && (c.idProblemaxMed == novaAvaliacao.idProblemaxMed));
+            TempData["avaliacoes"] = avaliacoesTutoria;
+            return RedirectToAction("SelecionarAluno", "GerenciarProblemasMinistados");
         }
 
-        public ActionResult SelecionarAluno(List<AvaliacaoTutoria> avalicoes)
+        public ActionResult SelecionarAluno()
         {
-            if (avalicoes == null)
+            List<AvaliacaoTutoria> avaliacoes = TempData["avaliacoes"] as List<AvaliacaoTutoria>;
+            if (avaliacoes == null)
             {
-                avalicoes = new List<AvaliacaoTutoria>();
+                avaliacoes = new List<AvaliacaoTutoria>();
             }
-            return View(avalicoes);
+            return View(avaliacoes);
+        }
+
+        public ActionResult AvaliarAluno(int idAvaliacaoTutoria)
+        {
+            AvaliacaoTutoria avaliacaoTutoria = new MAvaliacaoTutoria().BringOne(c => c.idAvaliacaoTutoria == idAvaliacaoTutoria);
+            return View(avaliacaoTutoria);
+        }
+
+        public ActionResult AvaliarAlunoAction(AvaliacaoTutoria avaliacaoAluno)
+        {
+            MAvaliacaoTutoria mAvaliacaoTutoria = new MAvaliacaoTutoria();
+            mAvaliacaoTutoria.Update(avaliacaoAluno);
+            TempData["avaliacoes"] = mAvaliacaoTutoria.Bring(c => (c.idGrupo == avaliacaoAluno.idGrupo) && (c.idProblemaxMed == avaliacaoAluno.idProblemaxMed));
+            return RedirectToAction("SelecionarAluno", "GerenciarProblemasMinistados");
         }
     }
 }

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Pbl.Models.InscricaoTurma>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Med</th>
+        <th>
+            Semestre
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Turma.descTurma)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turma.Med.descMed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turma.Med.Semestre.descSemestre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turma.descTurma)
+            </td>
+            <td>
+                @Html.ActionLink("Selecionar", "AcompanharMed", "AcompanhamentoAluno", new { idInscricaoTurma = item.idInscricaoTurma, idMed = item.Turma.idMed }, new { @class = "alter" })
+            </td>
+        </tr>
+    }
+
+</table>

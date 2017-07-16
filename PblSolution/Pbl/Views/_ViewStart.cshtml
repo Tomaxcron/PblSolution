@@ -1,3 +1,28 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Pbl.Models.Usuario user = (Pbl.Models.Usuario)Session["Usuario"];
+    if (user != null)
+    {
+        if (user.idTipoUsuario == 1)
+        {
+            Layout = "~/Views/Shared/_LayoutDiretor.cshtml";
+        }
+        else
+        {
+            if (user.idTipoUsuario == 2)
+            {
+                Layout = "~/Views/Shared/_LayoutProfessor.cshtml";
+            }
+            else
+            {
+                if (user.idTipoUsuario == 3)
+                {
+                    Layout = "~/Views/Shared/_LayoutAluno.cshtml";
+                }
+                else
+                {
+                    Layout = "~/Views/Login/Login.cshtml";
+                }
+            }
+        }
+    }
 }
