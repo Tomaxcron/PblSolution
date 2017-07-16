@@ -7,92 +7,94 @@
         alert($mensagem);
     }
 </script>
-<div id="content-header">
-    <div id="breadcrumb"> <a href="@Url.Action("Index","Home")" title="Vá para Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a><a href="@Url.Action("Index","ControleAlunos")" title="Vá para Controle Alunos" class="tip-bottom"><i class="fa fa-users"></i> Alunos</a></div>
-</div>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span6">
-            <div class="widget-box">
-                <form action="" method="post" class="form-styles">
-                        <h1>Novo Aluno</h1>
-                        <ul>
-                            <li>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Nome</label>
-                                    <div class="col-md-4 inputGroupContainer">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <input name="nomeAluno" placeholder="Nome" class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--<input name="nomeAluno" type="text" placeholder="Nome" />
-                                <span>Informe seu nome</span>-->
-                            </li>
-                            <li>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">CPF</label>
-                                    <div class="col-md-4 inputGroupContainer">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <input name="cpfAluno" placeholder="CPF" class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                 <!--<input name="cpfAluno" type="text" placeholder="CPF" />
-                                <span>Informe seu CPF</span>-->
-                            </li>
-                            <li>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Matricula</label>
-                                    <div class="col-md-4 inputGroupContainer">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <input name="matriculaAluno" placeholder="Matricula" class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                              <!--  <input name="matriculaAluno" type="text" placeholder="Matricula" />
-                                <span>Informe sua Matricula</span>-->
-                            </li>
-                                @Html.AntiForgeryToken()
-                            <li>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label"></label>
-                                    <div class="col-md-4">
-                                        <button type="submit" value="Cadastrar" class="btn btn-warning">Cadastrar <span class="glyphicon glyphicon-send"></span></button>
-                                    </div>
-                                </div>
-
-                            </li>
-                        </ul>
-                    </form>
-                   @* <form action="" method="post" class="form-horizontal">
-                        <div class="control-group">
-                            <label class="control-label">Nome :</label>
-                            <div class="controls">
-                                <input name="nomeAluno" type="text" class="span11" placeholder="Nome" />
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">CPF :</label>
-                            <div class="controls">
-                                <input name="cpfAluno" type="text" class="span11" placeholder="CPF" />
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Matricula :</label>
-                            <div class="controls">
-                                <input name="matriculaAluno" type="text" class="span11" placeholder="Nome" />
-                            </div>
-                        </div>
-                        @Html.AntiForgeryToken()
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success">Cadastrar</button>
-                        </div>
-                    </form>*@
-            </div>
-        </div>
+<h3>
+    Aluno
+    <small>Formulário para Cadastro de Alunos</small>
+</h3>
+<div class="panel panel-default">
+    <div class="panel-heading">Cadastro</div>
+    <div class="panel-body">
+        <form action="" method="post" class="form-horizontal">
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nome</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nomeAluno" placeholder="Nome" class="form-control input-sm" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">CPF</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="cpfAluno" placeholder="CPF" id="cpf" onsubmit="verificarCPF(this);" class="form-control input-sm"/>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Matrícula</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="matriculaAluno" placeholder="Matrícula" class="form-control input-sm" />
+                    </div>
+                </div>
+            </fieldset>
+            <!-- Success button with label -->
+            <button type="submit" class="btn btn-labeled btn-success">
+                <span class="btn-label">
+                    <i class="fa fa-check"></i>
+                </span>Cadastrar
+            </button>
+        </form>
     </div>
 </div>
+<!-- END panel-->
+
+@section scripts{
+<script>
+    //arquivo funcoes_cpf.js
+    // validador CPF
+    function verificarCPF(c) {
+        var i;
+        s = c.value;
+        var c = s.substr(0, 9);
+        var dv = s.substr(9, 2);
+        var d1 = 0;
+        var v = false;
+
+        for (i = 0; i < 9; i++) {
+            d1 += c.charAt(i) * (10 - i);
+        }
+        if (d1 == 0) {
+            alert("CPF Inválido")
+            v = true;
+            return false;
+        }
+        d1 = 11 - (d1 % 11);
+        if (d1 > 9) d1 = 0;
+        if (dv.charAt(0) != d1) {
+            alert("CPF Inválido")
+            v = true;
+            return false;
+        }
+
+        d1 *= 2;
+        for (i = 0; i < 9; i++) {
+            d1 += c.charAt(i) * (11 - i);
+        }
+        d1 = 11 - (d1 % 11);
+        if (d1 > 9) d1 = 0;
+        if (dv.charAt(1) != d1) {
+            alert("CPF Inválido")
+            v = true;
+            return false;
+        }
+        if (!v) {
+            alert(c + "nCPF Válido")
+        }
+    }
+
+    
+</script>    
+}

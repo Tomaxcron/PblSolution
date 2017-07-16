@@ -1,42 +1,41 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/login.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
-</head>
-<body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-brand">
-            <a href="#">
-                <img src="~/Content/img/logo.png" alt="#" />
-            </a>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <form action="" method="post" class="form-styles">
-            <p class="title">Login</p>
-
-                    <input name="login" type="text" placeholder="Login" />
-                    <i class="fa fa-user"></i>
-
-                    <input name="senha" type="text" placeholder="Senha" />
-                    <i class="fa fa-key"></i>
-
-                    <a href="#">Esqueceu sua senha?</a>
-
-                <button>
-                    <i class="spinner"></i>
-                    <span class="state">Logar</span>
-                </button>
-        </form>
-     </div>
-</body>
-</html>
+<div class="block-center mt-xl wd-xl">
+   <!-- START panel-->
+   <div class="panel panel-dark panel-flat">
+      <div class="panel-heading text-center">
+         <a href="#">
+            <img src="~/Content/Images/logo.png" alt="Image" class="block-center img-rounded" />
+         </a>
+      </div>
+      <div class="panel-body">
+         <p class="text-center pv">SIGN IN TO CONTINUE.</p>
+          <form action="" method="post" class="form-styles">
+              <div class="form-group has-feedback">
+                  <input id="exampleInputEmail1" name="login" autocomplete="off" required="required" class="form-control" />
+                  <span class="fa fa-envelope form-control-feedback text-muted"></span>
+              </div>
+              <div class="form-group has-feedback">
+                  <input id="exampleInputPassword1" name="senha" type="password" placeholder="Password" required="required" class="form-control" />
+                  <span class="fa fa-lock form-control-feedback text-muted"></span>
+              </div>
+              <div class="clearfix">
+                  <div class="checkbox c-checkbox pull-left mt0">
+                      <label>
+                          <input type="checkbox" value="" name="remember" />
+                          <span class="fa fa-check"></span>Remember Me
+                      </label>
+                  </div>
+                  <div class="pull-right">
+                      <a href="@Url.Action("Recover", "Pages")" class="text-muted">Forgot your password?</a>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-block btn-primary mt-lg">Login</button>
+          </form>
+         <p class="pt-lg text-center">Need to Signup?</p><a href="@Url.Action("Register", "Pages")" class="btn btn-block btn-default">Register Now</a>
+      </div>
+   </div>
+   <!-- END panel-->
+</div>
